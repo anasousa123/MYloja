@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fashion ERP | Produtos</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/produtos.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <h2>Fashion ERP</h2>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+
+            <a class="active" href="produtos.html">
+                <i class="fa-solid fa-shirt"></i>
+                Produtos
+            </a>
+
+            <a href="clientes.html">
+                <i class="fa-solid fa-users"></i>
+                Clientes
+            </a>
+
+            <a href="estoque.html">
+                <i class="fa-solid fa-box"></i>
+                Estoque
+            </a>
+
+            <a href="vendas.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Vendas
+            </a>
+
+            <a href="financeiro.html">
+                <i class="fa-solid fa-wallet"></i>
+                Financeiro
+            </a>
+
+            <a href="relatorios.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Relatórios
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+
+    <main class="content">
+
+        <!-- TOPO -->
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>Produtos</h1>
+
+                <p>Gerencie todos os produtos da loja.</p>
+
+            </div>
+
+            <button id="novoProduto" class="btn-primary">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Novo Produto
+
+            </button>
+
+        </header>
+
+        <!-- FILTROS -->
+
+        <section class="toolbar">
+
+            <div class="search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Pesquisar produto...">
+
+            </div>
+
+            <select>
+
+                <option>Todas Categorias</option>
+
+                <option>Vestidos</option>
+
+                <option>Blusas</option>
+
+                <option>Calças</option>
+
+                <option>Jeans</option>
+
+                <option>Calçados</option>
+
+            </select>
+
+            <button class="btn-secondary">
+
+                <i class="fa-solid fa-file-export"></i>
+
+                Exportar
+
+            </button>
+
+        </section>
+
+        <!-- TABELA -->
+
+        <section class="table-card">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Foto</th>
+
+                        <th>Produto</th>
+
+                        <th>Categoria</th>
+
+                        <th>SKU</th>
+
+                        <th>Estoque</th>
+
+                        <th>Preço</th>
+
+                        <th>Status</th>
+
+                        <th>Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="listaProdutos">
+
+                    <tr>
+
+                        <td>
+
+                            <img src="https://via.placeholder.com/60">
+
+                        </td>
+
+                        <td>Vestido Premium</td>
+
+                        <td>Vestidos</td>
+
+                        <td>VT001</td>
+
+                        <td>28</td>
+
+                        <td>R$ 219,90</td>
+
+                        <td>
+
+                            <span class="status ativo">
+
+                                Em estoque
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button class="icon-btn">
+
+                                <i class="fa-solid fa-pen"></i>
+
+                            </button>
+
+                            <button class="icon-btn delete">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL -->
+
+    <div class="modal" id="modalProduto">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>Novo Produto</h2>
+
+                <button id="fecharModal">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+            <form id="formProduto">
+
+                <div class="grid">
+
+                    <div>
+
+                        <label>Nome</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div>
+
+                        <label>Categoria</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div>
+
+                        <label>Marca</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div>
+
+                        <label>Tamanho</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div>
+
+                        <label>Cor</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div>
+
+                        <label>Preço</label>
+
+                        <input type="number">
+
+                    </div>
+
+                    <div>
+
+                        <label>Estoque</label>
+
+                        <input type="number">
+
+                    </div>
+
+                    <div>
+
+                        <label>Imagem</label>
+
+                        <input type="file">
+
+                    </div>
+
+                </div>
+
+                <textarea
+                    rows="5"
+                    placeholder="Descrição do produto..."></textarea>
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-secondary">
+
+                        Cancelar
+
+                    </button>
+
+                    <button
+                        class="btn-primary">
+
+                        Salvar Produto
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="../js/produtos.js"></script>
+
+</body>
+
+</html>
