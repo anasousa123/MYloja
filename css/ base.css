@@ -1,0 +1,724 @@
+/* ==========================================================
+   FASHION ERP
+   Base CSS
+   ========================================================== */
+
+/* ---------------- RESET ---------------- */
+
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    font-size:16px;
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Poppins',sans-serif;
+    background:#0F172A;
+    color:#F8FAFC;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    border:none;
+    outline:none;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+input,
+textarea,
+select{
+    font-family:inherit;
+    outline:none;
+    border:none;
+}
+
+ul{
+    list-style:none;
+}
+
+/* ---------------- VARIÁVEIS ---------------- */
+
+:root{
+
+    /* Cores */
+
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+
+    --secondary:#F59E0B;
+
+    --success:#22C55E;
+    --danger:#EF4444;
+    --warning:#FACC15;
+
+    --background:#0F172A;
+    --background-light:#1E293B;
+
+    --surface:#111827;
+    --surface-2:#1F2937;
+
+    --white:#FFFFFF;
+
+    --text:#F8FAFC;
+    --text-light:#CBD5E1;
+    --text-muted:#94A3B8;
+
+    --border:#334155;
+
+    /* Sombras */
+
+    --shadow-sm:
+        0 2px 8px rgba(0,0,0,.15);
+
+    --shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    --shadow-lg:
+        0 20px 60px rgba(0,0,0,.35);
+
+    /* Bordas */
+
+    --radius-sm:8px;
+    --radius:16px;
+    --radius-lg:24px;
+    --radius-xl:32px;
+
+    /* Espaçamentos */
+
+    --space-1:4px;
+    --space-2:8px;
+    --space-3:12px;
+    --space-4:16px;
+    --space-5:20px;
+    --space-6:24px;
+    --space-7:32px;
+    --space-8:40px;
+    --space-9:48px;
+
+    /* Transição */
+
+    --transition:.35s ease;
+
+}
+
+/* ---------------- TEMA CLARO ---------------- */
+
+body.light{
+
+    --background:#F8FAFC;
+
+    --background-light:#FFFFFF;
+
+    --surface:#FFFFFF;
+
+    --surface-2:#F1F5F9;
+
+    --text:#0F172A;
+
+    --text-light:#334155;
+
+    --text-muted:#64748B;
+
+    --border:#E2E8F0;
+
+}
+
+/* ---------------- TIPOGRAFIA ---------------- */
+
+h1{
+
+    font-size:2.5rem;
+    font-weight:700;
+    line-height:1.2;
+
+}
+
+h2{
+
+    font-size:2rem;
+    font-weight:700;
+
+}
+
+h3{
+
+    font-size:1.35rem;
+    font-weight:600;
+
+}
+
+h4{
+
+    font-size:1.1rem;
+    font-weight:600;
+
+}
+
+p{
+
+    color:var(--text-light);
+    line-height:1.7;
+
+}
+
+small{
+
+    color:var(--text-muted);
+
+}
+
+/* ---------------- SCROLL ---------------- */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--background);
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/* ---------------- SELEÇÃO ---------------- */
+
+::selection{
+
+    background:var(--primary);
+    color:#fff;
+
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.container{
+
+    width:min(1400px,92%);
+    margin:auto;
+
+}
+
+/* ---------------- UTILITÁRIOS ---------------- */
+
+.text-center{
+    text-align:center;
+}
+
+.text-right{
+    text-align:right;
+}
+
+.w-100{
+    width:100%;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.flex{
+    display:flex;
+}
+
+.grid{
+    display:grid;
+}
+
+.align-center{
+    align-items:center;
+}
+
+.justify-between{
+    justify-content:space-between;
+}
+
+.justify-center{
+    justify-content:center;
+}
+
+.gap-1{
+    gap:10px;
+}
+
+.gap-2{
+    gap:20px;
+}
+
+.gap-3{
+    gap:30px;
+}
+
+.mt-1{
+    margin-top:10px;
+}
+
+.mt-2{
+    margin-top:20px;
+}
+
+.mt-3{
+    margin-top:30px;
+}
+
+.mb-1{
+    margin-bottom:10px;
+}
+
+.mb-2{
+    margin-bottom:20px;
+}
+
+.mb-3{
+    margin-bottom:30px;
+}
+
+/* ---------------- ANIMAÇÃO ---------------- */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+.fade-up{
+
+    animation:fadeUp .6s ease forwards;
+
+}
+/* ==========================================================
+   LOGIN
+========================================================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at top left,#2563eb22,transparent 45%),
+        radial-gradient(circle at bottom right,#f59e0b18,transparent 40%),
+        linear-gradient(135deg,#0f172a,#111827,#1e293b);
+    z-index:-2;
+}
+
+/* Círculos */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(8px);
+    animation:float 10s ease-in-out infinite;
+}
+
+.circle1{
+    width:420px;
+    height:420px;
+    background:#2563eb25;
+    top:-150px;
+    left:-120px;
+}
+
+.circle2{
+    width:350px;
+    height:350px;
+    background:#f59e0b22;
+    bottom:-120px;
+    right:-80px;
+    animation-delay:2s;
+}
+
+.circle3{
+    width:220px;
+    height:220px;
+    background:#ffffff10;
+    top:40%;
+    left:45%;
+    animation-delay:4s;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0) rotate(0);
+    }
+
+    50%{
+        transform:translateY(-25px) rotate(6deg);
+    }
+
+    100%{
+        transform:translateY(0) rotate(0);
+    }
+
+}
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.login-card{
+
+    width:100%;
+    max-width:470px;
+
+    background:rgba(17,24,39,.75);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:45px;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+
+    animation:fadeUp .7s ease;
+
+}
+
+body.light .login-card{
+
+    background:rgba(255,255,255,.90);
+
+}
+
+/* ==========================================================
+   BADGE
+========================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:#fff;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+    letter-spacing:.6px;
+
+    margin-bottom:18px;
+
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.input-group{
+
+    margin-top:22px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.input-icon{
+
+    position:relative;
+
+}
+
+.input-icon i{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--text-muted);
+
+    font-size:15px;
+
+}
+
+.input-icon input{
+
+    width:100%;
+
+    height:56px;
+
+    padding-left:52px;
+
+    padding-right:52px;
+
+    border-radius:14px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    font-size:.95rem;
+
+    transition:var(--transition);
+
+}
+
+.input-icon input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+/* Mostrar senha */
+
+.toggle-password{
+
+    position:absolute;
+
+    right:16px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    background:none;
+
+    color:var(--text-muted);
+
+    transition:.3s;
+
+}
+
+.toggle-password:hover{
+
+    color:var(--primary);
+
+}
+
+/* ==========================================================
+   LOGIN OPTIONS
+========================================================== */
+
+.login-options{
+
+    margin-top:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.remember{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    color:var(--text-light);
+
+    font-size:.92rem;
+
+}
+
+.remember input{
+
+    accent-color:var(--primary);
+
+}
+
+.forgot-password{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.forgot-password:hover{
+
+    opacity:.8;
+
+}
+
+/* ==========================================================
+   BOTÕES
+========================================================== */
+
+.btn{
+
+    width:100%;
+
+    height:56px;
+
+    border-radius:14px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    transition:var(--transition);
+
+}
+
+.btn-primary{
+
+    margin-top:25px;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:#fff;
+
+    box-shadow:0 12px 25px rgba(37,99,235,.30);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 18px 35px rgba(37,99,235,.40);
+
+}
+
+.btn-google{
+
+    background:#fff;
+
+    color:#111827;
+
+    border:1px solid #ddd;
+
+}
+
+.btn-google:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================================================
+   DIVISOR
+========================================================== */
+
+.divider{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin:28px 0;
+
+}
+
+.divider::before,
+.divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:var(--border);
+
+}
+
+.divider span{
+
+    color:var(--text-muted);
+
+    font-size:.9rem;
+
+}
