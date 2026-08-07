@@ -1,0 +1,832 @@
+/* ==========================================================
+   FASHION ERP
+   COMPONENTS.CSS
+==========================================================*/
+
+/* ==========================
+   BOTÕES
+========================== */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    transition:.30s;
+
+    user-select:none;
+}
+
+.btn i{
+
+    font-size:15px;
+
+}
+
+.btn-primary{
+
+    background:linear-gradient(135deg,#2563EB,#1D4ED8);
+
+    color:#fff;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 15px 30px rgba(37,99,235,.30);
+
+}
+
+.btn-secondary{
+
+    background:#F59E0B;
+
+    color:#fff;
+
+}
+
+.btn-secondary:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.btn-success{
+
+    background:#22C55E;
+
+    color:#fff;
+
+}
+
+.btn-danger{
+
+    background:#EF4444;
+
+    color:#fff;
+
+}
+
+.btn-light{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+.btn-light:hover{
+
+    background:var(--background-light);
+
+}
+
+/* ==========================
+   CARDS
+========================== */
+
+.card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.30s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow);
+
+}
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.card-title{
+
+    font-size:1.15rem;
+
+    font-weight:600;
+
+}
+
+/* ==========================
+   STAT CARDS
+========================== */
+
+.stat-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    transition:.30s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.stat-card .icon{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#fff;
+
+    font-size:24px;
+
+    background:linear-gradient(135deg,#2563EB,#1D4ED8);
+
+}
+
+.stat-card h3{
+
+    font-size:2rem;
+
+    margin-top:10px;
+
+}
+
+.stat-card p{
+
+    color:var(--text-muted);
+
+}
+
+/* ==========================
+   BADGES
+========================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:7px 14px;
+
+    border-radius:50px;
+
+    font-size:.80rem;
+
+    font-weight:600;
+
+}
+
+.badge-success{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.badge-danger{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+}
+
+.badge-warning{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+.badge-info{
+
+    background:#DBEAFE;
+
+    color:#1D4ED8;
+
+}
+
+/* ==========================
+   ALERTAS
+========================== */
+
+.alert{
+
+    padding:18px 22px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    border-left:5px solid;
+
+}
+
+.alert-success{
+
+    background:#DCFCE7;
+
+    border-color:#22C55E;
+
+    color:#166534;
+
+}
+
+.alert-danger{
+
+    background:#FEE2E2;
+
+    border-color:#EF4444;
+
+    color:#991B1B;
+
+}
+
+.alert-warning{
+
+    background:#FEF3C7;
+
+    border-color:#F59E0B;
+
+    color:#92400E;
+
+}
+
+.alert-info{
+
+    background:#DBEAFE;
+
+    border-color:#2563EB;
+
+    color:#1E3A8A;
+
+}
+
+/* ==========================
+   AVATAR
+========================== */
+
+.avatar{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+}
+
+.avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+/* ==========================================================
+   TABELAS
+========================================================== */
+
+.table-container{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:var(--shadow-sm);
+}
+
+.table-responsive{
+    width:100%;
+    overflow-x:auto;
+}
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
+}
+
+.table thead{
+    background:var(--background-light);
+}
+
+.table th{
+    padding:18px;
+    text-align:left;
+    font-size:.9rem;
+    font-weight:600;
+    color:var(--text);
+    border-bottom:1px solid var(--border);
+}
+
+.table td{
+    padding:18px;
+    border-bottom:1px solid var(--border);
+    color:var(--text-light);
+}
+
+.table tbody tr{
+    transition:.3s;
+}
+
+.table tbody tr:hover{
+    background:rgba(37,99,235,.05);
+}
+
+/* ==========================================================
+   FORMULÁRIOS
+========================================================== */
+
+.form-group{
+    margin-bottom:22px;
+}
+
+.form-label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:var(--text);
+}
+
+.form-control{
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 18px;
+
+    border-radius:14px;
+
+    background:var(--background-light);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    transition:.3s;
+
+}
+
+.form-control:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+textarea.form-control{
+
+    height:140px;
+
+    resize:vertical;
+
+    padding:15px;
+
+}
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+/* ==========================================================
+   CHECKBOX
+========================================================== */
+
+.checkbox{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.checkbox input{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:var(--primary);
+
+}
+
+/* ==========================================================
+   SWITCH
+========================================================== */
+
+.switch{
+
+    position:relative;
+
+    width:54px;
+
+    height:30px;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#CBD5E1;
+
+    border-radius:50px;
+
+    transition:.3s;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:22px;
+
+    height:22px;
+
+    left:4px;
+
+    top:4px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    transition:.3s;
+
+}
+
+.switch input:checked + .slider{
+
+    background:var(--primary);
+
+}
+
+.switch input:checked + .slider::before{
+
+    transform:translateX(24px);
+
+}
+
+/* ==========================================================
+   PAGINAÇÃO
+========================================================== */
+
+.pagination{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    margin-top:25px;
+
+}
+
+.page-item{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.page-item:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.page-item.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/* ==========================================================
+   PROGRESS BAR
+========================================================== */
+
+.progress{
+
+    width:100%;
+
+    height:10px;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    background:#E5E7EB;
+
+}
+
+.progress-bar{
+
+    height:100%;
+
+    background:linear-gradient(90deg,#2563EB,#1D4ED8);
+
+}
+
+/* ==========================================================
+   MODAL
+========================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:5000;
+
+}
+
+.modal.active{
+
+    display:flex;
+
+}
+
+.modal-content{
+
+    width:100%;
+
+    max-width:650px;
+
+    background:var(--surface);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    position:relative;
+
+    animation:fadeUp .35s;
+
+}
+
+.close-modal{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:12px;
+
+    background:var(--background-light);
+
+}
+
+/* ==========================================================
+   DROPDOWN
+========================================================== */
+
+.dropdown{
+
+    position:relative;
+
+}
+
+.dropdown-menu{
+
+    position:absolute;
+
+    top:110%;
+
+    right:0;
+
+    width:220px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    display:none;
+
+    box-shadow:var(--shadow);
+
+}
+
+.dropdown.active .dropdown-menu{
+
+    display:block;
+
+}
+
+.dropdown-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px 18px;
+
+    transition:.3s;
+
+}
+
+.dropdown-menu a:hover{
+
+    background:rgba(37,99,235,.08);
+
+}
+
+/* ==========================================================
+   TOOLTIP
+========================================================== */
+
+.tooltip{
+
+    position:relative;
+
+}
+
+.tooltip:hover::after{
+
+    content:attr(data-tooltip);
+
+    position:absolute;
+
+    bottom:120%;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#111827;
+
+    color:#fff;
+
+    padding:8px 12px;
+
+    border-radius:8px;
+
+    white-space:nowrap;
+
+    font-size:.8rem;
+
+}
+
+/* ==========================================================
+   SKELETON
+========================================================== */
+
+.skeleton{
+
+    background:linear-gradient(
+        90deg,
+        #E5E7EB 25%,
+        #F3F4F6 50%,
+        #E5E7EB 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:skeleton-loading 1.4s infinite;
+
+    border-radius:12px;
+
+}
+
+@keyframes skeleton-loading{
+
+    0%{
+        background-position:200% 0;
+    }
+
+    100%{
+        background-position:-200% 0;
+    }
+
+}
