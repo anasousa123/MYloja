@@ -2,376 +2,125 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Login</title>
 
-    <meta name="description" content="Sistema profissional para gerenciamento de lojas de roupas">
-    <meta name="theme-color" content="#0F172A">
+    <meta name="description" content="Sistema Premium para Gerenciamento de Lojas de Roupas">
+    <meta name="theme-color" content="#111827">
 
     <!-- Google Fonts -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
+
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
     <!-- CSS -->
+
     <link rel="stylesheet" href="css/ base.css">
     <link rel="stylesheet" href="css/ layout.css">
-    <link rel="stylesheet" href="css/catalogo.css">
-    <link rel="stylesheet" href="css/forms.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/login.css">
 
-    <link rel="icon" href="img/favicon.png">
 </head>
 
 <body>
 
-    <!-- Fundo -->
-    <div class="background">
+<div class="login-page">
 
-        <div class="circle circle1"></div>
-        <div class="circle circle2"></div>
-        <div class="circle circle3"></div>
+    <!-- LADO ESQUERDO -->
 
-    </div>
+    <section class="login-banner">
 
-    <!-- Container Principal -->
-    <main class="login-container">
+        <div class="overlay"></div>
 
-        <!-- Painel Esquerdo -->
-        <section class="login-left">
+        <div class="banner-content">
 
-            <div class="brand">
+            <h1>Fashion ERP</h1>
 
-                <img src="img/logo.png" alt="Logo">
+            <p>
 
-                <h1>Fashion ERP</h1>
+                Gerencie sua loja de roupas com um sistema moderno,
+                inteligente e elegante.
 
-                <p>
-                    Sistema inteligente para gerenciamento completo
-                    da sua loja de roupas.
-                </p>
+            </p>
 
-            </div>
+            <div class="banner-cards">
 
-            <div class="features">
-
-                <div class="feature">
+                <div class="mini-card">
 
                     <i class="fa-solid fa-chart-line"></i>
 
-                    <div>
-
-                        <h3>Dashboard Inteligente</h3>
-
-                        <p>
-                            Controle total das vendas, estoque
-                            e resultados.
-                        </p>
-
-                    </div>
+                    <span>Relatórios Inteligentes</span>
 
                 </div>
 
-                <div class="feature">
+                <div class="mini-card">
 
-                    <i class="fa-solid fa-shirt"></i>
+                    <i class="fa-solid fa-box"></i>
 
-                    <div>
-
-                        <h3>Cadastro de Produtos</h3>
-
-                        <p>
-                            Organize roupas, tamanhos,
-                            cores e categorias.
-                        </p>
-
-                    </div>
+                    <span>Controle de Estoque</span>
 
                 </div>
 
-                <div class="feature">
-
-                    <i class="fa-solid fa-users"></i>
-
-                    <div>
-
-                        <h3>Gestão de Clientes</h3>
-
-                        <p>
-                            Histórico completo,
-                            fidelização e contatos.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="feature">
-
-                    <i class="fa-solid fa-box-open"></i>
-
-                    <div>
-
-                        <h3>Controle de Estoque</h3>
-
-                        <p>
-                            Entradas, saídas
-                            e estoque mínimo.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Painel Direito -->
-        <section class="login-right">
-
-            <div class="login-card">
-
-                <div class="login-header">
-
-                    <span class="badge">
-                        ERP PREMIUM
-                    </span>
-
-                    <h2>Bem-vindo!</h2>
-
-                    <p>
-                        Faça login para acessar o painel administrativo.
-                    </p>
-
-                </div>
-
-                <!-- FORMULÁRIO -->
-                <form id="loginForm">
-
-                    <div class="input-group">
-
-                        <label>E-mail</label>
-
-                        <div class="input-icon">
-
-                            <i class="fa-solid fa-envelope"></i>
-
-                            <input
-                                type="email"
-                                id="email"
-                                placeholder="Digite seu e-mail"
-                                required>
-
-                        </div>
-
-                    </div>
-
-                    <div class="input-group">
-
-                        <label>Senha</label>
-
-                        <div class="input-icon">
-
-                            <i class="fa-solid fa-lock"></i>
-
-                            <input
-                                type="password"
-                                id="password"
-                                placeholder="Digite sua senha"
-                                required>
-                                                            <button
-                                type="button"
-                                class="toggle-password"
-                                id="togglePassword">
-
-                                <i class="fa-solid fa-eye"></i>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                    <div class="login-options">
-
-                        <label class="remember">
-
-                            <input
-                                type="checkbox"
-                                id="remember">
-
-                            <span>Lembrar-me</span>
-
-                        </label>
-
-                        <a href="#" class="forgot-password">
-                            Esqueci minha senha
-                        </a>
-
-                    </div>
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary btn-login">
-
-                        <i class="fa-solid fa-right-to-bracket"></i>
-
-                        Entrar
-
-                    </button>
-
-                    <div class="divider">
-
-                        <span>ou</span>
-
-                    </div>
-
-                    <button
-                        type="button"
-                        class="btn btn-google">
-
-                        <i class="fa-brands fa-google"></i>
-
-                        Entrar com Google
-
-                    </button>
-
-                </form>
-
-                <div class="login-footer">
-
-                    <p>
-                        Ainda não possui uma conta?
-                    </p>
-
-                    <a href="#">
-                        Criar Conta
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- Cards Laterais -->
-
-            <div class="login-info">
-
-                <div class="info-card">
+                <div class="mini-card">
 
                     <i class="fa-solid fa-cart-shopping"></i>
 
-                    <h4>Vendas</h4>
-
-                    <strong>+18.450</strong>
-
-                    <small>Pedidos registrados</small>
-
-                </div>
-
-                <div class="info-card">
-
-                    <i class="fa-solid fa-users"></i>
-
-                    <h4>Clientes</h4>
-
-                    <strong>8.920</strong>
-
-                    <small>Clientes ativos</small>
-
-                </div>
-
-                <div class="info-card">
-
-                    <i class="fa-solid fa-boxes-stacked"></i>
-
-                    <h4>Produtos</h4>
-
-                    <strong>2.145</strong>
-
-                    <small>Itens cadastrados</small>
+                    <span>Gestão de Vendas</span>
 
                 </div>
 
             </div>
 
-        </section>
-
-    </main>
-        <!-- ===========================
-         LOADER
-    ============================ -->
-
-    <div class="loader" id="loader">
-
-        <div class="loader-content">
-
-            <div class="spinner"></div>
-
-            <h3>Fashion ERP</h3>
-
-            <p>Entrando no sistema...</p>
-
         </div>
 
-    </div>
+    </section>
 
-    <!-- ===========================
-         TOAST
-    ============================ -->
+    <!-- LADO DIREITO -->
 
-    <div id="toast" class="toast">
+    <section class="login-panel">
 
-        <i class="fa-solid fa-circle-check"></i>
+        <div class="login-card">
 
-        <span id="toastMessage">
-            Login realizado com sucesso.
-        </span>
+            <div class="logo">
 
-    </div>
+                <i class="fa-solid fa-shirt"></i>
 
-    <!-- ===========================
-         MODAL ESQUECI A SENHA
-    ============================ -->
+                <h2>Fashion ERP</h2>
 
-    <div class="modal" id="resetPasswordModal">
+            </div>
 
-        <div class="modal-content">
+            <h3>Bem-vinda!</h3>
 
-            <button class="close-modal" id="closeModal">
+            <p class="subtitle">
 
-                <i class="fa-solid fa-xmark"></i>
+                Faça login para acessar o painel administrativo.
 
-            </button>
-
-            <h2>Recuperar senha</h2>
-
-            <p>
-                Digite seu e-mail para receber
-                o link de recuperação.
             </p>
 
-            <form id="resetPasswordForm">
+            <form id="loginForm">
 
                 <div class="input-group">
 
                     <label>E-mail</label>
 
-                    <div class="input-icon">
+                    <div class="input-box">
 
                         <i class="fa-solid fa-envelope"></i>
 
                         <input
                             type="email"
-                            id="resetEmail"
+                            id="email"
                             placeholder="Digite seu e-mail"
                             required>
 
@@ -379,33 +128,79 @@
 
                 </div>
 
-                <button
-                    type="submit"
-                    class="btn btn-primary">
+                <div class="input-group">
 
-                    Enviar link
+                    <label>Senha</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            placeholder="Digite sua senha"
+                            required>
+
+                        <button
+                            type="button"
+                            id="toggleSenha">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="options">
+
+                    <label>
+
+                        <input type="checkbox">
+
+                        Lembrar-me
+
+                    </label>
+
+                    <a href="#">
+
+                        Esqueci minha senha
+
+                    </a>
+
+                </div>
+
+                <button
+                    class="btn-login"
+                    type="submit">
+
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+
+                    Entrar
 
                 </button>
 
             </form>
 
+            <div class="footer">
+
+                <span>
+
+                    © 2026 Fashion ERP
+
+                </span>
+
+            </div>
+
         </div>
 
-    </div>
+    </section>
 
-    <!-- ===========================
-         FIREBASE
-    ============================ -->
+</div>
 
-    <script type="module" src="firebase/config.js"></script>
-
-    <!-- ===========================
-         JAVASCRIPT
-    ============================ -->
-
-    <script src="js/app.js"></script>
-
-    <script type="module" src="js/auth.js"></script>
+<script src="js/auth.js"></script>
 
 </body>
 
