@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fashion ERP | Estoque</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/estoque.css">
+</head>
+
+<body>
+
+<script>
+if(localStorage.getItem("usuarioLogado") !== "true"){
+    window.location.href = "../index.html";
+}
+</script>
+
+<aside class="sidebar">
+
+    <div class="logo">
+        <i class="fa-solid fa-shirt"></i>
+        <h2>Fashion ERP</h2>
+    </div>
+
+    <nav>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a href="produtos.html">
+            <i class="fa-solid fa-shirt"></i>
+            Produtos
+        </a>
+
+        <a href="clientes.html">
+            <i class="fa-solid fa-users"></i>
+            Clientes
+        </a>
+
+        <a class="active" href="estoque.html">
+            <i class="fa-solid fa-box"></i>
+            Estoque
+        </a>
+
+        <a href="vendas.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Vendas
+        </a>
+
+        <a href="financeiro.html">
+            <i class="fa-solid fa-wallet"></i>
+            Financeiro
+        </a>
+
+        <a href="fornecedores.html">
+            <i class="fa-solid fa-truck"></i>
+            Fornecedores
+        </a>
+
+        <a href="relatorios.html">
+            <i class="fa-solid fa-chart-line"></i>
+            Relatórios
+        </a>
+
+        <a href="perfil.html">
+            <i class="fa-solid fa-user"></i>
+            Perfil
+        </a>
+
+    </nav>
+
+</aside>
+
+<main class="content">
+
+    <header class="page-header">
+
+        <div>
+            <h1>Estoque</h1>
+            <p>Controle os produtos e a quantidade disponível.</p>
+        </div>
+
+        <button class="btn-primary" id="entradaEstoque">
+            <i class="fa-solid fa-plus"></i>
+            Entrada de Estoque
+        </button>
+
+    </header>
+
+    <section class="stock-stats">
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-box"></i>
+            </div>
+
+            <div>
+                <span>Total de Produtos</span>
+                <strong id="totalProdutos">0</strong>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div>
+                <span>Estoque Baixo</span>
+                <strong id="estoqueBaixo">0</strong>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+
+            <div>
+                <span>Sem Estoque</span>
+                <strong id="semEstoque">0</strong>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="toolbar">
+
+        <div class="search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="pesquisaEstoque"
+                placeholder="Pesquisar produto...">
+
+        </div>
+
+        <select id="filtroEstoque">
+
+            <option value="todos">
+                Todos
+            </option>
+
+            <option value="normal">
+                Estoque normal
+            </option>
+
+            <option value="baixo">
+                Estoque baixo
+            </option>
+
+            <option value="zerado">
+                Sem estoque
+            </option>
+
+        </select>
+
+    </section>
+
+    <section class="table-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Tamanho</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="listaEstoque"></tbody>
+
+        </table>
+
+        <div class="empty-state" id="estoqueVazio">
+
+            <i class="fa-solid fa-box-open"></i>
+
+            <h3>Nenhum produto encontrado</h3>
+
+            <p>
+                Cadastre produtos para controlar o estoque.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="../js/estoque.js"></script>
+
+</body>
+</html>
