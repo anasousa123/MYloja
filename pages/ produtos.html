@@ -2,352 +2,547 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Produtos</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/produtos.css">
-
 </head>
 
 <body>
 
-    <!-- SIDEBAR -->
+<script>
+if(localStorage.getItem("usuarioLogado") !== "true"){
+    window.location.href = "../index.html";
+}
+</script>
 
-    <aside class="sidebar">
+<!-- SIDEBAR -->
 
-        <div class="logo">
+<aside class="sidebar">
 
-            <h2>Fashion ERP</h2>
+    <div class="logo">
+        <i class="fa-solid fa-shirt"></i>
+        <h2>Fashion ERP</h2>
+    </div>
+
+    <nav>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a class="active" href="produtos.html">
+            <i class="fa-solid fa-shirt"></i>
+            Produtos
+        </a>
+
+        <a href="clientes.html">
+            <i class="fa-solid fa-users"></i>
+            Clientes
+        </a>
+
+        <a href="estoque.html">
+            <i class="fa-solid fa-box"></i>
+            Estoque
+        </a>
+
+        <a href="vendas.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Vendas
+        </a>
+
+        <a href="financeiro.html">
+            <i class="fa-solid fa-wallet"></i>
+            Financeiro
+        </a>
+
+        <a href="fornecedores.html">
+            <i class="fa-solid fa-truck"></i>
+            Fornecedores
+        </a>
+
+        <a href="relatorios.html">
+            <i class="fa-solid fa-chart-line"></i>
+            Relatórios
+        </a>
+
+        <a href="perfil.html">
+            <i class="fa-solid fa-user"></i>
+            Perfil
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- CONTEÚDO -->
+
+<main class="content">
+
+    <header class="page-header">
+
+        <div>
+
+            <h1>Produtos</h1>
+
+            <p>
+                Cadastre e gerencie os produtos da sua loja.
+            </p>
 
         </div>
 
-        <nav>
+        <button
+            class="btn-primary"
+            id="novoProduto">
 
-            <a href="dashboard.html">
-                <i class="fa-solid fa-house"></i>
-                Dashboard
-            </a>
+            <i class="fa-solid fa-plus"></i>
 
-            <a class="active" href="produtos.html">
+            Novo Produto
+
+        </button>
+
+    </header>
+
+
+    <!-- RESUMO -->
+
+    <section class="product-stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
                 <i class="fa-solid fa-shirt"></i>
-                Produtos
-            </a>
-
-            <a href="clientes.html">
-                <i class="fa-solid fa-users"></i>
-                Clientes
-            </a>
-
-            <a href="estoque.html">
-                <i class="fa-solid fa-box"></i>
-                Estoque
-            </a>
-
-            <a href="vendas.html">
-                <i class="fa-solid fa-cart-shopping"></i>
-                Vendas
-            </a>
-
-            <a href="financeiro.html">
-                <i class="fa-solid fa-wallet"></i>
-                Financeiro
-            </a>
-
-            <a href="relatorios.html">
-                <i class="fa-solid fa-chart-line"></i>
-                Relatórios
-            </a>
-
-        </nav>
-
-    </aside>
-
-    <!-- CONTEÚDO -->
-
-    <main class="content">
-
-        <!-- TOPO -->
-
-        <header class="page-header">
+            </div>
 
             <div>
 
-                <h1>Produtos</h1>
+                <span>Total de Produtos</span>
 
-                <p>Gerencie todos os produtos da loja.</p>
-
-            </div>
-
-            <button id="novoProduto" class="btn-primary">
-
-                <i class="fa-solid fa-plus"></i>
-
-                Novo Produto
-
-            </button>
-
-        </header>
-
-        <!-- FILTROS -->
-
-        <section class="toolbar">
-
-            <div class="search">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-
-                <input
-                    type="text"
-                    placeholder="Pesquisar produto...">
+                <strong id="totalProdutos">
+                    0
+                </strong>
 
             </div>
 
-            <select>
+        </div>
 
-                <option>Todas Categorias</option>
 
-                <option>Vestidos</option>
+        <div class="stat-card">
 
-                <option>Blusas</option>
+            <div class="stat-icon">
+                <i class="fa-solid fa-box"></i>
+            </div>
 
-                <option>Calças</option>
+            <div>
 
-                <option>Jeans</option>
+                <span>Itens em Estoque</span>
 
-                <option>Calçados</option>
+                <strong id="totalEstoque">
+                    0
+                </strong>
 
-            </select>
+            </div>
 
-            <button class="btn-secondary">
+        </div>
 
-                <i class="fa-solid fa-file-export"></i>
 
-                Exportar
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div>
+
+                <span>Estoque Baixo</span>
+
+                <strong id="produtosBaixos">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PESQUISA -->
+
+    <section class="toolbar">
+
+        <div class="search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="pesquisaProduto"
+                placeholder="Pesquisar produto...">
+
+        </div>
+
+
+        <select id="filtroCategoria">
+
+            <option value="todos">
+                Todas as categorias
+            </option>
+
+            <option value="feminino">
+                Feminino
+            </option>
+
+            <option value="masculino">
+                Masculino
+            </option>
+
+            <option value="infantil">
+                Infantil
+            </option>
+
+            <option value="acessorios">
+                Acessórios
+            </option>
+
+            <option value="calcados">
+                Calçados
+            </option>
+
+        </select>
+
+    </section>
+
+
+    <!-- TABELA -->
+
+    <section class="table-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Tamanho</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="listaProdutos"></tbody>
+
+        </table>
+
+
+        <div
+            class="empty-state"
+            id="produtosVazios">
+
+            <i class="fa-solid fa-shirt"></i>
+
+            <h3>Nenhum produto cadastrado</h3>
+
+            <p>
+                Cadastre seu primeiro produto.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- MODAL PRODUTO -->
+
+<div
+    class="modal"
+    id="modalProduto">
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="tituloModal">
+                    Novo Produto
+                </h2>
+
+                <p>
+                    Cadastre as informações do produto.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="fecharModal">
+
+                <i class="fa-solid fa-xmark"></i>
 
             </button>
 
-        </section>
+        </div>
 
-        <!-- TABELA -->
 
-        <section class="table-card">
+        <form id="formProduto">
 
-            <table>
+            <input
+                type="hidden"
+                id="produtoId">
 
-                <thead>
 
-                    <tr>
+            <div class="form-grid">
 
-                        <th>Foto</th>
 
-                        <th>Produto</th>
+                <div class="form-group">
 
-                        <th>Categoria</th>
+                    <label for="nomeProduto">
+                        Nome do produto
+                    </label>
 
-                        <th>SKU</th>
+                    <input
+                        type="text"
+                        id="nomeProduto"
+                        placeholder="Ex.: Vestido Midi"
+                        required>
 
-                        <th>Estoque</th>
+                </div>
 
-                        <th>Preço</th>
 
-                        <th>Status</th>
+                <div class="form-group">
 
-                        <th>Ações</th>
+                    <label for="categoriaProduto">
+                        Categoria
+                    </label>
 
-                    </tr>
+                    <select
+                        id="categoriaProduto"
+                        required>
 
-                </thead>
+                        <option value="">
+                            Selecione
+                        </option>
 
-                <tbody id="listaProdutos">
+                        <option value="Feminino">
+                            Feminino
+                        </option>
 
-                    <tr>
+                        <option value="Masculino">
+                            Masculino
+                        </option>
 
-                        <td>
+                        <option value="Infantil">
+                            Infantil
+                        </option>
 
-                            <img src="https://via.placeholder.com/60">
+                        <option value="Acessórios">
+                            Acessórios
+                        </option>
 
-                        </td>
+                        <option value="Calçados">
+                            Calçados
+                        </option>
 
-                        <td>Vestido Premium</td>
+                    </select>
 
-                        <td>Vestidos</td>
+                </div>
 
-                        <td>VT001</td>
 
-                        <td>28</td>
+                <div class="form-group">
 
-                        <td>R$ 219,90</td>
+                    <label for="tamanhoProduto">
+                        Tamanho
+                    </label>
 
-                        <td>
+                    <select id="tamanhoProduto">
 
-                            <span class="status ativo">
+                        <option value="Único">
+                            Único
+                        </option>
 
-                                Em estoque
+                        <option value="PP">
+                            PP
+                        </option>
 
-                            </span>
+                        <option value="P">
+                            P
+                        </option>
 
-                        </td>
+                        <option value="M">
+                            M
+                        </option>
 
-                        <td>
+                        <option value="G">
+                            G
+                        </option>
 
-                            <button class="icon-btn">
+                        <option value="GG">
+                            GG
+                        </option>
 
-                                <i class="fa-solid fa-pen"></i>
+                    </select>
 
-                            </button>
+                </div>
 
-                            <button class="icon-btn delete">
 
-                                <i class="fa-solid fa-trash"></i>
+                <div class="form-group">
 
-                            </button>
+                    <label for="precoProduto">
+                        Preço de venda
+                    </label>
 
-                        </td>
+                    <input
+                        type="number"
+                        id="precoProduto"
+                        min="0"
+                        step="0.01"
+                        placeholder="0,00"
+                        required>
 
-                    </tr>
+                </div>
 
-                </tbody>
 
-            </table>
+                <div class="form-group">
 
-        </section>
+                    <label for="quantidadeProduto">
+                        Quantidade em estoque
+                    </label>
 
-    </main>
+                    <input
+                        type="number"
+                        id="quantidadeProduto"
+                        min="0"
+                        step="1"
+                        value="0"
+                        required>
 
-    <!-- MODAL -->
+                </div>
 
-    <div class="modal" id="modalProduto">
 
-        <div class="modal-content">
+                <div class="form-group">
 
-            <div class="modal-header">
+                    <label for="estoqueMinimo">
+                        Estoque mínimo
+                    </label>
 
-                <h2>Novo Produto</h2>
+                    <input
+                        type="number"
+                        id="estoqueMinimo"
+                        min="0"
+                        step="1"
+                        value="5"
+                        required>
 
-                <button id="fecharModal">
+                </div>
 
-                    <i class="fa-solid fa-xmark"></i>
+
+                <div class="form-group">
+
+                    <label for="codigoProduto">
+                        Código / SKU
+                    </label>
+
+                    <input
+                        type="text"
+                        id="codigoProduto"
+                        placeholder="Ex.: VES-001">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="marcaProduto">
+                        Marca
+                    </label>
+
+                    <input
+                        type="text"
+                        id="marcaProduto"
+                        placeholder="Nome da marca">
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="descricaoProduto">
+                        Descrição
+                    </label>
+
+                    <textarea
+                        id="descricaoProduto"
+                        rows="4"
+                        placeholder="Descrição do produto..."></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelarProduto">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Salvar Produto
 
                 </button>
 
             </div>
 
-            <form id="formProduto">
-
-                <div class="grid">
-
-                    <div>
-
-                        <label>Nome</label>
-
-                        <input type="text">
-
-                    </div>
-
-                    <div>
-
-                        <label>Categoria</label>
-
-                        <input type="text">
-
-                    </div>
-
-                    <div>
-
-                        <label>Marca</label>
-
-                        <input type="text">
-
-                    </div>
-
-                    <div>
-
-                        <label>Tamanho</label>
-
-                        <input type="text">
-
-                    </div>
-
-                    <div>
-
-                        <label>Cor</label>
-
-                        <input type="text">
-
-                    </div>
-
-                    <div>
-
-                        <label>Preço</label>
-
-                        <input type="number">
-
-                    </div>
-
-                    <div>
-
-                        <label>Estoque</label>
-
-                        <input type="number">
-
-                    </div>
-
-                    <div>
-
-                        <label>Imagem</label>
-
-                        <input type="file">
-
-                    </div>
-
-                </div>
-
-                <textarea
-                    rows="5"
-                    placeholder="Descrição do produto..."></textarea>
-
-                <div class="modal-footer">
-
-                    <button
-                        type="button"
-                        class="btn-secondary">
-
-                        Cancelar
-
-                    </button>
-
-                    <button
-                        class="btn-primary">
-
-                        Salvar Produto
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
+        </form>
 
     </div>
 
-    <script src="../js/produtos.js"></script>
+</div>
+
+
+<script src="../js/produtos.js"></script>
 
 </body>
 
