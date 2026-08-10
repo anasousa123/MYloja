@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Fashion ERP | Clientes</title>
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="../css/base.css">
+
+    <link rel="stylesheet" href="../css/layout.css">
+
+    <link rel="stylesheet" href="../css/components.css">
+
+    <link rel="stylesheet" href="../css/clientes.css">
+
+</head>
+
+<body>
+
+<!-- PROTEÇÃO -->
+
+<script>
+
+if(localStorage.getItem("usuarioLogado") !== "true"){
+
+    window.location.href="../index.html";
+
+}
+
+</script>
+
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-shirt"></i>
+
+        <h2>Fashion ERP</h2>
+
+    </div>
+
+
+    <nav>
+
+        <a href="dashboard.html">
+
+            <i class="fa-solid fa-house"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a href="produtos.html">
+
+            <i class="fa-solid fa-shirt"></i>
+
+            Produtos
+
+        </a>
+
+
+        <a class="active" href="clientes.html">
+
+            <i class="fa-solid fa-users"></i>
+
+            Clientes
+
+        </a>
+
+
+        <a href="estoque.html">
+
+            <i class="fa-solid fa-box"></i>
+
+            Estoque
+
+        </a>
+
+
+        <a href="vendas.html">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Vendas
+
+        </a>
+
+
+        <a href="financeiro.html">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            Financeiro
+
+        </a>
+
+
+        <a href="fornecedores.html">
+
+            <i class="fa-solid fa-truck"></i>
+
+            Fornecedores
+
+        </a>
+
+
+        <a href="relatorios.html">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Relatórios
+
+        </a>
+
+
+        <a href="perfil.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            Perfil
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+<!-- CONTEÚDO -->
+
+<main class="content">
+
+
+    <!-- CABEÇALHO -->
+
+    <header class="page-header">
+
+        <div>
+
+            <h1>Clientes</h1>
+
+            <p>
+
+                Gerencie os clientes da sua loja.
+
+            </p>
+
+        </div>
+
+
+        <button
+            class="btn-primary"
+            id="novoCliente">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Novo Cliente
+
+        </button>
+
+    </header>
+
+
+    <!-- RESUMO -->
+
+    <section class="client-stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+            <div>
+
+                <span>Total de Clientes</span>
+
+                <strong id="totalClientes">
+
+                    0
+
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+            </div>
+
+            <div>
+
+                <span>Novos Clientes</span>
+
+                <strong id="novosClientes">
+
+                    0
+
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-star"></i>
+
+            </div>
+
+            <div>
+
+                <span>Clientes Ativos</span>
+
+                <strong id="clientesAtivos">
+
+                    0
+
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- FERRAMENTAS -->
+
+    <section class="toolbar">
+
+
+        <div class="search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="pesquisaCliente"
+                placeholder="Pesquisar cliente...">
+
+        </div>
+
+
+        <button
+            class="btn-secondary"
+            id="limparPesquisa">
+
+            <i class="fa-solid fa-filter-circle-xmark"></i>
+
+            Limpar
+
+        </button>
+
+
+    </section>
+
+
+    <!-- TABELA -->
+
+    <section class="table-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Cliente</th>
+
+                    <th>Telefone</th>
+
+                    <th>E-mail</th>
+
+                    <th>Cidade</th>
+
+                    <th>Compras</th>
+
+                    <th>Status</th>
+
+                    <th>Ações</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="listaClientes">
+
+                <!-- JS -->
+
+            </tbody>
+
+        </table>
+
+
+        <div
+            id="semClientes"
+            class="empty-state">
+
+            <i class="fa-solid fa-users"></i>
+
+            <h3>Nenhum cliente cadastrado</h3>
+
+            <p>
+
+                Cadastre seu primeiro cliente.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- MODAL -->
+
+<div
+    class="modal"
+    id="modalCliente">
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="tituloModal">
+
+                    Novo Cliente
+
+                </h2>
+
+                <p>
+
+                    Preencha os dados do cliente.
+
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="fecharModal">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <form id="formCliente">
+
+
+            <input
+                type="hidden"
+                id="clienteId">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="nomeCliente">
+
+                        Nome completo
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeCliente"
+                        placeholder="Digite o nome"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="telefoneCliente">
+
+                        Telefone
+
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefoneCliente"
+                        placeholder="(00) 00000-0000"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="emailCliente">
+
+                        E-mail
+
+                    </label>
+
+                    <input
+                        type="email"
+                        id="emailCliente"
+                        placeholder="cliente@email.com">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="cidadeCliente">
+
+                        Cidade
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cidadeCliente"
+                        placeholder="Digite a cidade">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="statusCliente">
+
+                        Status
+
+                    </label>
+
+                    <select id="statusCliente">
+
+                        <option value="Ativo">
+
+                            Ativo
+
+                        </option>
+
+                        <option value="Inativo">
+
+                            Inativo
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="observacoesCliente">
+
+                        Observações
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="observacoesCliente"
+                        placeholder="Observações">
+
+                </div>
+
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelarCliente">
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Salvar Cliente
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="../js/clientes.js"></script>
+
+</body>
+
+</html>
