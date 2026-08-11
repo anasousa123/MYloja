@@ -2,13 +2,20 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Estoque</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -18,132 +25,259 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/estoque.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/estoque.css">
+
 </head>
+
 
 <body>
 
-<script>
-if(localStorage.getItem("usuarioLogado") !== "true"){
-    window.location.href = "../index.html";
-}
-</script>
+
+<!-- =====================================
+     SIDEBAR
+====================================== -->
 
 <aside class="sidebar">
 
+
     <div class="logo">
+
         <i class="fa-solid fa-shirt"></i>
-        <h2>Fashion ERP</h2>
+
+        <h2>
+            Fashion ERP
+        </h2>
+
     </div>
+
 
     <nav>
 
-        <a href="pages/dashboard.html">
+
+        <a href="dashboard.html">
+
             <i class="fa-solid fa-house"></i>
-            Dashboard
+
+            <span>Dashboard</span>
+
         </a>
 
-        <a href="pages/produtos.html">
+
+        <a href="produtos.html">
+
             <i class="fa-solid fa-shirt"></i>
-            Produtos
+
+            <span>Produtos</span>
+
         </a>
 
-        <a href="pages/clientes.html">
+
+        <a href="clientes.html">
+
             <i class="fa-solid fa-users"></i>
-            Clientes
+
+            <span>Clientes</span>
+
         </a>
 
-        <a class="active" href="pages/estoque.html">
+
+        <a
+            href="estoque.html"
+            class="active"
+        >
+
             <i class="fa-solid fa-box"></i>
-            Estoque
+
+            <span>Estoque</span>
+
         </a>
 
-        <a href="pages/vendas.html">
+
+        <a href="vendas.html">
+
             <i class="fa-solid fa-cart-shopping"></i>
-            Vendas
+
+            <span>Vendas</span>
+
         </a>
 
-        <a href="pages/financeiro.html">
+
+        <a href="financeiro.html">
+
             <i class="fa-solid fa-wallet"></i>
-            Financeiro
+
+            <span>Financeiro</span>
+
         </a>
 
-        <a href="pages/fornecedores.html">
+
+        <a href="fornecedores.html">
+
             <i class="fa-solid fa-truck"></i>
-            Fornecedores
+
+            <span>Fornecedores</span>
+
         </a>
 
-        <a href="pages/relatorios.html">
+
+        <a href="relatorios.html">
+
             <i class="fa-solid fa-chart-line"></i>
-            Relatórios
+
+            <span>Relatórios</span>
+
         </a>
 
-        <a href="pages/perfil.html">
-            <i class="fa-solid fa-user"></i>
-            Perfil
+
+        <a href="metas.html">
+
+            <i class="fa-solid fa-bullseye"></i>
+
+            <span>Metas</span>
+
         </a>
+
+
+        <a href="perfil.html">
+
+            <i class="fa-solid fa-user"></i>
+
+            <span>Perfil</span>
+
+        </a>
+
 
     </nav>
 
+
 </aside>
+
+
+
+<!-- =====================================
+     CONTEÚDO
+====================================== -->
 
 <main class="content">
 
+
     <header class="page-header">
 
+
         <div>
-            <h1>Estoque</h1>
-            <p>Controle os produtos e a quantidade disponível.</p>
+
+            <h1>
+                Controle de Estoque
+            </h1>
+
+            <p>
+                Acompanhe entradas, saídas e produtos disponíveis.
+            </p>
+
         </div>
 
-        <button class="btn-primary" id="entradaEstoque">
+
+        <a
+            href="produtos.html"
+            class="btn-primary"
+        >
+
             <i class="fa-solid fa-plus"></i>
-            Entrada de Estoque
-        </button>
+
+            Cadastrar Produto
+
+        </a>
+
 
     </header>
 
-    <section class="stock-stats">
+
+
+    <!-- =====================================
+         RESUMO
+    ====================================== -->
+
+    <section class="product-stats">
+
 
         <div class="stat-card">
+
             <div class="stat-icon">
-                <i class="fa-solid fa-box"></i>
+
+                <i class="fa-solid fa-boxes-stacked"></i>
+
             </div>
 
             <div>
-                <span>Total de Produtos</span>
-                <strong id="totalProdutos">0</strong>
+
+                <span>Total de Itens</span>
+
+                <strong id="totalItens">
+                    0
+                </strong>
+
             </div>
+
         </div>
 
+
+
         <div class="stat-card">
+
             <div class="stat-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>Estoque Normal</span>
+
+                <strong id="estoqueNormal">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
                 <i class="fa-solid fa-triangle-exclamation"></i>
+
             </div>
 
             <div>
+
                 <span>Estoque Baixo</span>
-                <strong id="estoqueBaixo">0</strong>
-            </div>
-        </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">
-                <i class="fa-solid fa-circle-xmark"></i>
+                <strong id="estoqueBaixo">
+                    0
+                </strong>
+
             </div>
 
-            <div>
-                <span>Sem Estoque</span>
-                <strong id="semEstoque">0</strong>
-            </div>
         </div>
+
 
     </section>
 
+
+
+    <!-- =====================================
+         PESQUISA
+    ====================================== -->
+
     <section class="toolbar">
+
 
         <div class="search">
 
@@ -152,9 +286,11 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
             <input
                 type="text"
                 id="pesquisaEstoque"
-                placeholder="Pesquisar produto...">
+                placeholder="Pesquisar produto..."
+            >
 
         </div>
+
 
         <select id="filtroEstoque">
 
@@ -176,47 +312,241 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
         </select>
 
+
     </section>
 
+
+
+    <!-- =====================================
+         TABELA
+    ====================================== -->
+
     <section class="table-card">
+
 
         <table>
 
             <thead>
 
                 <tr>
+
                     <th>Produto</th>
+
                     <th>Categoria</th>
-                    <th>Tamanho</th>
+
                     <th>Quantidade</th>
-                    <th>Preço</th>
+
+                    <th>Estoque mínimo</th>
+
                     <th>Status</th>
+
                     <th>Ações</th>
+
                 </tr>
 
             </thead>
 
-            <tbody id="listaEstoque"></tbody>
+
+            <tbody id="listaEstoque">
+
+            </tbody>
+
 
         </table>
 
-        <div class="empty-state" id="estoqueVazio">
+
+        <div
+            class="empty-state"
+            id="estoqueVazio"
+        >
 
             <i class="fa-solid fa-box-open"></i>
 
-            <h3>Nenhum produto encontrado</h3>
+            <h3>
+                Nenhum produto no estoque
+            </h3>
 
             <p>
-                Cadastre produtos para controlar o estoque.
+                Cadastre produtos para acompanhar seu estoque.
             </p>
 
         </div>
 
+
     </section>
+
 
 </main>
 
-<script src="js/estoque.js"></script>
+
+
+<!-- =====================================
+     MODAL MOVIMENTAÇÃO
+====================================== -->
+
+<div
+    class="modal"
+    id="modalEstoque"
+>
+
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+
+            <div>
+
+                <h2>
+                    Movimentar Estoque
+                </h2>
+
+                <p>
+                    Registre uma entrada ou saída.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="fecharModalEstoque"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <form id="formEstoque">
+
+
+            <input
+                type="hidden"
+                id="estoqueProdutoId"
+            >
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Produto
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomeEstoqueProduto"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="tipoMovimentacao">
+                        Tipo
+                    </label>
+
+                    <select id="tipoMovimentacao">
+
+                        <option value="entrada">
+                            Entrada
+                        </option>
+
+                        <option value="saida">
+                            Saída
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="quantidadeMovimentacao">
+                        Quantidade
+                    </label>
+
+                    <input
+                        type="number"
+                        id="quantidadeMovimentacao"
+                        min="1"
+                        value="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="observacaoEstoque">
+                        Observação
+                    </label>
+
+                    <textarea
+                        id="observacaoEstoque"
+                        rows="3"
+                        placeholder="Ex.: Reposição de mercadoria"
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="modal-footer">
+
+
+                <button
+                    type="button"
+                    class="btn-secondary"
+                    id="cancelarEstoque"
+                >
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Confirmar
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+<script src="../js/estoque.js"></script>
 
 </body>
+
 </html>

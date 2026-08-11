@@ -4,81 +4,513 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Login</title>
 
-    <meta name="description" content="Sistema Premium para Gerenciamento de Lojas de Roupas">
-    <meta name="theme-color" content="#111827">
+    <meta
+        name="description"
+        content="Sistema profissional para gerenciamento de lojas de roupas"
+    >
 
-    <!-- Google Fonts -->
+    <meta name="theme-color" content="#0F172A">
+
+    <!-- GOOGLE FONTS -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
 
-    <!-- Font Awesome -->
+    <!-- FONT AWESOME -->
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    >
 
     <!-- CSS -->
 
-    <link rel="stylesheet" href="css/ base.css">
-    <link rel="stylesheet" href="css/ layout.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+
+        *{
+            box-sizing:border-box;
+        }
+
+        body{
+            margin:0;
+            min-height:100vh;
+
+            font-family:'Poppins',sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #273449 0,
+                    #0F172A 40%,
+                    #020617 100%
+                );
+
+            color:#fff;
+        }
+
+        .login-page{
+
+            min-height:100vh;
+
+            display:grid;
+
+            grid-template-columns:1.2fr .8fr;
+
+        }
+
+        /* =================================
+           LADO ESQUERDO
+        ================================= */
+
+        .login-info{
+
+            display:flex;
+
+            flex-direction:column;
+
+            justify-content:center;
+
+            padding:70px;
+
+        }
+
+        .brand{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:14px;
+
+            margin-bottom:50px;
+
+        }
+
+        .brand-icon{
+
+            width:58px;
+            height:58px;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+            border-radius:16px;
+
+            background:#D4AF37;
+
+            color:#111827;
+
+            font-size:25px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(212,175,55,.25);
+
+        }
+
+        .brand h2{
+
+            margin:0;
+
+            font-size:22px;
+
+            font-weight:700;
+
+        }
+
+        .login-info h1{
+
+            max-width:650px;
+
+            margin:0 0 20px;
+
+            font-size:48px;
+
+            line-height:1.15;
+
+        }
+
+        .login-info h1 span{
+
+            color:#D4AF37;
+
+        }
+
+        .login-info p{
+
+            max-width:550px;
+
+            margin:0;
+
+            color:#CBD5E1;
+
+            font-size:16px;
+
+            line-height:1.8;
+
+        }
+
+        .features{
+
+            display:grid;
+
+            grid-template-columns:1fr 1fr;
+
+            gap:15px;
+
+            margin-top:40px;
+
+            max-width:600px;
+
+        }
+
+        .feature{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:12px;
+
+            color:#E2E8F0;
+
+            font-size:13px;
+
+        }
+
+        .feature i{
+
+            color:#D4AF37;
+
+        }
+
+        /* =================================
+           LOGIN
+        ================================= */
+
+        .login-area{
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            padding:30px;
+
+        }
+
+        .login-card{
+
+            width:100%;
+
+            max-width:450px;
+
+            padding:42px;
+
+            border-radius:25px;
+
+            background:#fff;
+
+            color:#111827;
+
+            box-shadow:
+                0 30px 80px
+                rgba(0,0,0,.35);
+
+        }
+
+        .login-card h2{
+
+            margin:0;
+
+            font-size:27px;
+
+        }
+
+        .login-card > p{
+
+            margin:8px 0 30px;
+
+            color:#6B7280;
+
+            font-size:13px;
+
+        }
+
+        .form-group{
+
+            margin-bottom:20px;
+
+        }
+
+        .form-group label{
+
+            display:block;
+
+            margin-bottom:8px;
+
+            color:#374151;
+
+            font-size:13px;
+
+            font-weight:600;
+
+        }
+
+        .input-box{
+
+            position:relative;
+
+        }
+
+        .input-box i{
+
+            position:absolute;
+
+            left:15px;
+
+            top:50%;
+
+            transform:translateY(-50%);
+
+            color:#9CA3AF;
+
+        }
+
+        .input-box input{
+
+            width:100%;
+
+            height:50px;
+
+            padding:0 15px 0 45px;
+
+            border:1px solid #E5E7EB;
+
+            border-radius:12px;
+
+            outline:none;
+
+            font-family:'Poppins',sans-serif;
+
+            font-size:13px;
+
+            transition:.25s;
+
+        }
+
+        .input-box input:focus{
+
+            border-color:#D4AF37;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(212,175,55,.12);
+
+        }
+
+        .login-button{
+
+            width:100%;
+
+            height:52px;
+
+            border:0;
+
+            border-radius:12px;
+
+            background:#D4AF37;
+
+            color:#fff;
+
+            font-family:'Poppins',sans-serif;
+
+            font-size:14px;
+
+            font-weight:600;
+
+            cursor:pointer;
+
+            transition:.25s;
+
+        }
+
+        .login-button:hover{
+
+            background:#B89320;
+
+            transform:translateY(-2px);
+
+        }
+
+        .login-message{
+
+            display:none;
+
+            margin-top:15px;
+
+            padding:12px;
+
+            border-radius:10px;
+
+            background:#FEE2E2;
+
+            color:#B91C1C;
+
+            font-size:12px;
+
+            text-align:center;
+
+        }
+
+        .login-footer{
+
+            margin-top:25px;
+
+            text-align:center;
+
+            color:#9CA3AF;
+
+            font-size:11px;
+
+        }
+
+        @media(max-width:900px){
+
+            .login-page{
+
+                grid-template-columns:1fr;
+
+            }
+
+            .login-info{
+
+                display:none;
+
+            }
+
+        }
+
+        @media(max-width:500px){
+
+            .login-area{
+
+                padding:18px;
+
+            }
+
+            .login-card{
+
+                padding:28px 22px;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
+
 
 <div class="login-page">
 
-    <!-- LADO ESQUERDO -->
 
-    <section class="login-banner">
+    <!-- =================================
+         APRESENTAÇÃO
+    ================================== -->
 
-        <div class="overlay"></div>
+    <section class="login-info">
 
-        <div class="banner-content">
+        <div class="brand">
 
-            <h1>Fashion ERP</h1>
+            <div class="brand-icon">
 
-            <p>
+                <i class="fa-solid fa-shirt"></i>
 
-                Gerencie sua loja de roupas com um sistema moderno,
-                inteligente e elegante.
+            </div>
 
-            </p>
+            <h2>
+                Fashion ERP
+            </h2>
 
-            <div class="banner-cards">
+        </div>
 
-                <div class="mini-card">
 
-                    <i class="fa-solid fa-chart-line"></i>
+        <h1>
 
-                    <span>Relatórios Inteligentes</span>
+            Sua loja mais
+            <span>organizada.</span>
 
-                </div>
+        </h1>
 
-                <div class="mini-card">
 
-                    <i class="fa-solid fa-box"></i>
+        <p>
 
-                    <span>Controle de Estoque</span>
+            Gerencie produtos, clientes, estoque,
+            vendas e finanças em um único sistema.
 
-                </div>
+        </p>
 
-                <div class="mini-card">
 
-                    <i class="fa-solid fa-cart-shopping"></i>
+        <div class="features">
 
-                    <span>Gestão de Vendas</span>
+            <div class="feature">
 
-                </div>
+                <i class="fa-solid fa-circle-check"></i>
+
+                Controle de produtos
+
+            </div>
+
+
+            <div class="feature">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Gestão de clientes
+
+            </div>
+
+
+            <div class="feature">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Controle de estoque
+
+            </div>
+
+
+            <div class="feature">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                Gestão financeira
 
             </div>
 
@@ -86,33 +518,34 @@
 
     </section>
 
-    <!-- LADO DIREITO -->
 
-    <section class="login-panel">
+
+    <!-- =================================
+         LOGIN
+    ================================== -->
+
+    <section class="login-area">
 
         <div class="login-card">
 
-            <div class="logo">
 
-                <i class="fa-solid fa-shirt"></i>
+            <h2>
+                Bem-vindo! 👋
+            </h2>
 
-                <h2>Fashion ERP</h2>
-
-            </div>
-
-            <h3>Bem-vinda!</h3>
-
-            <p class="subtitle">
-
-                Faça login para acessar o painel administrativo.
-
+            <p>
+                Entre para acessar o painel administrativo.
             </p>
+
 
             <form id="loginForm">
 
-                <div class="input-group">
 
-                    <label>E-mail</label>
+                <div class="form-group">
+
+                    <label for="email">
+                        E-mail
+                    </label>
 
                     <div class="input-box">
 
@@ -122,15 +555,20 @@
                             type="email"
                             id="email"
                             placeholder="Digite seu e-mail"
-                            required>
+                            required
+                        >
 
                     </div>
 
                 </div>
 
-                <div class="input-group">
 
-                    <label>Senha</label>
+
+                <div class="form-group">
+
+                    <label for="senha">
+                        Senha
+                    </label>
 
                     <div class="input-box">
 
@@ -140,65 +578,53 @@
                             type="password"
                             id="senha"
                             placeholder="Digite sua senha"
-                            required>
-
-                        <button
-                            type="button"
-                            id="toggleSenha">
-
-                            <i class="fa-solid fa-eye"></i>
-
-                        </button>
+                            required
+                        >
 
                     </div>
 
                 </div>
 
-                <div class="options">
 
-                    <label>
-
-                        <input type="checkbox">
-
-                        Lembrar-me
-
-                    </label>
-
-                    <a href="#">
-
-                        Esqueci minha senha
-
-                    </a>
-
-                </div>
 
                 <button
-                    class="btn-login"
-                    type="submit">
+                    type="submit"
+                    class="login-button"
+                >
 
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <i class="fa-solid fa-right-to-bracket"></i>
 
                     Entrar
 
                 </button>
 
+
+                <div
+                    class="login-message"
+                    id="loginMessage"
+                ></div>
+
+
             </form>
 
-            <div class="footer">
 
-                <span>
+            <div class="login-footer">
 
-                    © 2026 Fashion ERP
-
-                </span>
+                Fashion ERP • Sistema de gerenciamento
 
             </div>
+
 
         </div>
 
     </section>
 
+
 </div>
+
+
+
+<!-- LOGIN JS -->
 
 <script src="js/auth.js"></script>
 

@@ -5,78 +5,63 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Clientes</title>
 
-    <!-- Google Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
-
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <!-- CSS -->
-
-    <link rel="stylesheet" href="css/base.css">
-
-    <link rel="stylesheet" href="css/layout.css">
-
-    <link rel="stylesheet" href="css/components.css">
-
-    <link rel="stylesheet" href="css/clientes.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/clientes.css">
 
 </head>
 
+
 <body>
 
-<!-- PROTEÇÃO -->
 
-<script>
-
-if(localStorage.getItem("usuarioLogado") !== "true"){
-
-    window.location.href="../index.html";
-
-}
-
-</script>
-
-
-<!-- SIDEBAR -->
+<!-- =====================================
+     SIDEBAR
+====================================== -->
 
 <aside class="sidebar">
+
 
     <div class="logo">
 
         <i class="fa-solid fa-shirt"></i>
 
-        <h2>Fashion ERP</h2>
+        <h2>
+            Fashion ERP
+        </h2>
 
     </div>
 
 
     <nav>
 
+
         <a href="dashboard.html">
 
             <i class="fa-solid fa-house"></i>
 
-            Dashboard
+            <span>Dashboard</span>
 
         </a>
 
@@ -85,16 +70,19 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <i class="fa-solid fa-shirt"></i>
 
-            Produtos
+            <span>Produtos</span>
 
         </a>
 
 
-        <a class="active" href="clientes.html">
+        <a
+            href="clientes.html"
+            class="active"
+        >
 
             <i class="fa-solid fa-users"></i>
 
-            Clientes
+            <span>Clientes</span>
 
         </a>
 
@@ -103,7 +91,7 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <i class="fa-solid fa-box"></i>
 
-            Estoque
+            <span>Estoque</span>
 
         </a>
 
@@ -112,7 +100,7 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <i class="fa-solid fa-cart-shopping"></i>
 
-            Vendas
+            <span>Vendas</span>
 
         </a>
 
@@ -121,7 +109,7 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <i class="fa-solid fa-wallet"></i>
 
-            Financeiro
+            <span>Financeiro</span>
 
         </a>
 
@@ -130,7 +118,7 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <i class="fa-solid fa-truck"></i>
 
-            Fornecedores
+            <span>Fornecedores</span>
 
         </a>
 
@@ -139,7 +127,16 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <i class="fa-solid fa-chart-line"></i>
 
-            Relatórios
+            <span>Relatórios</span>
+
+        </a>
+
+
+        <a href="metas.html">
+
+            <i class="fa-solid fa-bullseye"></i>
+
+            <span>Metas</span>
 
         </a>
 
@@ -148,32 +145,35 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <i class="fa-solid fa-user"></i>
 
-            Perfil
+            <span>Perfil</span>
 
         </a>
 
+
     </nav>
+
 
 </aside>
 
 
-<!-- CONTEÚDO -->
+
+<!-- =====================================
+     CONTEÚDO
+====================================== -->
 
 <main class="content">
 
-
-    <!-- CABEÇALHO -->
 
     <header class="page-header">
 
         <div>
 
-            <h1>Clientes</h1>
+            <h1>
+                Clientes
+            </h1>
 
             <p>
-
                 Gerencie os clientes da sua loja.
-
             </p>
 
         </div>
@@ -181,9 +181,10 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
         <button
             class="btn-primary"
-            id="novoCliente">
+            id="novoCliente"
+        >
 
-            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-user-plus"></i>
 
             Novo Cliente
 
@@ -192,9 +193,10 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
     </header>
 
 
+
     <!-- RESUMO -->
 
-    <section class="client-stats">
+    <section class="product-stats">
 
 
         <div class="stat-card">
@@ -210,9 +212,7 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
                 <span>Total de Clientes</span>
 
                 <strong id="totalClientes">
-
                     0
-
                 </strong>
 
             </div>
@@ -224,30 +224,7 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <div class="stat-icon">
 
-                <i class="fa-solid fa-user-plus"></i>
-
-            </div>
-
-            <div>
-
-                <span>Novos Clientes</span>
-
-                <strong id="novosClientes">
-
-                    0
-
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">
-
-                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-user-check"></i>
 
             </div>
 
@@ -256,9 +233,28 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
                 <span>Clientes Ativos</span>
 
                 <strong id="clientesAtivos">
-
                     0
+                </strong>
 
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-calendar"></i>
+
+            </div>
+
+            <div>
+
+                <span>Novos Clientes</span>
+
+                <strong id="novosClientes">
+                    0
                 </strong>
 
             </div>
@@ -269,7 +265,8 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
     </section>
 
 
-    <!-- FERRAMENTAS -->
+
+    <!-- PESQUISA -->
 
     <section class="toolbar">
 
@@ -281,28 +278,20 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
             <input
                 type="text"
                 id="pesquisaCliente"
-                placeholder="Pesquisar cliente...">
+                placeholder="Pesquisar cliente..."
+            >
 
         </div>
-
-
-        <button
-            class="btn-secondary"
-            id="limparPesquisa">
-
-            <i class="fa-solid fa-filter-circle-xmark"></i>
-
-            Limpar
-
-        </button>
 
 
     </section>
 
 
+
     <!-- TABELA -->
 
     <section class="table-card">
+
 
         <table>
 
@@ -318,8 +307,6 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
                     <th>Cidade</th>
 
-                    <th>Compras</th>
-
                     <th>Status</th>
 
                     <th>Ações</th>
@@ -331,28 +318,29 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <tbody id="listaClientes">
 
-                <!-- JS -->
-
             </tbody>
+
 
         </table>
 
 
         <div
-            id="semClientes"
-            class="empty-state">
+            class="empty-state"
+            id="clientesVazios"
+        >
 
             <i class="fa-solid fa-users"></i>
 
-            <h3>Nenhum cliente cadastrado</h3>
+            <h3>
+                Nenhum cliente cadastrado
+            </h3>
 
             <p>
-
                 Cadastre seu primeiro cliente.
-
             </p>
 
         </div>
+
 
     </section>
 
@@ -360,11 +348,15 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 </main>
 
 
-<!-- MODAL -->
+
+<!-- =====================================
+     MODAL CLIENTE
+====================================== -->
 
 <div
     class="modal"
-    id="modalCliente">
+    id="modalCliente"
+>
 
 
     <div class="modal-content">
@@ -372,18 +364,15 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
         <div class="modal-header">
 
+
             <div>
 
-                <h2 id="tituloModal">
-
+                <h2 id="tituloModalCliente">
                     Novo Cliente
-
                 </h2>
 
                 <p>
-
                     Preencha os dados do cliente.
-
                 </p>
 
             </div>
@@ -391,13 +380,16 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <button
                 type="button"
-                id="fecharModal">
+                id="fecharModalCliente"
+            >
 
                 <i class="fa-solid fa-xmark"></i>
 
             </button>
 
+
         </div>
+
 
 
         <form id="formCliente">
@@ -405,25 +397,25 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
             <input
                 type="hidden"
-                id="clienteId">
+                id="clienteId"
+            >
 
 
             <div class="form-grid">
 
 
-                <div class="form-group">
+                <div class="form-group full">
 
                     <label for="nomeCliente">
-
                         Nome completo
-
                     </label>
 
                     <input
                         type="text"
                         id="nomeCliente"
-                        placeholder="Digite o nome"
-                        required>
+                        placeholder="Nome do cliente"
+                        required
+                    >
 
                 </div>
 
@@ -431,16 +423,14 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
                 <div class="form-group">
 
                     <label for="telefoneCliente">
-
                         Telefone
-
                     </label>
 
                     <input
                         type="tel"
                         id="telefoneCliente"
                         placeholder="(00) 00000-0000"
-                        required>
+                    >
 
                 </div>
 
@@ -448,15 +438,14 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
                 <div class="form-group">
 
                     <label for="emailCliente">
-
                         E-mail
-
                     </label>
 
                     <input
                         type="email"
                         id="emailCliente"
-                        placeholder="cliente@email.com">
+                        placeholder="cliente@email.com"
+                    >
 
                 </div>
 
@@ -464,58 +453,60 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
                 <div class="form-group">
 
                     <label for="cidadeCliente">
-
                         Cidade
-
                     </label>
 
                     <input
                         type="text"
                         id="cidadeCliente"
-                        placeholder="Digite a cidade">
+                        placeholder="Cidade"
+                    >
 
                 </div>
 
 
                 <div class="form-group">
 
-                    <label for="statusCliente">
-
-                        Status
-
-                    </label>
-
-                    <select id="statusCliente">
-
-                        <option value="Ativo">
-
-                            Ativo
-
-                        </option>
-
-                        <option value="Inativo">
-
-                            Inativo
-
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="observacoesCliente">
-
-                        Observações
-
+                    <label for="estadoCliente">
+                        Estado
                     </label>
 
                     <input
                         type="text"
+                        id="estadoCliente"
+                        placeholder="MG"
+                        maxlength="2"
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="enderecoCliente">
+                        Endereço
+                    </label>
+
+                    <input
+                        type="text"
+                        id="enderecoCliente"
+                        placeholder="Rua, número, bairro"
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label for="observacoesCliente">
+                        Observações
+                    </label>
+
+                    <textarea
                         id="observacoesCliente"
-                        placeholder="Observações">
+                        rows="4"
+                        placeholder="Observações sobre o cliente..."
+                    ></textarea>
 
                 </div>
 
@@ -523,12 +514,15 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
             </div>
 
 
+
             <div class="modal-footer">
+
 
                 <button
                     type="button"
                     class="btn-secondary"
-                    id="cancelarCliente">
+                    id="cancelarCliente"
+                >
 
                     Cancelar
 
@@ -537,7 +531,8 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
                 <button
                     type="submit"
-                    class="btn-primary">
+                    class="btn-primary"
+                >
 
                     <i class="fa-solid fa-check"></i>
 
@@ -545,17 +540,20 @@ if(localStorage.getItem("usuarioLogado") !== "true"){
 
                 </button>
 
+
             </div>
 
 
         </form>
+
 
     </div>
 
 </div>
 
 
-<script src="js/clientes.js"></script>
+
+<script src="../js/clientes.js"></script>
 
 </body>
 
