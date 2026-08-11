@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fashion ERP | Configurações</title>
+
+    <meta
+        name="description"
+        content="Configurações do Fashion ERP"
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+
+    <style>
+
+        .settings-container {
+            max-width: 1100px;
+        }
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 25px;
+        }
+
+        .settings-menu {
+            background: #fff;
+            border-radius: 18px;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.06);
+            height: fit-content;
+        }
+
+        .settings-menu button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            background: transparent;
+            padding: 14px;
+            border-radius: 10px;
+            color: #4B5563;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            text-align: left;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .settings-menu button:hover {
+            background: #F8FAFC;
+        }
+
+        .settings-menu button.active {
+            background: #D4AF37;
+            color: #fff;
+        }
+
+        .settings-menu i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .settings-content {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,.06);
+        }
+
+        .settings-section {
+            display: none;
+        }
+
+        .settings-section.active {
+            display: block;
+        }
+
+        .settings-title {
+            margin-bottom: 25px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .settings-title h2 {
+            margin: 0 0 6px;
+            color: #111827;
+            font-size: 22px;
+        }
+
+        .settings-title p {
+            margin: 0;
+            color: #6B7280;
+            font-size: 13px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #374151;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 12px 14px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            color: #111827;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212,175,55,.10);
+        }
+
+        .settings-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+        }
+
+        .btn-secondary {
+            border: 1px solid #E5E7EB;
+            background: #fff;
+            color: #374151;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            border: none;
+            background: #D4AF37;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: #B89320;
+        }
+
+        .switch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .switch-info h3 {
+            margin: 0 0 4px;
+            font-size: 14px;
+            color: #111827;
+        }
+
+        .switch-info p {
+            margin: 0;
+            color: #6B7280;
+            font-size: 12px;
+        }
+
+        .switch {
+            position: relative;
+            width: 48px;
+            height: 26px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            background: #CBD5E1;
+            border-radius: 30px;
+            transition: .2s;
+        }
+
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 3px;
+            top: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: .2s;
+        }
+
+        .switch input:checked + .slider {
+            background: #D4AF37;
+        }
+
+        .switch input:checked + .slider::before {
+            transform: translateX(22px);
+        }
+
+        .danger-zone {
+            margin-top: 25px;
+            padding: 20px;
+            border: 1px solid #FECACA;
+            border-radius: 14px;
+            background: #FEF2F2;
+        }
+
+        .danger-zone h3 {
+            margin: 0 0 7px;
+            color: #B91C1C;
+            font-size: 15px;
+        }
+
+        .danger-zone p {
+            margin: 0 0 15px;
+            color: #7F1D1D;
+            font-size: 12px;
+        }
+
+        .btn-danger {
+            border: none;
+            background: #DC2626;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .success-message {
+            display: none;
+            margin-bottom: 20px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            background: #ECFDF5;
+            color: #047857;
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-menu {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .settings-menu {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .settings-content {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     SIDEBAR
+====================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-shirt"></i>
+
+        <h2>Fashion ERP</h2>
+
+    </div>
+
+
+    <nav>
+
+        <a href="dashboard.html">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="produtos.html">
+            <i class="fa-solid fa-shirt"></i>
+            <span>Produtos</span>
+        </a>
+
+        <a href="clientes.html">
+            <i class="fa-solid fa-users"></i>
+            <span>Clientes</span>
+        </a>
+
+        <a href="estoque.html">
+            <i class="fa-solid fa-box"></i>
+            <span>Estoque</span>
+        </a>
+
+        <a href="vendas.html">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span>Vendas</span>
+        </a>
+
+        <a href="financeiro.html">
+            <i class="fa-solid fa-wallet"></i>
+            <span>Financeiro</span>
+        </a>
+
+        <a href="fornecedores.html">
+            <i class="fa-solid fa-truck"></i>
+            <span>Fornecedores</span>
+        </a>
+
+        <a href="relatorios.html">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Relatórios</span>
+        </a>
+
+        <a href="metas.html">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>Metas</span>
+        </a>
+
+        <a href="perfil.html">
+            <i class="fa-solid fa-user"></i>
+            <span>Perfil</span>
+        </a>
+
+        <a href="configuracoes.html" class="active">
+            <i class="fa-solid fa-gear"></i>
+            <span>Configurações</span>
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<!-- =====================================
+     CONTEÚDO
+====================================== -->
+
+<main class="content">
+
+    <div class="settings-container">
+
+        <header class="page-header">
+
+            <div>
+
+                <h1>Configurações</h1>
+
+                <p>
+                    Personalize o funcionamento do seu Fashion ERP.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <div
+            class="success-message"
+            id="successMessage"
+        >
+            <i class="fa-solid fa-circle-check"></i>
+            Configurações salvas com sucesso!
+        </div>
+
+
+
+        <div class="settings-grid">
+
+
+            <!-- MENU -->
+
+            <div class="settings-menu">
+
+                <button
+                    class="active"
+                    data-section="empresa"
+                >
+                    <i class="fa-solid fa-store"></i>
+                    Empresa
+                </button>
+
+                <button
+                    data-section="sistema"
+                >
+                    <i class="fa-solid fa-sliders"></i>
+                    Sistema
+                </button>
+
+                <button
+                    data-section="notificacoes"
+                >
+                    <i class="fa-solid fa-bell"></i>
+                    Notificações
+                </button>
+
+                <button
+                    data-section="seguranca"
+                >
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Segurança
+                </button>
+
+            </div>
+
+
+
+            <!-- CONTEÚDO -->
+
+            <div class="settings-content">
+
+
+                <!-- EMPRESA -->
+
+                <section
+                    class="settings-section active"
+                    id="empresa"
+                >
+
+                    <div class="settings-title">
+
+                        <h2>Dados da empresa</h2>
+
+                        <p>
+                            Configure as informações da sua loja.
+                        </p>
+
+                    </div>
+
+
+                    <form id="empresaForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label for="nomeEmpresa">
+                                    Nome da loja
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nomeEmpresa"
+                                    placeholder="Fashion Story"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="cnpjEmpresa">
+                                    CNPJ
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cnpjEmpresa"
+                                    placeholder="00.000.000/0000-00"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="telefoneEmpresa">
+                                    Telefone
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="telefoneEmpresa"
+                                    placeholder="(00) 00000-0000"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="emailEmpresa">
+                                    E-mail
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="emailEmpresa"
+                                    placeholder="contato@sualoja.com"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="cidadeEmpresa">
+                                    Cidade
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cidadeEmpresa"
+                                    placeholder="Sua cidade"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="estadoEmpresa">
+                                    Estado
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="estadoEmpresa"
+                                    placeholder="MG"
+                                    maxlength="2"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label for="enderecoEmpresa">
+                                    Endereço
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="enderecoEmpresa"
+                                    placeholder="Rua, número, bairro"
+                                >
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="settings-actions">
+
+                            <button
+                                type="button"
+                                class="btn-secondary"
+                            >
+                                Cancelar
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="btn-primary"
+                            >
+                                <i class="fa-solid fa-check"></i>
+                                Salvar alterações
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+
+                <!-- SISTEMA -->
+
+                <section
+                    class="settings-section"
+                    id="sistema"
+                >
+
+                    <div class="settings-title">
+
+                        <h2>Preferências do sistema</h2>
+
+                        <p>
+                            Defina como o sistema deve funcionar.
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="moeda">
+                                Moeda
+                            </label>
+
+                            <select id="moeda">
+
+                                <option value="BRL">
+                                    Real Brasileiro (R$)
+                                </option>
+
+                                <option value="USD">
+                                    Dólar (US$)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="formatoData">
+                                Formato da data
+                            </label>
+
+                            <select id="formatoData">
+
+                                <option value="dd/mm/yyyy">
+                                    DD/MM/AAAA
+                                </option>
+
+                                <option value="mm/dd/yyyy">
+                                    MM/DD/AAAA
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="switch-row">
+
+                        <div class="switch-info">
+
+                            <h3>
+                                Atualização automática
+                            </h3>
+
+                            <p>
+                                Atualizar informações automaticamente.
+                            </p>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="atualizacaoAutomatica"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="switch-row">
+
+                        <div class="switch-info">
+
+                            <h3>
+                                Modo compacto
+                            </h3>
+
+                            <p>
+                                Reduzir espaços entre os elementos.
+                            </p>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="modoCompacto"
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-actions">
+
+                        <button
+                            class="btn-primary"
+                            id="salvarSistema"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                            Salvar preferências
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- NOTIFICAÇÕES -->
+
+                <section
+                    class="settings-section"
+                    id="notificacoes"
+                >
+
+                    <div class="settings-title">
+
+                        <h2>Notificações</h2>
+
+                        <p>
+                            Escolha quais avisos deseja receber.
+                        </p>
+
+                    </div>
+
+
+                    <div class="switch-row">
+
+                        <div class="switch-info">
+
+                            <h3>
+                                Estoque baixo
+                            </h3>
+
+                            <p>
+                                Avisar quando um produto estiver acabando.
+                            </p>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="notificacaoEstoque"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="switch-row">
+
+                        <div class="switch-info">
+
+                            <h3>
+                                Novas vendas
+                            </h3>
+
+                            <p>
+                                Receber aviso quando uma nova venda for registrada.
+                            </p>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="notificacaoVendas"
+                                checked
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="switch-row">
+
+                        <div class="switch-info">
+
+                            <h3>
+                                Relatórios
+                            </h3>
+
+                            <p>
+                                Receber lembretes dos relatórios.
+                            </p>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="notificacaoRelatorios"
+                            >
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-actions">
+
+                        <button
+                            class="btn-primary"
+                            id="salvarNotificacoes"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                            Salvar notificações
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- SEGURANÇA -->
+
+                <section
+                    class="settings-section"
+                    id="seguranca"
+                >
+
+                    <div class="settings-title">
+
+                        <h2>Segurança</h2>
+
+                        <p>
+                            Gerencie as opções de segurança da sua conta.
+                        </p>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group full">
+
+                            <label for="senhaAtual">
+                                Senha atual
+                            </label>
+
+                            <input
+                                type="password"
+                                id="senhaAtual"
+                                placeholder="Digite sua senha atual"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="novaSenha">
+                                Nova senha
+                            </label>
+
+                            <input
+                                type="password"
+                                id="novaSenha"
+                                placeholder="Nova senha"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="confirmarSenha">
+                                Confirmar nova senha
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmarSenha"
+                                placeholder="Confirme a nova senha"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="settings-actions">
+
+                        <button
+                            class="btn-primary"
+                            id="alterarSenha"
+                        >
+                            <i class="fa-solid fa-key"></i>
+                            Alterar senha
+                        </button>
+
+                    </div>
+
+
+                    <div class="danger-zone">
+
+                        <h3>
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            Zona de perigo
+                        </h3>
+
+                        <p>
+                            Esta área contém ações que podem afetar os dados
+                            armazenados no sistema.
+                        </p>
+
+                        <button
+                            class="btn-danger"
+                            id="limparDados"
+                        >
+                            Limpar dados locais
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<script>
+
+    const botoes = document.querySelectorAll(
+        ".settings-menu button"
+    );
+
+    const secoes = document.querySelectorAll(
+        ".settings-section"
+    );
+
+
+    botoes.forEach(botao => {
+
+        botao.addEventListener("click", () => {
+
+            const alvo = botao.dataset.section;
+
+
+            botoes.forEach(item => {
+                item.classList.remove("active");
+            });
+
+
+            secoes.forEach(secao => {
+                secao.classList.remove("active");
+            });
+
+
+            botao.classList.add("active");
+
+
+            document
+                .getElementById(alvo)
+                .classList.add("active");
+
+        });
+
+    });
+
+
+
+    // =====================================
+    // SALVAR EMPRESA
+    // =====================================
+
+    const empresaForm =
+        document.getElementById("empresaForm");
+
+
+    empresaForm.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const empresa = {
+
+                nome:
+                    document.getElementById(
+                        "nomeEmpresa"
+                    ).value,
+
+                cnpj:
+                    document.getElementById(
+                        "cnpjEmpresa"
+                    ).value,
+
+                telefone:
+                    document.getElementById(
+                        "telefoneEmpresa"
+                    ).value,
+
+                email:
+                    document.getElementById(
+                        "emailEmpresa"
+                    ).value,
+
+                cidade:
+                    document.getElementById(
+                        "cidadeEmpresa"
+                    ).value,
+
+                estado:
+                    document.getElementById(
+                        "estadoEmpresa"
+                    ).value,
+
+                endereco:
+                    document.getElementById(
+                        "enderecoEmpresa"
+                    ).value
+
+            };
+
+
+            localStorage.setItem(
+                "empresa",
+                JSON.stringify(empresa)
+            );
+
+
+            mostrarSucesso();
+
+        }
+    );
+
+
+
+    // =====================================
+    // SISTEMA
+    // =====================================
+
+    document
+        .getElementById("salvarSistema")
+        .addEventListener(
+            "click",
+            function() {
+
+                const preferencias = {
+
+                    moeda:
+                        document.getElementById(
+                            "moeda"
+                        ).value,
+
+                    formatoData:
+                        document.getElementById(
+                            "formatoData"
+                        ).value,
+
+                    atualizacao:
+                        document.getElementById(
+                            "atualizacaoAutomatica"
+                        ).checked,
+
+                    compacto:
+                        document.getElementById(
+                            "modoCompacto"
+                        ).checked
+
+                };
+
+
+                localStorage.setItem(
+                    "preferencias",
+                    JSON.stringify(preferencias)
+                );
+
+
+                mostrarSucesso();
+
+            }
+        );
+
+
+
+    // =====================================
+    // NOTIFICAÇÕES
+    // =====================================
+
+    document
+        .getElementById("salvarNotificacoes")
+        .addEventListener(
+            "click",
+            function() {
+
+                const notificacoes = {
+
+                    estoque:
+                        document.getElementById(
+                            "notificacaoEstoque"
+                        ).checked,
+
+                    vendas:
+                        document.getElementById(
+                            "notificacaoVendas"
+                        ).checked,
+
+                    relatorios:
+                        document.getElementById(
+                            "notificacaoRelatorios"
+                        ).checked
+
+                };
+
+
+                localStorage.setItem(
+                    "notificacoes",
+                    JSON.stringify(notificacoes)
+                );
+
+
+                mostrarSucesso();
+
+            }
+        );
+
+
+
+    // =====================================
+    // ALTERAR SENHA
+    // =====================================
+
+    document
+        .getElementById("alterarSenha")
+        .addEventListener(
+            "click",
+            function() {
+
+                const nova =
+                    document.getElementById(
+                        "novaSenha"
+                    ).value;
+
+                const confirmar =
+                    document.getElementById(
+                        "confirmarSenha"
+                    ).value;
+
+
+                if (!nova || !confirmar) {
+
+                    alert(
+                        "Preencha os campos de nova senha."
+                    );
+
+                    return;
+
+                }
+
+
+                if (nova !== confirmar) {
+
+                    alert(
+                        "As senhas não são iguais."
+                    );
+
+                    return;
+
+                }
+
+
+                localStorage.setItem(
+                    "senha",
+                    nova
+                );
+
+
+                alert(
+                    "Senha alterada com sucesso!"
+                );
+
+
+                document.getElementById(
+                    "senhaAtual"
+                ).value = "";
+
+                document.getElementById(
+                    "novaSenha"
+                ).value = "";
+
+                document.getElementById(
+                    "confirmarSenha"
+                ).value = "";
+
+            }
+        );
+
+
+
+    // =====================================
+    // LIMPAR DADOS
+    // =====================================
+
+    document
+        .getElementById("limparDados")
+        .addEventListener(
+            "click",
+            function() {
+
+                const confirmar =
+                    confirm(
+                        "Deseja realmente limpar os dados locais?"
+                    );
+
+
+                if (!confirmar) {
+                    return;
+                }
+
+
+                localStorage.clear();
+
+
+                alert(
+                    "Dados locais removidos."
+                );
+
+
+                location.reload();
+
+            }
+        );
+
+
+
+    // =====================================
+    // SUCESSO
+    // =====================================
+
+    function mostrarSucesso() {
+
+        const mensagem =
+            document.getElementById(
+                "successMessage"
+            );
+
+
+        mensagem.style.display = "block";
+
+
+        setTimeout(() => {
+
+            mensagem.style.display = "none";
+
+        }, 3000);
+
+    }
+
+
+
+    // =====================================
+    // CARREGAR DADOS SALVOS
+    // =====================================
+
+    function carregarConfiguracoes() {
+
+        const empresa =
+            JSON.parse(
+                localStorage.getItem("empresa")
+            );
+
+
+        if (empresa) {
+
+            document.getElementById(
+                "nomeEmpresa"
+            ).value = empresa.nome || "";
+
+            document.getElementById(
+                "cnpjEmpresa"
+            ).value = empresa.cnpj || "";
+
+            document.getElementById(
+                "telefoneEmpresa"
+            ).value = empresa.telefone || "";
+
+            document.getElementById(
+                "emailEmpresa"
+            ).value = empresa.email || "";
+
+            document.getElementById(
+                "cidadeEmpresa"
+            ).value = empresa.cidade || "";
+
+            document.getElementById(
+                "estadoEmpresa"
+            ).value = empresa.estado || "";
+
+            document.getElementById(
+                "enderecoEmpresa"
+            ).value = empresa.endereco || "";
+
+        }
+
+
+        const preferencias =
+            JSON.parse(
+                localStorage.getItem("preferencias")
+            );
+
+
+        if (preferencias) {
+
+            document.getElementById(
+                "moeda"
+            ).value =
+                preferencias.moeda || "BRL";
+
+            document.getElementById(
+                "formatoData"
+            ).value =
+                preferencias.formatoData || "dd/mm/yyyy";
+
+            document.getElementById(
+                "atualizacaoAutomatica"
+            ).checked =
+                preferencias.atualizacao ?? true;
+
+            document.getElementById(
+                "modoCompacto"
+            ).checked =
+                preferencias.compacto ?? false;
+
+        }
+
+
+        const notificacoes =
+            JSON.parse(
+                localStorage.getItem("notificacoes")
+            );
+
+
+        if (notificacoes) {
+
+            document.getElementById(
+                "notificacaoEstoque"
+            ).checked =
+                notificacoes.estoque ?? true;
+
+            document.getElementById(
+                "notificacaoVendas"
+            ).checked =
+                notificacoes.vendas ?? true;
+
+            document.getElementById(
+                "notificacaoRelatorios"
+            ).checked =
+                notificacoes.relatorios ?? false;
+
+        }
+
+    }
+
+
+    carregarConfiguracoes();
+
+</script>
+
+
+</body>
+
+</html>
