@@ -2,249 +2,702 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Dashboard</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="description"
+        content="Dashboard do sistema Fashion ERP para gerenciamento de lojas de roupas">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 
 <body>
 
-<script>
-if(localStorage.getItem("usuarioLogado") !== "true"){
-    window.location.href="index.html";
-}
-</script>
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
 
-<!-- SIDEBAR -->
+    <aside class="sidebar">
 
-<aside class="sidebar">
+        <div class="sidebar-logo">
 
-    <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-shirt"></i>
+            </div>
 
-        <i class="fa-solid fa-shirt"></i>
+            <div>
+                <h2>Fashion</h2>
+                <span>ERP</span>
+            </div>
 
-        <h2>Fashion ERP</h2>
+        </div>
 
-    </div>
 
-    <nav>
+        <nav class="sidebar-menu">
 
-        <a class="active" href="pages/dashboard.html">
-            <i class="fa-solid fa-house"></i>
-            Dashboard
-        </a>
+            <p class="menu-title">MENU PRINCIPAL</p>
 
-        <a href="pages/produtos.html">
-            <i class="fa-solid fa-shirt"></i>
-            Produtos
-        </a>
+            <a href="dashboard.html" class="menu-item active">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
 
-        <a href="pages/clientes.html">
-            <i class="fa-solid fa-users"></i>
-            Clientes
-        </a>
+            <a href="produtos.html" class="menu-item">
+                <i class="fa-solid fa-shirt"></i>
+                <span>Produtos</span>
+            </a>
 
-        <a href="pages/estoque.html">
-            <i class="fa-solid fa-box"></i>
-            Estoque
-        </a>
+            <a href="clientes.html" class="menu-item">
+                <i class="fa-solid fa-users"></i>
+                <span>Clientes</span>
+            </a>
 
-        <a href="pages/vendas.html">
-            <i class="fa-solid fa-cart-shopping"></i>
-            Vendas
-        </a>
+            <a href="estoque.html" class="menu-item">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Estoque</span>
+            </a>
 
-        <a href="pages/financeiro.html">
-            <i class="fa-solid fa-wallet"></i>
-            Financeiro
-        </a>
+            <a href="vendas.html" class="menu-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Vendas</span>
+            </a>
 
-        <a href="pages/fornecedores.html">
-            <i class="fa-solid fa-truck"></i>
-            Fornecedores
-        </a>
+            <p class="menu-title">GESTÃO</p>
 
-        <a href="pages/relatorios.html">
-            <i class="fa-solid fa-chart-line"></i>
-            Relatórios
-        </a>
+            <a href="financeiro.html" class="menu-item">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Financeiro</span>
+            </a>
 
-        <a href="pages/perfil.html">
-            <i class="fa-solid fa-user"></i>
-            Perfil
-        </a>
+            <a href="fornecedores.html" class="menu-item">
+                <i class="fa-solid fa-truck"></i>
+                <span>Fornecedores</span>
+            </a>
 
-    </nav>
+            <a href="relatorios.html" class="menu-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Relatórios</span>
+            </a>
 
-</aside>
+            <a href="metas.html" class="menu-item">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Metas</span>
+            </a>
 
-<!-- CONTEÚDO -->
+            <p class="menu-title">CONTA</p>
 
-<main class="content">
+            <a href="perfil.html" class="menu-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Meu Perfil</span>
+            </a>
 
-<header class="topbar">
+            <a href="configuracoes.html" class="menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Configurações</span>
+            </a>
 
-    <div>
+        </nav>
 
-        <h1>Dashboard</h1>
 
-        <span>Bem-vinda ao Fashion ERP</span>
+        <!-- USUÁRIO -->
 
-    </div>
+        <div class="sidebar-user">
 
-    <div>
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
 
-        <button class="btn-primary">
+            <div class="user-info">
+                <strong>Administrador</strong>
+                <span>Administrador</span>
+            </div>
 
-            <i class="fa-solid fa-plus"></i>
+            <button
+                class="logout-button"
+                id="logoutButton"
+                title="Sair">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
 
-            Nova Venda
+        </div>
 
-        </button>
+    </aside>
 
-        <button class="btn-primary" onclick="logout()">
 
-            <i class="fa-solid fa-right-from-bracket"></i>
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+    ========================== -->
 
-            Sair
+    <main class="main-content">
 
-        </button>
+        <!-- TOPBAR -->
 
-    </div>
+        <header class="topbar">
 
-</header>
+            <div class="topbar-left">
 
-<!-- CARDS -->
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
 
-<section class="cards">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Visão geral da sua loja</p>
+                </div>
 
-    <div class="card">
+            </div>
 
-        <i class="fa-solid fa-sack-dollar"></i>
 
-        <h3>Faturamento</h3>
+            <div class="topbar-right">
 
-        <h2>R$ 18.420,00</h2>
+                <button
+                    class="notification-button"
+                    title="Notificações">
 
-    </div>
+                    <i class="fa-regular fa-bell"></i>
 
-    <div class="card">
+                    <span class="notification-dot"></span>
 
-        <i class="fa-solid fa-cart-shopping"></i>
+                </button>
 
-        <h3>Vendas Hoje</h3>
 
-        <h2>34</h2>
+                <div class="topbar-user">
 
-    </div>
+                    <div class="topbar-avatar">
+                        A
+                    </div>
 
-    <div class="card">
+                    <div>
+                        <strong>Administrador</strong>
+                        <span>Online</span>
+                    </div>
 
-        <i class="fa-solid fa-box"></i>
+                </div>
 
-        <h3>Produtos</h3>
+            </div>
 
-        <h2>248</h2>
+        </header>
 
-    </div>
 
-    <div class="card">
+        <!-- =========================
+             SAUDAÇÃO
+        ========================== -->
 
-        <i class="fa-solid fa-users"></i>
+        <section class="welcome-section">
 
-        <h3>Clientes</h3>
+            <div>
 
-        <h2>812</h2>
+                <span class="welcome-label">
+                    <i class="fa-solid fa-sun"></i>
+                    Bem-vindo de volta!
+                </span>
 
-    </div>
+                <h2>
+                    Olá, Administrador! 👋
+                </h2>
 
-</section>
+                <p>
+                    Aqui está o resumo da sua loja hoje.
+                </p>
 
-<!-- PAINÉIS -->
+            </div>
 
-<section class="dashboard-grid">
 
-    <div class="panel">
+            <a href="vendas.html" class="btn-primary">
 
-        <h2>Resumo Geral</h2>
+                <i class="fa-solid fa-plus"></i>
 
-        <p>Seja bem-vinda ao Fashion ERP.</p>
+                Nova Venda
 
-        <br>
+            </a>
 
-        <p>Nos próximos passos este painel exibirá:</p>
+        </section>
 
-        <ul>
 
-            <li>📈 Gráfico de vendas</li>
+        <!-- =========================
+             CARDS
+        ========================== -->
 
-            <li>💰 Receita do mês</li>
+        <section class="dashboard-cards">
 
-            <li>🔥 Produtos mais vendidos</li>
 
-            <li>📦 Estoque baixo</li>
+            <!-- FATURAMENTO -->
 
-            <li>👥 Novos clientes</li>
+            <div class="stat-card">
 
-            <li>📅 Metas</li>
+                <div class="stat-card-top">
 
-        </ul>
+                    <div class="stat-icon gold">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                    </div>
 
-    </div>
+                    <span class="stat-badge positive">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        12,5%
+                    </span>
 
-    <div class="panel">
+                </div>
 
-        <h2>Atividades Recentes</h2>
+                <p>Faturamento</p>
 
-        <ul>
+                <h2>R$ 18.420,00</h2>
 
-            <li>✔ Sistema iniciado</li>
+                <span class="stat-description">
+                    Comparado ao mês anterior
+                </span>
 
-            <li>✔ Dashboard carregado</li>
+            </div>
 
-            <li>✔ Produtos prontos</li>
 
-            <li>✔ Clientes prontos</li>
+            <!-- VENDAS -->
 
-            <li>✔ ERP funcionando</li>
+            <div class="stat-card">
 
-        </ul>
+                <div class="stat-card-top">
 
-    </div>
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
 
-</section>
+                    <span class="stat-badge positive">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        8,2%
+                    </span>
 
-</main>
+                </div>
 
-<script src="js/dashboard.js"></script>
+                <p>Vendas Hoje</p>
 
-<script>
+                <h2>34</h2>
 
-function logout(){
+                <span class="stat-description">
+                    Vendas realizadas hoje
+                </span>
 
-    localStorage.removeItem("usuarioLogado");
+            </div>
 
-    window.location.href="../index.html";
 
-}
+            <!-- PRODUTOS -->
 
-</script>
+            <div class="stat-card">
+
+                <div class="stat-card-top">
+
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+
+                    <span class="stat-badge">
+                        Estoque
+                    </span>
+
+                </div>
+
+                <p>Produtos</p>
+
+                <h2>248</h2>
+
+                <span class="stat-description">
+                    Produtos cadastrados
+                </span>
+
+            </div>
+
+
+            <!-- CLIENTES -->
+
+            <div class="stat-card">
+
+                <div class="stat-card-top">
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <span class="stat-badge positive">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        5,4%
+                    </span>
+
+                </div>
+
+                <p>Clientes</p>
+
+                <h2>812</h2>
+
+                <span class="stat-description">
+                    Clientes cadastrados
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ÁREA INFERIOR
+        ========================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- VENDAS -->
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Resumo de Vendas</h2>
+
+                        <p>
+                            Desempenho das vendas recentes
+                        </p>
+
+                    </div>
+
+                    <select id="periodoVendas">
+
+                        <option value="7">
+                            Últimos 7 dias
+                        </option>
+
+                        <option value="30">
+                            Últimos 30 dias
+                        </option>
+
+                        <option value="90">
+                            Últimos 3 meses
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="sales-chart">
+
+                    <div class="chart-placeholder">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <strong>R$ 18.420,00</strong>
+
+                        <span>
+                            Faturamento no período
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ATIVIDADES -->
+
+            <div class="dashboard-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Atividades Recentes</h2>
+
+                        <p>
+                            Últimas movimentações
+                        </p>
+
+                    </div>
+
+                    <a href="relatorios.html">
+                        Ver tudo
+                    </a>
+
+                </div>
+
+
+                <div class="activity-list">
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon sale">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>Nova venda realizada</strong>
+
+                            <span>
+                                Venda #1024 • R$ 349,90
+                            </span>
+
+                        </div>
+
+                        <small>
+                            Agora
+                        </small>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon product">
+                            <i class="fa-solid fa-shirt"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>Produto cadastrado</strong>
+
+                            <span>
+                                Vestido Midi Elegance
+                            </span>
+
+                        </div>
+
+                        <small>
+                            15 min
+                        </small>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon client">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>Novo cliente</strong>
+
+                            <span>
+                                Cliente cadastrado no sistema
+                            </span>
+
+                        </div>
+
+                        <small>
+                            32 min
+                        </small>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon stock">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+
+                        <div class="activity-info">
+
+                            <strong>Estoque atualizado</strong>
+
+                            <span>
+                                12 produtos atualizados
+                            </span>
+
+                        </div>
+
+                        <small>
+                            1h
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ACESSO RÁPIDO
+        ========================== -->
+
+        <section class="quick-access">
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>Acesso Rápido</h2>
+
+                    <p>
+                        Acesse os principais recursos
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-grid">
+
+
+                <a href="produtos.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+
+                    <div>
+                        <strong>Produtos</strong>
+                        <span>Gerenciar produtos</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </a>
+
+
+                <a href="clientes.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+                        <strong>Clientes</strong>
+                        <span>Gerenciar clientes</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </a>
+
+
+                <a href="estoque.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+
+                    <div>
+                        <strong>Estoque</strong>
+                        <span>Controlar estoque</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </a>
+
+
+                <a href="financeiro.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+
+                    <div>
+                        <strong>Financeiro</strong>
+                        <span>Ver movimentações</span>
+                    </div>
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="dashboard-footer">
+
+            <span>
+                © 2026 Fashion ERP
+            </span>
+
+            <span>
+                Sistema de gerenciamento para lojas de roupas
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- JavaScript -->
+
+    <script src="../js/dashboard.js"></script>
+
+    <script>
+
+        // =====================================
+        // SAIR DO SISTEMA
+        // =====================================
+
+        const logoutButton =
+            document.getElementById("logoutButton");
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener("click", () => {
+
+                localStorage.removeItem("usuarioLogado");
+                localStorage.removeItem("emailUsuario");
+
+                window.location.href = "../index.html";
+
+            });
+
+        }
+
+
+        // =====================================
+        // MENU MOBILE
+        // =====================================
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const sidebar =
+            document.querySelector(".sidebar");
+
+        if (mobileMenu && sidebar) {
+
+            mobileMenu.addEventListener("click", () => {
+
+                sidebar.classList.toggle("open");
+
+            });
+
+        }
+
+    </script>
 
 </body>
 
