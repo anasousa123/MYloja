@@ -1,454 +1,69 @@
-// ==========================================
-// FASHION ERP
-// MÓDULO DE PRODUTOS
-// ==========================================
+// =====================================================
+// FASHION ERP — PRODUTOS
+// =====================================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ==========================================
-    // ELEMENTOS
-    // ==========================================
-
     const modal = document.getElementById("modalProduto");
+    const btnNovoProduto = document.getElementById("btnNovoProduto");
+    const fecharModal = document.getElementById("fecharModal");
+    const cancelarProduto = document.getElementById("cancelarProduto");
+
     const form = document.getElementById("formProduto");
 
-    const btnNovo = document.getElementById("novoProduto");
-    const btnFechar = document.getElementById("fecharModal");
-    const btnCancelar = document.getElementById("cancelarProduto");
+    const listaProdutos = document.getElementById("listaProdutos");
 
-    const lista = document.getElementById("listaProdutos");
-    const produtosVazios = document.getElementById("produtosVazios");
-
-    const pesquisa = document.getElementById("pesquisaProduto");
+    const buscarProduto = document.getElementById("buscarProduto");
     const filtroCategoria = document.getElementById("filtroCategoria");
-
-    const totalProdutos = document.getElementById("totalProdutos");
-    const totalEstoque = document.getElementById("totalEstoque");
-    const produtosBaixos = document.getElementById("produtosBaixos");
-
-    const tituloModal = document.getElementById("tituloModal");
-
-    // ==========================================
-    // CAMPOS DO FORMULÁRIO
-    // ==========================================
-
-    const produtoId = document.getElementById("produtoId");
-
-    const nomeProduto = document.getElementById("nomeProduto");
-
-    const categoriaProduto =
-        document.getElementById("categoriaProduto");
-
-    const tamanhoProduto =
-        document.getElementById("tamanhoProduto");
-
-    const precoProduto =
-        document.getElementById("precoProduto");
-
-    const quantidadeProduto =
-        document.getElementById("quantidadeProduto");
-
-    const estoqueMinimo =
-        document.getElementById("estoqueMinimo");
-
-    const codigoProduto =
-        document.getElementById("codigoProduto");
-
-    const marcaProduto =
-        document.getElementById("marcaProduto");
-
-    const descricaoProduto =
-        document.getElementById("descricaoProduto");
-
-
-    // ==========================================
-    // CARREGAR PRODUTOS
-    // ==========================================
+    const filtroStatus = document.getElementById("filtroStatus");
 
     let produtos = JSON.parse(
         localStorage.getItem("fashionERP_produtos")
-    ) || [];
+    ) || [
 
+        {
+            id: 1,
+            nome: "Vestido Midi Elegance",
+            sku: "VST-001",
+            categoria: "Vestidos",
+            preco: 249.90,
+            estoque: 32,
+            estoqueMinimo: 5,
+            descricao: ""
+        },
 
-    // ==========================================
-    // ABRIR NOVO PRODUTO
-    // ==========================================
+        {
+            id: 2,
+            nome: "Blusa Basic Premium",
+            sku: "BLU-002",
+            categoria: "Blusas",
+            preco: 119.90,
+            estoque: 8,
+            estoqueMinimo: 10,
+            descricao: ""
+        },
 
-    btnNovo.addEventListener("click", () => {
-
-        abrirModal();
-
-    });
-
-
-    // ==========================================
-    // FECHAR MODAL
-    // ==========================================
-
-    btnFechar.addEventListener("click", () => {
-
-        fecharModal();
-
-    });
-
-
-    btnCancelar.addEventListener("click", () => {
-
-        fecharModal();
-
-    });
-
-
-    // ==========================================
-    // FECHAR CLICANDO FORA
-    // ==========================================
-
-    modal.addEventListener("click", (event) => {
-
-        if(event.target === modal){
-
-            fecharModal();
-
+        {
+            id: 3,
+            nome: "Calça Wide Leg",
+            sku: "CAL-003",
+            categoria: "Calças",
+            preco: 189.90,
+            estoque: 0,
+            estoqueMinimo: 5,
+            descricao: ""
         }
 
-    });
+    ];
 
+    let produtoEditando = null;
 
-    // ==========================================
-    // ABRIR MODAL
-    // ==========================================
 
-    function abrirModal(produto = null){
+    // =================================================
+    // SALVAR PRODUTOS
+    // =================================================
 
-        modal.classList.add("show");
-
-        if(produto){
-
-            tituloModal.textContent = "Editar Produto";
-
-            produtoId.value = produto.id;
-
-            nomeProduto.value = produto.nome || "";
-
-            categoriaProduto.value =
-                produto.categoria || "";
-
-            tamanhoProduto.value =
-                produto.tamanho || "Único";
-
-            precoProduto.value =
-                produto.preco || "";
-
-            quantidadeProduto.value =
-                produto.quantidade || 0;
-
-            estoqueMinimo.value =
-                produto.estoqueMinimo ?? 5;
-
-            codigoProduto.value =
-                produto.codigo || "";
-
-            marcaProduto.value =
-                produto.marca || "";
-
-            descricaoProduto.value =
-                produto.descricao || "";
-
-        }else{
-
-            tituloModal.textContent = "Novo Produto";
-
-            form.reset();
-
-            produtoId.value = "";
-
-            tamanhoProduto.value = "Único";
-
-            quantidadeProduto.value = 0;
-
-            estoqueMinimo.value = 5;
-
-        }
-
-        setTimeout(() => {
-
-            nomeProduto.focus();
-
-        },100);
-
-    }
-
-
-    // ==========================================
-    // FECHAR MODAL
-    // ==========================================
-
-    function fecharModal(){
-
-        modal.classList.remove("show");
-
-        form.reset();
-
-        produtoId.value = "";
-
-        tituloModal.textContent = "Novo Produto";
-
-        tamanhoProduto.value = "Único";
-
-        quantidadeProduto.value = 0;
-
-        estoqueMinimo.value = 5;
-
-    }
-
-
-    // ==========================================
-    // SALVAR PRODUTO
-    // ==========================================
-
-    form.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-
-        const nome = nomeProduto.value.trim();
-
-        const categoria =
-            categoriaProduto.value;
-
-        const tamanho =
-            tamanhoProduto.value;
-
-        const preco =
-            Number(precoProduto.value);
-
-        const quantidade =
-            Number(quantidadeProduto.value);
-
-        const minimo =
-            Number(estoqueMinimo.value);
-
-
-        // ======================================
-        // VALIDAÇÕES
-        // ======================================
-
-        if(!nome){
-
-            alert("Digite o nome do produto.");
-
-            nomeProduto.focus();
-
-            return;
-
-        }
-
-
-        if(!categoria){
-
-            alert("Selecione uma categoria.");
-
-            categoriaProduto.focus();
-
-            return;
-
-        }
-
-
-        if(isNaN(preco) || preco < 0){
-
-            alert("Digite um preço válido.");
-
-            precoProduto.focus();
-
-            return;
-
-        }
-
-
-        if(isNaN(quantidade) || quantidade < 0){
-
-            alert("Digite uma quantidade válida.");
-
-            quantidadeProduto.focus();
-
-            return;
-
-        }
-
-
-        if(isNaN(minimo) || minimo < 0){
-
-            alert("Digite um estoque mínimo válido.");
-
-            estoqueMinimo.focus();
-
-            return;
-
-        }
-
-
-        // ======================================
-        // VERIFICAR CÓDIGO DUPLICADO
-        // ======================================
-
-        const codigo =
-            codigoProduto.value.trim();
-
-        if(codigo){
-
-            const codigoExistente =
-                produtos.find(produto =>
-
-                    produto.codigo &&
-                    produto.codigo.toLowerCase() ===
-                    codigo.toLowerCase() &&
-                    produto.id !== produtoId.value
-
-                );
-
-
-            if(codigoExistente){
-
-                alert(
-                    "Já existe um produto com esse código."
-                );
-
-                codigoProduto.focus();
-
-                return;
-
-            }
-
-        }
-
-
-        // ======================================
-        // EDITAR PRODUTO
-        // ======================================
-
-        if(produtoId.value){
-
-            const indice =
-                produtos.findIndex(
-                    produto =>
-                        produto.id === produtoId.value
-                );
-
-
-            if(indice !== -1){
-
-                produtos[indice] = {
-
-                    ...produtos[indice],
-
-                    nome: nome,
-
-                    categoria: categoria,
-
-                    tamanho: tamanho,
-
-                    preco: preco,
-
-                    quantidade: quantidade,
-
-                    estoqueMinimo: minimo,
-
-                    codigo: codigo,
-
-                    marca:
-                        marcaProduto.value.trim(),
-
-                    descricao:
-                        descricaoProduto.value.trim()
-
-                };
-
-            }
-
-        }
-
-
-        // ======================================
-        // NOVO PRODUTO
-        // ======================================
-
-        else{
-
-            const novoProduto = {
-
-                id: Date.now().toString(),
-
-                nome: nome,
-
-                categoria: categoria,
-
-                tamanho: tamanho,
-
-                preco: preco,
-
-                quantidade: quantidade,
-
-                estoqueMinimo: minimo,
-
-                codigo: codigo,
-
-                marca:
-                    marcaProduto.value.trim(),
-
-                descricao:
-                    descricaoProduto.value.trim(),
-
-                dataCadastro:
-                    new Date().toISOString()
-
-            };
-
-
-            produtos.push(novoProduto);
-
-        }
-
-
-        // ======================================
-        // SALVAR
-        // ======================================
-
-        salvarProdutos();
-
-
-        // ======================================
-        // ATUALIZAR TELA
-        // ======================================
-
-        renderizarProdutos();
-
-        atualizarResumo();
-
-
-        // ======================================
-        // FECHAR
-        // ======================================
-
-        fecharModal();
-
-
-        // ======================================
-        // MENSAGEM
-        // ======================================
-
-        console.log(
-            "Produto salvo com sucesso!"
-        );
-
-    });
-
-
-    // ==========================================
-    // SALVAR NO LOCALSTORAGE
-    // ==========================================
-
-    function salvarProdutos(){
+    function salvarProdutos() {
 
         localStorage.setItem(
             "fashionERP_produtos",
@@ -458,129 +73,479 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
+    // =================================================
+    // ABRIR MODAL
+    // =================================================
+
+    function abrirModal() {
+
+        if (!modal) return;
+
+        modal.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    // =================================================
+    // FECHAR MODAL
+    // =================================================
+
+    function fecharModalProduto() {
+
+        if (!modal) return;
+
+        modal.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+        form.reset();
+
+        produtoEditando = null;
+
+        const titulo = modal.querySelector(".modal-header h2");
+
+        const descricao = modal.querySelector(".modal-header p");
+
+        const botao = form.querySelector(".btn-primary");
+
+        if (titulo) {
+            titulo.textContent = "Novo Produto";
+        }
+
+        if (descricao) {
+            descricao.textContent =
+                "Cadastre um novo produto";
+        }
+
+        if (botao) {
+
+            botao.innerHTML =
+                '<i class="fa-solid fa-check"></i> Cadastrar Produto';
+
+        }
+
+    }
+
+
+    // =================================================
+    // BOTÃO NOVO PRODUTO
+    // =================================================
+
+    if (btnNovoProduto) {
+
+        btnNovoProduto.addEventListener(
+            "click",
+            () => {
+
+                produtoEditando = null;
+
+                form.reset();
+
+                const titulo =
+                    modal.querySelector(".modal-header h2");
+
+                const descricao =
+                    modal.querySelector(".modal-header p");
+
+                const botao =
+                    form.querySelector(".btn-primary");
+
+                if (titulo) {
+                    titulo.textContent =
+                        "Novo Produto";
+                }
+
+                if (descricao) {
+                    descricao.textContent =
+                        "Cadastre um novo produto";
+                }
+
+                if (botao) {
+                    botao.innerHTML =
+                        '<i class="fa-solid fa-check"></i> Cadastrar Produto';
+                }
+
+                abrirModal();
+
+            }
+        );
+
+    }
+
+
+    // =================================================
+    // FECHAR MODAL
+    // =================================================
+
+    if (fecharModal) {
+
+        fecharModal.addEventListener(
+            "click",
+            fecharModalProduto
+        );
+
+    }
+
+    if (cancelarProduto) {
+
+        cancelarProduto.addEventListener(
+            "click",
+            fecharModalProduto
+        );
+
+    }
+
+
+    // Fechar clicando fora
+
+    if (modal) {
+
+        modal.addEventListener("click", (event) => {
+
+            if (event.target === modal) {
+
+                fecharModalProduto();
+
+            }
+
+        });
+
+    }
+
+
+    // =================================================
+    // CADASTRAR / EDITAR
+    // =================================================
+
+    if (form) {
+
+        form.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+
+            const nome =
+                document.getElementById("nomeProduto")
+                    .value
+                    .trim();
+
+            const sku =
+                document.getElementById("skuProduto")
+                    .value
+                    .trim();
+
+            const categoria =
+                document.getElementById("categoriaProduto")
+                    .value;
+
+            const preco =
+                Number(
+                    document.getElementById("precoProduto")
+                        .value
+                );
+
+            const estoque =
+                Number(
+                    document.getElementById("estoqueProduto")
+                        .value
+                );
+
+            const estoqueMinimo =
+                Number(
+                    document.getElementById("estoqueMinimo")
+                        .value
+                ) || 0;
+
+            const descricao =
+                document.getElementById("descricaoProduto")
+                    .value
+                    .trim();
+
+
+            // Validação
+
+            if (
+                !nome ||
+                !sku ||
+                !categoria ||
+                !preco ||
+                preco < 0 ||
+                estoque < 0
+            ) {
+
+                alert(
+                    "Preencha corretamente os campos obrigatórios."
+                );
+
+                return;
+
+            }
+
+
+            // =============================================
+            // EDITAR
+            // =============================================
+
+            if (produtoEditando) {
+
+                const produto =
+                    produtos.find(
+                        item =>
+                            item.id === produtoEditando
+                    );
+
+                if (produto) {
+
+                    produto.nome = nome;
+                    produto.sku = sku;
+                    produto.categoria = categoria;
+                    produto.preco = preco;
+                    produto.estoque = estoque;
+                    produto.estoqueMinimo = estoqueMinimo;
+                    produto.descricao = descricao;
+
+                }
+
+                alert(
+                    "Produto atualizado com sucesso!"
+                );
+
+            }
+
+
+            // =============================================
+            // NOVO PRODUTO
+            // =============================================
+
+            else {
+
+                const novoProduto = {
+
+                    id: Date.now(),
+
+                    nome: nome,
+
+                    sku: sku,
+
+                    categoria: categoria,
+
+                    preco: preco,
+
+                    estoque: estoque,
+
+                    estoqueMinimo: estoqueMinimo,
+
+                    descricao: descricao
+
+                };
+
+
+                produtos.push(novoProduto);
+
+
+                alert(
+                    "Produto cadastrado com sucesso!"
+                );
+
+            }
+
+
+            salvarProdutos();
+
+            renderizarProdutos();
+
+            fecharModalProduto();
+
+        });
+
+    }
+
+
+    // =================================================
     // RENDERIZAR PRODUTOS
-    // ==========================================
+    // =================================================
 
-    function renderizarProdutos(){
+    function renderizarProdutos() {
 
-        const termo =
-            pesquisa.value
-                .toLowerCase()
-                .trim();
+        if (!listaProdutos) return;
 
 
-        const categoriaSelecionada =
-            filtroCategoria.value;
+        const busca =
+            buscarProduto
+                ? buscarProduto.value
+                    .trim()
+                    .toLowerCase()
+                : "";
 
 
-        let filtrados =
+        const categoria =
+            filtroCategoria
+                ? filtroCategoria.value
+                : "";
+
+
+        const status =
+            filtroStatus
+                ? filtroStatus.value
+                : "";
+
+
+        const filtrados =
             produtos.filter(produto => {
 
 
-                const correspondePesquisa =
+                // Busca
 
+                const correspondeBusca =
                     produto.nome
                         .toLowerCase()
-                        .includes(termo)
+                        .includes(busca)
 
                     ||
 
-                    String(produto.codigo || "")
+                    produto.sku
                         .toLowerCase()
-                        .includes(termo)
-
-                    ||
-
-                    String(produto.marca || "")
-                        .toLowerCase()
-                        .includes(termo);
+                        .includes(busca);
 
 
-                const correspondeCategoria =
+                if (!correspondeBusca) {
+                    return false;
+                }
 
-                    categoriaSelecionada === "todos"
 
-                    ||
+                // Categoria
 
-                    normalizar(
+                if (categoria) {
+
+                    if (
                         produto.categoria
-                    ) ===
-                    normalizar(
-                        categoriaSelecionada
-                    );
+                            .toLowerCase() !==
+                        categoria.toLowerCase()
+                    ) {
+
+                        return false;
+
+                    }
+
+                }
 
 
-                return (
-                    correspondePesquisa &&
-                    correspondeCategoria
-                );
+                // Status
+
+                if (status === "ativo") {
+
+                    if (
+                        produto.estoque <=
+                        produto.estoqueMinimo
+                    ) {
+
+                        return false;
+
+                    }
+
+                }
+
+
+                if (status === "baixo") {
+
+                    if (
+                        produto.estoque <= 0 ||
+                        produto.estoque >
+                        produto.estoqueMinimo
+                    ) {
+
+                        return false;
+
+                    }
+
+                }
+
+
+                if (status === "sem") {
+
+                    if (produto.estoque !== 0) {
+
+                        return false;
+
+                    }
+
+                }
+
+
+                return true;
 
             });
 
 
-        lista.innerHTML = "";
+        listaProdutos.innerHTML = "";
 
 
-        if(filtrados.length === 0){
+        if (filtrados.length === 0) {
 
-            produtosVazios.style.display = "block";
+            listaProdutos.innerHTML = `
 
-            return;
+                <tr>
+
+                    <td colspan="6">
+
+                        <div class="empty-products">
+
+                            <i class="fa-solid fa-box-open"></i>
+
+                            <strong>
+                                Nenhum produto encontrado
+                            </strong>
+
+                            <span>
+                                Tente alterar sua busca ou filtros.
+                            </span>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
 
         }
 
 
-        produtosVazios.style.display = "none";
-
-
         filtrados.forEach(produto => {
 
-            const quantidade =
-                Number(produto.quantidade || 0);
-
-
-            const minimo =
-                Number(produto.estoqueMinimo ?? 5);
-
-
-            let classeEstoque = "stock-normal";
-
-            let classeStatus = "normal";
-
-            let textoStatus = "Normal";
-
-
-            if(quantidade <= 0){
-
-                classeEstoque = "stock-zero";
-
-                classeStatus = "zerado";
-
-                textoStatus = "Sem estoque";
-
-            }
-
-            else if(quantidade <= minimo){
-
-                classeEstoque = "stock-low";
-
-                classeStatus = "baixo";
-
-                textoStatus = "Estoque baixo";
-
-            }
-
-
-            const linha =
+            const tr =
                 document.createElement("tr");
 
 
-            linha.innerHTML = `
+            let statusClass = "active";
+            let statusTexto = "Ativo";
+
+
+            if (produto.estoque === 0) {
+
+                statusClass = "empty";
+                statusTexto = "Sem estoque";
+
+            }
+
+            else if (
+                produto.estoque <=
+                produto.estoqueMinimo
+            ) {
+
+                statusClass = "low";
+                statusTexto = "Estoque baixo";
+
+            }
+
+
+            tr.innerHTML = `
 
                 <td>
 
-                    <div class="product-name">
+                    <div class="product-info">
 
                         <div class="product-image">
 
@@ -588,28 +553,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         </div>
 
-                        <div class="product-info">
+                        <div>
 
                             <strong>
-
-                                ${escaparHTML(
-                                    produto.nome
-                                )}
-
+                                ${escaparHTML(produto.nome)}
                             </strong>
 
                             <span>
-
-                                ${
-                                    produto.codigo
-                                    ?
-                                    escaparHTML(
-                                        produto.codigo
-                                    )
-                                    :
-                                    "Sem código"
-                                }
-
+                                SKU: ${escaparHTML(produto.sku)}
                             </span>
 
                         </div>
@@ -620,31 +571,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 <td>
-
-                    ${escaparHTML(
-                        produto.categoria || "—"
-                    )}
-
+                    ${escaparHTML(produto.categoria)}
                 </td>
 
 
                 <td>
 
-                    ${escaparHTML(
-                        produto.tamanho || "—"
-                    )}
+                    <strong>
+                        ${formatarMoeda(produto.preco)}
+                    </strong>
 
                 </td>
 
 
                 <td>
+                    ${produto.estoque} unidades
+                </td>
 
-                    <span class="product-price">
 
-                        ${formatarMoeda(
-                            produto.preco
-                        )}
+                <td>
 
+                    <span class="status ${statusClass}">
+                        ${statusTexto}
                     </span>
 
                 </td>
@@ -652,37 +600,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <td>
 
-                    <span
-                        class="stock-number ${classeEstoque}">
-
-                        ${quantidade}
-
-                    </span>
-
-                </td>
-
-
-                <td>
-
-                    <span
-                        class="status ${classeStatus}">
-
-                        ${textoStatus}
-
-                    </span>
-
-                </td>
-
-
-                <td>
-
-                    <div class="action-buttons">
+                    <div class="table-actions">
 
                         <button
-                            class="icon-btn"
-                            title="Editar"
-                            data-action="editar"
-                            data-id="${produto.id}">
+                            class="action-btn edit"
+                            data-editar="${produto.id}"
+                            title="Editar">
 
                             <i class="fa-solid fa-pen"></i>
 
@@ -690,10 +613,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                         <button
-                            class="icon-btn delete"
-                            title="Excluir"
-                            data-action="excluir"
-                            data-id="${produto.id}">
+                            class="action-btn delete"
+                            data-excluir="${produto.id}"
+                            title="Excluir">
 
                             <i class="fa-solid fa-trash"></i>
 
@@ -706,227 +628,374 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
 
-            lista.appendChild(linha);
+            listaProdutos.appendChild(tr);
 
         });
 
-    }
-
-
-    // ==========================================
-    // AÇÕES DA TABELA
-    // ==========================================
-
-    lista.addEventListener("click", (event) => {
-
-        const botao =
-            event.target.closest("button");
-
-
-        if(!botao) return;
-
-
-        const id =
-            botao.dataset.id;
-
-
-        const acao =
-            botao.dataset.action;
-
-
-        const produto =
-            produtos.find(
-                item => item.id === id
-            );
-
-
-        if(!produto) return;
-
-
-        if(acao === "editar"){
-
-            abrirModal(produto);
-
-        }
-
-
-        if(acao === "excluir"){
-
-            excluirProduto(produto);
-
-        }
-
-    });
-
-
-    // ==========================================
-    // EXCLUIR
-    // ==========================================
-
-    function excluirProduto(produto){
-
-        const confirmar = confirm(
-
-            `Deseja excluir o produto "${produto.nome}"?`
-
-        );
-
-
-        if(!confirmar) return;
-
-
-        produtos =
-            produtos.filter(
-                item => item.id !== produto.id
-            );
-
-
-        salvarProdutos();
-
-        renderizarProdutos();
 
         atualizarResumo();
 
+        atualizarContador(filtrados.length);
+
     }
 
 
-    // ==========================================
-    // PESQUISA
-    // ==========================================
+    // =================================================
+    // FORMATAR MOEDA
+    // =================================================
 
-    pesquisa.addEventListener(
-        "input",
-        renderizarProdutos
+    function formatarMoeda(valor) {
+
+        return valor.toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
+
+    }
+
+
+    // =================================================
+    // ESCAPAR HTML
+    // =================================================
+
+    function escaparHTML(texto) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = texto;
+
+        return div.innerHTML;
+
+    }
+
+
+    // =================================================
+    // EDITAR
+    // =================================================
+
+    listaProdutos.addEventListener(
+        "click",
+        (event) => {
+
+
+            const botaoEditar =
+                event.target.closest(
+                    "[data-editar]"
+                );
+
+
+            if (botaoEditar) {
+
+                const id =
+                    Number(
+                        botaoEditar.dataset.editar
+                    );
+
+
+                const produto =
+                    produtos.find(
+                        item => item.id === id
+                    );
+
+
+                if (!produto) return;
+
+
+                produtoEditando = id;
+
+
+                document.getElementById(
+                    "nomeProduto"
+                ).value = produto.nome;
+
+
+                document.getElementById(
+                    "skuProduto"
+                ).value = produto.sku;
+
+
+                document.getElementById(
+                    "categoriaProduto"
+                ).value = produto.categoria;
+
+
+                document.getElementById(
+                    "precoProduto"
+                ).value = produto.preco;
+
+
+                document.getElementById(
+                    "estoqueProduto"
+                ).value = produto.estoque;
+
+
+                document.getElementById(
+                    "estoqueMinimo"
+                ).value = produto.estoqueMinimo;
+
+
+                document.getElementById(
+                    "descricaoProduto"
+                ).value = produto.descricao || "";
+
+
+                const titulo =
+                    modal.querySelector(
+                        ".modal-header h2"
+                    );
+
+
+                const descricao =
+                    modal.querySelector(
+                        ".modal-header p"
+                    );
+
+
+                const botao =
+                    form.querySelector(
+                        ".btn-primary"
+                    );
+
+
+                if (titulo) {
+
+                    titulo.textContent =
+                        "Editar Produto";
+
+                }
+
+
+                if (descricao) {
+
+                    descricao.textContent =
+                        "Atualize as informações do produto";
+
+                }
+
+
+                if (botao) {
+
+                    botao.innerHTML =
+                        '<i class="fa-solid fa-check"></i> Salvar Alterações';
+
+                }
+
+
+                abrirModal();
+
+            }
+
+
+            // =============================================
+            // EXCLUIR
+            // =============================================
+
+            const botaoExcluir =
+                event.target.closest(
+                    "[data-excluir]"
+                );
+
+
+            if (botaoExcluir) {
+
+                const id =
+                    Number(
+                        botaoExcluir.dataset.excluir
+                    );
+
+
+                const produto =
+                    produtos.find(
+                        item => item.id === id
+                    );
+
+
+                if (!produto) return;
+
+
+                const confirmar =
+                    confirm(
+                        `Deseja realmente excluir o produto "${produto.nome}"?`
+                    );
+
+
+                if (!confirmar) return;
+
+
+                produtos =
+                    produtos.filter(
+                        item => item.id !== id
+                    );
+
+
+                salvarProdutos();
+
+                renderizarProdutos();
+
+
+                alert(
+                    "Produto excluído com sucesso!"
+                );
+
+            }
+
+        }
     );
 
 
-    // ==========================================
-    // FILTRO
-    // ==========================================
+    // =================================================
+    // BUSCA
+    // =================================================
 
-    filtroCategoria.addEventListener(
-        "change",
-        renderizarProdutos
-    );
+    if (buscarProduto) {
+
+        buscarProduto.addEventListener(
+            "input",
+            renderizarProdutos
+        );
+
+    }
 
 
-    // ==========================================
-    // RESUMO
-    // ==========================================
+    // =================================================
+    // FILTROS
+    // =================================================
 
-    function atualizarResumo(){
+    if (filtroCategoria) {
 
-        totalProdutos.textContent =
+        filtroCategoria.addEventListener(
+            "change",
+            renderizarProdutos
+        );
+
+    }
+
+
+    if (filtroStatus) {
+
+        filtroStatus.addEventListener(
+            "change",
+            renderizarProdutos
+        );
+
+    }
+
+
+    // =================================================
+    // ATUALIZAR RESUMO
+    // =================================================
+
+    function atualizarResumo() {
+
+        const total =
             produtos.length;
 
 
-        const quantidadeTotal =
-            produtos.reduce(
+        const ativos =
+            produtos.filter(
+                produto =>
+                    produto.estoque >
+                    produto.estoqueMinimo
+            ).length;
 
-                (total, produto) => {
 
-                    return total +
-                        Number(
-                            produto.quantidade || 0
-                        );
+        const baixo =
+            produtos.filter(
+                produto =>
+                    produto.estoque > 0 &&
+                    produto.estoque <=
+                    produto.estoqueMinimo
+            ).length;
 
-                },
 
-                0
+        const semEstoque =
+            produtos.filter(
+                produto =>
+                    produto.estoque === 0
+            ).length;
 
+
+        const totalElemento =
+            document.getElementById(
+                "totalProdutos"
             );
 
 
-        totalEstoque.textContent =
-            quantidadeTotal;
-
-
-        const baixos =
-            produtos.filter(produto => {
-
-                const quantidade =
-                    Number(
-                        produto.quantidade || 0
-                    );
-
-
-                const minimo =
-                    Number(
-                        produto.estoqueMinimo ?? 5
-                    );
-
-
-                return (
-                    quantidade > 0 &&
-                    quantidade <= minimo
-                );
-
-            }).length;
-
-
-        produtosBaixos.textContent =
-            baixos;
-
-    }
-
-
-    // ==========================================
-    // FORMATAR MOEDA
-    // ==========================================
-
-    function formatarMoeda(valor){
-
-        return Number(valor || 0)
-            .toLocaleString(
-                "pt-BR",
-                {
-                    style:"currency",
-                    currency:"BRL"
-                }
+        const ativosElemento =
+            document.getElementById(
+                "produtosAtivos"
             );
 
+
+        const baixoElemento =
+            document.getElementById(
+                "estoqueBaixo"
+            );
+
+
+        const semElemento =
+            document.getElementById(
+                "semEstoque"
+            );
+
+
+        if (totalElemento) {
+            totalElemento.textContent =
+                total;
+        }
+
+
+        if (ativosElemento) {
+            ativosElemento.textContent =
+                ativos;
+        }
+
+
+        if (baixoElemento) {
+            baixoElemento.textContent =
+                baixo;
+        }
+
+
+        if (semElemento) {
+            semElemento.textContent =
+                semEstoque;
+        }
+
     }
 
 
-    // ==========================================
-    // NORMALIZAR TEXTO
-    // ==========================================
+    // =================================================
+    // CONTADOR
+    // =================================================
 
-    function normalizar(texto){
+    function atualizarContador(quantidade) {
 
-        return String(texto || "")
-            .normalize("NFD")
-            .replace(
-                /[\u0300-\u036f]/g,
-                ""
-            )
-            .toLowerCase();
-
-    }
+        const contador =
+            document.getElementById(
+                "contadorProdutos"
+            );
 
 
-    // ==========================================
-    // PROTEÇÃO CONTRA HTML
-    // ==========================================
+        if (!contador) return;
 
-    function escaparHTML(texto){
 
-        return String(texto)
-            .replace(/&/g,"&amp;")
-            .replace(/</g,"&lt;")
-            .replace(/>/g,"&gt;")
-            .replace(/"/g,"&quot;")
-            .replace(/'/g,"&#039;");
+        contador.textContent =
+            quantidade === 1
+                ? "1 produto"
+                : `${quantidade} produtos`;
 
     }
 
 
-    // ==========================================
+    // =================================================
     // INICIALIZAÇÃO
-    // ==========================================
+    // =================================================
 
     renderizarProdutos();
-
-    atualizarResumo();
 
 });
