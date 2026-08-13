@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("modalProduto");
     const form = document.getElementById("formProduto");
 
-    const btnNovo = document.getElementById("novoProduto");
+    const btnNovo = document.getElementById("btnNovoProduto");
     const btnFechar = document.getElementById("fecharModal");
     const btnCancelar = document.getElementById("cancelarProduto");
 
