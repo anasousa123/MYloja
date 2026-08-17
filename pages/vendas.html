@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fashion ERP | Vendas</title>
+
+    <meta name="description"
+        content="Gerenciamento de vendas do Fashion ERP">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/vendas.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-shirt"></i>
+            </div>
+
+            <div>
+                <h2>Fashion</h2>
+                <span>ERP</span>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+            <p class="menu-title">MENU PRINCIPAL</p>
+
+            <a href="dashboard.html" class="menu-item">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="produtos.html" class="menu-item">
+                <i class="fa-solid fa-shirt"></i>
+                <span>Produtos</span>
+            </a>
+
+            <a href="clientes.html" class="menu-item">
+                <i class="fa-solid fa-users"></i>
+                <span>Clientes</span>
+            </a>
+
+            <a href="estoque.html" class="menu-item">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Estoque</span>
+            </a>
+
+            <a href="vendas.html" class="menu-item active">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Vendas</span>
+            </a>
+
+
+            <p class="menu-title">GESTÃO</p>
+
+            <a href="financeiro.html" class="menu-item">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Financeiro</span>
+            </a>
+
+            <a href="fornecedores.html" class="menu-item">
+                <i class="fa-solid fa-truck"></i>
+                <span>Fornecedores</span>
+            </a>
+
+            <a href="relatorios.html" class="menu-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Relatórios</span>
+            </a>
+
+            <a href="metas.html" class="menu-item">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Metas</span>
+            </a>
+
+
+            <p class="menu-title">CONTA</p>
+
+            <a href="perfil.html" class="menu-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Meu Perfil</span>
+            </a>
+
+            <a href="configuracoes.html" class="menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Configurações</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="user-info">
+                <strong>Administrador</strong>
+                <span>Administrador</span>
+            </div>
+
+            <button
+                class="logout-button"
+                id="logoutButton"
+                title="Sair">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu"
+                    type="button">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div>
+
+                    <h1>Vendas</h1>
+
+                    <p>
+                        Gerencie as vendas da sua loja
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification-button"
+                    type="button">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="topbar-user">
+
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>Administrador</strong>
+
+                        <span>Online</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
+        <section class="sales-header">
+
+            <div>
+
+                <h2>Controle de Vendas</h2>
+
+                <p>
+                    Registre e acompanhe todas as vendas realizadas.
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn-primary"
+                id="btnNovaVenda"
+                type="button">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Nova Venda
+
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             CARDS DE RESUMO
+        ================================================== -->
+
+        <section class="sales-stats">
+
+
+            <div class="sales-stat-card">
+
+                <div class="sales-stat-icon gold">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Total de Vendas</span>
+
+                    <strong id="totalVendas">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="sales-stat-card">
+
+                <div class="sales-stat-icon green">
+
+                    <i class="fa-solid fa-dollar-sign"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Faturamento</span>
+
+                    <strong id="faturamentoVendas">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="sales-stat-card">
+
+                <div class="sales-stat-icon blue">
+
+                    <i class="fa-solid fa-check-circle"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Vendas Concluídas</span>
+
+                    <strong id="vendasConcluidas">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="sales-stat-card">
+
+                <div class="sales-stat-icon orange">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <span>Pendentes</span>
+
+                    <strong id="vendasPendentes">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTROS
+        ================================================== -->
+
+        <section class="sales-toolbar">
+
+
+            <div class="sales-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="buscarVenda"
+                    placeholder="Buscar venda, cliente ou código...">
+
+            </div>
+
+
+            <select id="filtroStatus">
+
+                <option value="">
+                    Todos os status
+                </option>
+
+                <option value="concluida">
+                    Concluídas
+                </option>
+
+                <option value="pendente">
+                    Pendentes
+                </option>
+
+                <option value="cancelada">
+                    Canceladas
+                </option>
+
+            </select>
+
+
+            <select id="filtroPagamento">
+
+                <option value="">
+                    Todas as formas
+                </option>
+
+                <option value="pix">
+                    PIX
+                </option>
+
+                <option value="cartao">
+                    Cartão
+                </option>
+
+                <option value="dinheiro">
+                    Dinheiro
+                </option>
+
+                <option value="transferencia">
+                    Transferência
+                </option>
+
+            </select>
+
+
+            <input
+                type="date"
+                id="filtroData"
+                title="Filtrar por data">
+
+        </section>
+
+
+        <!-- =================================================
+             TABELA
+        ================================================== -->
+
+        <section class="sales-table-card">
+
+
+            <div class="table-header">
+
+                <div>
+
+                    <h2>
+                        Vendas realizadas
+                    </h2>
+
+                    <p>
+                        Histórico completo das vendas
+                    </p>
+
+                </div>
+
+
+                <span id="contadorVendas">
+                    0 vendas
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Venda</th>
+
+                            <th>Cliente</th>
+
+                            <th>Data</th>
+
+                            <th>Pagamento</th>
+
+                            <th>Valor</th>
+
+                            <th>Status</th>
+
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaVendas">
+
+                        <!--
+                            As vendas serão inseridas
+                            automaticamente pelo vendas.js.
+                        -->
+
+                    </tbody>
+
+                </table>
+
+
+                <div
+                    class="sales-empty"
+                    id="vendasVazias">
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                    </div>
+
+                    <h3>Nenhuma venda encontrada</h3>
+
+                    <p>
+                        Cadastre uma nova venda para começar.
+                    </p>
+
+                    <button
+                        class="btn-primary"
+                        id="btnNovaVendaVazia"
+                        type="button">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Nova Venda
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAGINAÇÃO -->
+
+            <div class="table-pagination">
+
+                <span id="textoPaginacao">
+                    Nenhuma venda cadastrada
+                </span>
+
+                <div>
+
+                    <button
+                        type="button"
+                        id="paginaAnterior"
+                        disabled>
+
+                        <i class="fa-solid fa-chevron-left"></i>
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="active">
+
+                        1
+
+                    </button>
+
+                    <button
+                        type="button"
+                        id="paginaProxima"
+                        disabled>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <span>
+                © 2026 Fashion ERP
+            </span>
+
+            <span>
+                Sistema de gerenciamento para lojas de roupas
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL NOVA VENDA
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modalVenda">
+
+        <div class="sales-modal">
+
+
+            <!-- HEADER -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="tituloModalVenda">
+                        Nova Venda
+                    </h2>
+
+                    <p>
+                        Registre uma nova venda
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="modal-close"
+                    id="fecharModalVenda"
+                    type="button">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="formVenda">
+
+                <input
+                    type="hidden"
+                    id="vendaId">
+
+
+                <div class="form-grid">
+
+
+                    <!-- CLIENTE -->
+
+                    <div class="form-group">
+
+                        <label for="clienteVenda">
+                            Cliente
+                        </label>
+
+                        <input
+                            type="text"
+                            id="clienteVenda"
+                            placeholder="Nome do cliente"
+                            required>
+
+                    </div>
+
+
+                    <!-- DATA -->
+
+                    <div class="form-group">
+
+                        <label for="dataVenda">
+                            Data da venda
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dataVenda"
+                            required>
+
+                    </div>
+
+
+                    <!-- PRODUTO -->
+
+                    <div class="form-group">
+
+                        <label for="produtoVenda">
+                            Produto
+                        </label>
+
+                        <input
+                            type="text"
+                            id="produtoVenda"
+                            placeholder="Nome do produto"
+                            required>
+
+                    </div>
+
+
+                    <!-- QUANTIDADE -->
+
+                    <div class="form-group">
+
+                        <label for="quantidadeVenda">
+                            Quantidade
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeVenda"
+                            min="1"
+                            value="1"
+                            required>
+
+                    </div>
+
+
+                    <!-- VALOR -->
+
+                    <div class="form-group">
+
+                        <label for="valorVenda">
+                            Valor da venda
+                        </label>
+
+                        <input
+                            type="number"
+                            id="valorVenda"
+                            min="0"
+                            step="0.01"
+                            placeholder="0,00"
+                            required>
+
+                    </div>
+
+
+                    <!-- PAGAMENTO -->
+
+                    <div class="form-group">
+
+                        <label for="pagamentoVenda">
+                            Forma de pagamento
+                        </label>
+
+                        <select
+                            id="pagamentoVenda"
+                            required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="pix">
+                                PIX
+                            </option>
+
+                            <option value="cartao">
+                                Cartão
+                            </option>
+
+                            <option value="dinheiro">
+                                Dinheiro
+                            </option>
+
+                            <option value="transferencia">
+                                Transferência
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label for="statusVenda">
+                            Status
+                        </label>
+
+                        <select
+                            id="statusVenda"
+                            required>
+
+                            <option value="concluida">
+                                Concluída
+                            </option>
+
+                            <option value="pendente">
+                                Pendente
+                            </option>
+
+                            <option value="cancelada">
+                                Cancelada
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- OBSERVAÇÃO -->
+
+                    <div class="form-group full">
+
+                        <label for="observacaoVenda">
+                            Observações
+                        </label>
+
+                        <textarea
+                            id="observacaoVenda"
+                            rows="3"
+                            placeholder="Observações sobre a venda..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER MODAL -->
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="cancelarVenda">
+
+                        Cancelar
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Registrar Venda
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/vendas.js"></script>
+
+
+    <script>
+
+        /* ================================
+           MENU MOBILE
+        ================================= */
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const sidebar =
+            document.querySelector(".sidebar");
+
+        if (mobileMenu && sidebar) {
+
+            mobileMenu.addEventListener("click", () => {
+
+                sidebar.classList.toggle("open");
+
+            });
+
+        }
+
+
+        /* ================================
+           LOGOUT
+        ================================= */
+
+        const logoutButton =
+            document.getElementById("logoutButton");
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener("click", () => {
+
+                localStorage.removeItem("usuarioLogado");
+
+                localStorage.removeItem("emailUsuario");
+
+                window.location.href =
+                    "../index.html";
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
