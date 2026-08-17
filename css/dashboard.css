@@ -1129,3 +1129,490 @@
     }
 
 }
+/* ==========================================================
+   CORREÇÃO VISUAL — DASHBOARD
+   Alinhamento e hierarquia dos textos
+========================================================== */
+
+
+/* ==========================================================
+   CONTEÚDO PRINCIPAL
+========================================================== */
+
+.main-content {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+
+/* ==========================================================
+   TOPBAR
+========================================================== */
+
+.topbar {
+    box-sizing: border-box;
+}
+
+.topbar-left {
+    min-width: 0;
+}
+
+.topbar-left > div {
+    min-width: 0;
+}
+
+.topbar-left h1 {
+    color: #ffffff !important;
+    line-height: 1.2;
+}
+
+.topbar-left p {
+    color: #94a3b8 !important;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   CABEÇALHO DE BOAS-VINDAS
+========================================================== */
+
+.welcome-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-card h2,
+.welcome-card h3 {
+    color: #ffffff !important;
+    line-height: 1.3;
+}
+
+.welcome-card p {
+    color: #cbd5e1 !important;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   CARDS DE ESTATÍSTICAS
+========================================================== */
+
+.dashboard-stats,
+.stats-grid,
+.stats-cards {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    width: 100%;
+
+    box-sizing: border-box;
+}
+
+
+/* Cada card */
+
+.stat-card,
+.dashboard-stat-card,
+.stat-item {
+    position: relative;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 22px;
+
+    background: #ffffff !important;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    color: #0f172a;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(15, 23, 42, .04);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.stat-card:hover,
+.dashboard-stat-card:hover,
+.stat-item:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px rgba(15, 23, 42, .08);
+}
+
+
+/* ==========================================================
+   ÍCONE DOS CARDS
+========================================================== */
+
+.stat-card .stat-icon,
+.dashboard-stat-card .stat-icon,
+.stat-item .stat-icon {
+    flex: 0 0 44px;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    font-size: 17px;
+}
+
+
+/* ==========================================================
+   CONTEÚDO DOS CARDS
+========================================================== */
+
+.stat-card > div:last-child,
+.dashboard-stat-card > div:last-child,
+.stat-item > div:last-child {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+}
+
+
+/* Título */
+
+.stat-card span,
+.dashboard-stat-card span,
+.stat-item span {
+    display: block;
+
+    width: 100%;
+
+    margin: 0 0 5px;
+
+    color: #64748b !important;
+
+    font-size: .72rem;
+
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    white-space: normal;
+}
+
+
+/* Número */
+
+.stat-card strong,
+.dashboard-stat-card strong,
+.stat-item strong {
+    display: block;
+
+    width: 100%;
+
+    margin: 0;
+
+    color: #0f172a !important;
+
+    font-size: 1.45rem;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -.4px;
+}
+
+
+/* Texto complementar */
+
+.stat-card small,
+.dashboard-stat-card small,
+.stat-item small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #94a3b8 !important;
+
+    font-size: .65rem;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   VARIAÇÃO / PORCENTAGEM
+========================================================== */
+
+.stat-card .positive,
+.stat-card .stat-change,
+.stat-card .change,
+.dashboard-stat-card .positive,
+.dashboard-stat-card .stat-change {
+    display: inline-flex;
+
+    align-items: center;
+
+    width: auto;
+
+    margin-top: 7px;
+
+    padding: 3px 7px;
+
+    border-radius: 6px;
+
+    background: #ecfdf5;
+
+    color: #16a34a !important;
+
+    font-size: .62rem;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+}
+
+
+/* ==========================================================
+   ÁREA INFERIOR
+========================================================== */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.55fr)
+        minmax(320px, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+
+/* ==========================================================
+   CARDS DO DASHBOARD
+========================================================== */
+
+.dashboard-card {
+    min-width: 0;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(15, 23, 42, .035);
+}
+
+
+/* ==========================================================
+   CABEÇALHO DOS CARDS
+========================================================== */
+
+.dashboard-card-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 21px 22px;
+
+    border-bottom: 1px solid #eef0f3;
+}
+
+.dashboard-card-header > div {
+    min-width: 0;
+}
+
+.dashboard-card-header h3,
+.dashboard-card-header h2 {
+    margin: 0;
+
+    color: #0f172a !important;
+
+    font-size: .95rem;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+.dashboard-card-header p {
+    margin: 5px 0 0;
+
+    color: #94a3b8 !important;
+
+    font-size: .68rem;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   RESUMO DE VENDAS
+========================================================== */
+
+.sales-summary,
+.sales-chart,
+.chart-container {
+    min-width: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   ATIVIDADES RECENTES
+========================================================== */
+
+.activity-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #eef0f3;
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-item > div {
+    min-width: 0;
+}
+
+.activity-item strong {
+    display: block;
+
+    color: #0f172a !important;
+
+    font-size: .72rem;
+
+    line-height: 1.4;
+}
+
+.activity-item span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #94a3b8 !important;
+
+    font-size: .62rem;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   TABELAS
+========================================================== */
+
+.dashboard-table {
+    width: 100%;
+
+    table-layout: fixed;
+
+    border-collapse: collapse;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    vertical-align: middle;
+
+    line-height: 1.4;
+}
+
+.dashboard-table th {
+    color: #64748b !important;
+
+    font-size: .67rem;
+
+    font-weight: 600;
+}
+
+.dashboard-table td {
+    color: #334155 !important;
+
+    font-size: .73rem;
+}
+
+
+/* ==========================================================
+   RESPONSIVIDADE
+========================================================== */
+
+@media (max-width: 1200px) {
+
+    .dashboard-stats,
+    .stats-grid,
+    .stats-cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .dashboard-stats,
+    .stats-grid,
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        padding: 0 18px;
+    }
+
+    .dashboard-content {
+        padding: 20px 18px 30px;
+    }
+
+}
