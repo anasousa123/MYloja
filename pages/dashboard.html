@@ -3,41 +3,57 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Dashboard</title>
 
     <meta name="description"
-        content="Dashboard do sistema Fashion ERP para gerenciamento de lojas de roupas">
+        content="Dashboard do Fashion ERP - Sistema profissional de gerenciamento para lojas de roupas">
 
-    <!-- Google Fonts -->
+    <!-- ==============================
+         FONTES
+    =============================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <!-- ==============================
+         ÍCONES
+    =============================== -->
 
-    <!-- CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- ==============================
+         CSS
+    =============================== -->
+
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/responsive.css">
+
 </head>
 
 <body>
 
-    <!-- =========================
-         SIDEBAR
-    ========================== -->
+<div class="app">
 
-    <aside class="sidebar">
+    <!-- ==================================================
+         SIDEBAR
+    =================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <!-- LOGO -->
 
         <div class="sidebar-logo">
 
@@ -53,67 +69,132 @@
         </div>
 
 
+        <!-- MENU -->
+
         <nav class="sidebar-menu">
 
-            <p class="menu-title">MENU PRINCIPAL</p>
+            <div class="menu-title">
+                MENU PRINCIPAL
+            </div>
 
-            <a href="dashboard.html" class="menu-item active">
+
+            <a href="dashboard.html"
+               class="menu-item active">
+
                 <i class="fa-solid fa-chart-pie"></i>
+
                 <span>Dashboard</span>
+
             </a>
 
-            <a href="produtos.html" class="menu-item">
+
+            <a href="produtos.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-shirt"></i>
+
                 <span>Produtos</span>
+
             </a>
 
-            <a href="clientes.html" class="menu-item">
+
+            <a href="clientes.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-users"></i>
+
                 <span>Clientes</span>
+
             </a>
 
-            <a href="estoque.html" class="menu-item">
+
+            <a href="estoque.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-boxes-stacked"></i>
+
                 <span>Estoque</span>
+
             </a>
 
-            <a href="vendas.html" class="menu-item">
+
+            <a href="vendas.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-cart-shopping"></i>
+
                 <span>Vendas</span>
+
             </a>
 
-            <p class="menu-title">GESTÃO</p>
 
-            <a href="financeiro.html" class="menu-item">
+            <div class="menu-title">
+                GESTÃO
+            </div>
+
+
+            <a href="financeiro.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-wallet"></i>
+
                 <span>Financeiro</span>
+
             </a>
 
-            <a href="fornecedores.html" class="menu-item">
+
+            <a href="fornecedores.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-truck"></i>
+
                 <span>Fornecedores</span>
+
             </a>
 
-            <a href="relatorios.html" class="menu-item">
+
+            <a href="relatorios.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-chart-column"></i>
+
                 <span>Relatórios</span>
+
             </a>
 
-            <a href="metas.html" class="menu-item">
+
+            <a href="metas.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-bullseye"></i>
+
                 <span>Metas</span>
+
             </a>
 
-            <p class="menu-title">CONTA</p>
 
-            <a href="perfil.html" class="menu-item">
+            <div class="menu-title">
+                CONTA
+            </div>
+
+
+            <a href="perfil.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-user"></i>
+
                 <span>Meu Perfil</span>
+
             </a>
 
-            <a href="configuracoes.html" class="menu-item">
+
+            <a href="configuracoes.html"
+               class="menu-item">
+
                 <i class="fa-solid fa-gear"></i>
+
                 <span>Configurações</span>
+
             </a>
 
         </nav>
@@ -124,19 +205,25 @@
         <div class="sidebar-user">
 
             <div class="user-avatar">
+
                 <i class="fa-solid fa-user"></i>
+
             </div>
 
             <div class="user-info">
+
                 <strong>Administrador</strong>
+
                 <span>Administrador</span>
+
             </div>
 
-            <button
-                class="logout-button"
-                id="logoutButton"
-                title="Sair">
+            <button class="logout-button"
+                    id="logoutButton"
+                    title="Sair">
+
                 <i class="fa-solid fa-right-from-bracket"></i>
+
             </button>
 
         </div>
@@ -144,27 +231,38 @@
     </aside>
 
 
-    <!-- =========================
+
+    <!-- ==================================================
          CONTEÚDO PRINCIPAL
-    ========================== -->
+    =================================================== -->
 
     <main class="main-content">
 
-        <!-- TOPBAR -->
+
+        <!-- ==================================================
+             TOPBAR
+        =================================================== -->
 
         <header class="topbar">
 
             <div class="topbar-left">
 
-                <button
-                    class="mobile-menu"
-                    id="mobileMenu">
+                <button class="mobile-menu"
+                        id="mobileMenu">
+
                     <i class="fa-solid fa-bars"></i>
+
                 </button>
 
+
                 <div>
+
                     <h1>Dashboard</h1>
-                    <p>Visão geral da sua loja</p>
+
+                    <p>
+                        Visão geral da sua loja
+                    </p>
+
                 </div>
 
             </div>
@@ -172,9 +270,11 @@
 
             <div class="topbar-right">
 
-                <button
-                    class="notification-button"
-                    title="Notificações">
+
+                <!-- NOTIFICAÇÕES -->
+
+                <button class="notification-button"
+                        title="Notificações">
 
                     <i class="fa-regular fa-bell"></i>
 
@@ -183,6 +283,8 @@
                 </button>
 
 
+                <!-- USUÁRIO -->
+
                 <div class="topbar-user">
 
                     <div class="topbar-avatar">
@@ -190,8 +292,15 @@
                     </div>
 
                     <div>
-                        <strong>Administrador</strong>
-                        <span>Online</span>
+
+                        <strong>
+                            Administrador
+                        </strong>
+
+                        <span>
+                            Online
+                        </span>
+
                     </div>
 
                 </div>
@@ -201,439 +310,560 @@
         </header>
 
 
-        <!-- =========================
-             SAUDAÇÃO
-        ========================== -->
 
-        <section class="welcome-section">
+        <!-- ==================================================
+             DASHBOARD
+        =================================================== -->
 
-            <div>
+        <section class="dashboard-content">
 
-                <span class="welcome-label">
-                    <i class="fa-solid fa-sun"></i>
-                    Bem-vindo de volta!
-                </span>
 
-                <h2>
-                    Olá, Administrador! 👋
-                </h2>
+            <!-- ==================================================
+                 CABEÇALHO
+            =================================================== -->
 
-                <p>
-                    Aqui está o resumo da sua loja hoje.
-                </p>
-
-            </div>
-
-
-            <a href="vendas.html" class="btn-primary">
-
-                <i class="fa-solid fa-plus"></i>
-
-                Nova Venda
-
-            </a>
-
-        </section>
-
-
-        <!-- =========================
-             CARDS
-        ========================== -->
-
-        <section class="dashboard-cards">
-
-
-            <!-- FATURAMENTO -->
-
-            <div class="stat-card">
-
-                <div class="stat-card-top">
-
-                    <div class="stat-icon gold">
-                        <i class="fa-solid fa-dollar-sign"></i>
-                    </div>
-
-                    <span class="stat-badge positive">
-                        <i class="fa-solid fa-arrow-up"></i>
-                        12,5%
-                    </span>
-
-                </div>
-
-                <p>Faturamento</p>
-
-                <h2>R$ 18.420,00</h2>
-
-                <span class="stat-description">
-                    Comparado ao mês anterior
-                </span>
-
-            </div>
-
-
-            <!-- VENDAS -->
-
-            <div class="stat-card">
-
-                <div class="stat-card-top">
-
-                    <div class="stat-icon blue">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </div>
-
-                    <span class="stat-badge positive">
-                        <i class="fa-solid fa-arrow-up"></i>
-                        8,2%
-                    </span>
-
-                </div>
-
-                <p>Vendas Hoje</p>
-
-                <h2>34</h2>
-
-                <span class="stat-description">
-                    Vendas realizadas hoje
-                </span>
-
-            </div>
-
-
-            <!-- PRODUTOS -->
-
-            <div class="stat-card">
-
-                <div class="stat-card-top">
-
-                    <div class="stat-icon purple">
-                        <i class="fa-solid fa-shirt"></i>
-                    </div>
-
-                    <span class="stat-badge">
-                        Estoque
-                    </span>
-
-                </div>
-
-                <p>Produtos</p>
-
-                <h2>248</h2>
-
-                <span class="stat-description">
-                    Produtos cadastrados
-                </span>
-
-            </div>
-
-
-            <!-- CLIENTES -->
-
-            <div class="stat-card">
-
-                <div class="stat-card-top">
-
-                    <div class="stat-icon green">
-                        <i class="fa-solid fa-users"></i>
-                    </div>
-
-                    <span class="stat-badge positive">
-                        <i class="fa-solid fa-arrow-up"></i>
-                        5,4%
-                    </span>
-
-                </div>
-
-                <p>Clientes</p>
-
-                <h2>812</h2>
-
-                <span class="stat-description">
-                    Clientes cadastrados
-                </span>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ÁREA INFERIOR
-        ========================== -->
-
-        <section class="dashboard-grid">
-
-
-            <!-- VENDAS -->
-
-            <div class="dashboard-panel">
-
-                <div class="panel-header">
-
-                    <div>
-
-                        <h2>Resumo de Vendas</h2>
-
-                        <p>
-                            Desempenho das vendas recentes
-                        </p>
-
-                    </div>
-
-                    <select id="periodoVendas">
-
-                        <option value="7">
-                            Últimos 7 dias
-                        </option>
-
-                        <option value="30">
-                            Últimos 30 dias
-                        </option>
-
-                        <option value="90">
-                            Últimos 3 meses
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="sales-chart">
-
-                    <div class="chart-placeholder">
-
-                        <i class="fa-solid fa-chart-line"></i>
-
-                        <strong>R$ 18.420,00</strong>
-
-                        <span>
-                            Faturamento no período
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ATIVIDADES -->
-
-            <div class="dashboard-panel">
-
-                <div class="panel-header">
-
-                    <div>
-
-                        <h2>Atividades Recentes</h2>
-
-                        <p>
-                            Últimas movimentações
-                        </p>
-
-                    </div>
-
-                    <a href="relatorios.html">
-                        Ver tudo
-                    </a>
-
-                </div>
-
-
-                <div class="activity-list">
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon sale">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-
-                        <div class="activity-info">
-
-                            <strong>Nova venda realizada</strong>
-
-                            <span>
-                                Venda #1024 • R$ 349,90
-                            </span>
-
-                        </div>
-
-                        <small>
-                            Agora
-                        </small>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon product">
-                            <i class="fa-solid fa-shirt"></i>
-                        </div>
-
-                        <div class="activity-info">
-
-                            <strong>Produto cadastrado</strong>
-
-                            <span>
-                                Vestido Midi Elegance
-                            </span>
-
-                        </div>
-
-                        <small>
-                            15 min
-                        </small>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon client">
-                            <i class="fa-solid fa-user-plus"></i>
-                        </div>
-
-                        <div class="activity-info">
-
-                            <strong>Novo cliente</strong>
-
-                            <span>
-                                Cliente cadastrado no sistema
-                            </span>
-
-                        </div>
-
-                        <small>
-                            32 min
-                        </small>
-
-                    </div>
-
-
-                    <div class="activity-item">
-
-                        <div class="activity-icon stock">
-                            <i class="fa-solid fa-box"></i>
-                        </div>
-
-                        <div class="activity-info">
-
-                            <strong>Estoque atualizado</strong>
-
-                            <span>
-                                12 produtos atualizados
-                            </span>
-
-                        </div>
-
-                        <small>
-                            1h
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ACESSO RÁPIDO
-        ========================== -->
-
-        <section class="quick-access">
-
-            <div class="section-title">
+            <div class="dashboard-header">
 
                 <div>
 
-                    <h2>Acesso Rápido</h2>
+                    <span class="dashboard-welcome">
+                        <i class="fa-solid fa-sparkles"></i>
+                        Bem-vindo de volta!
+                    </span>
+
+                    <h2>
+                        Olá, Administrador! 👋
+                    </h2>
 
                     <p>
-                        Acesse os principais recursos
+                        Aqui está o resumo da sua loja hoje.
                     </p>
 
                 </div>
 
+
+                <div class="dashboard-actions">
+
+                    <a href="vendas.html"
+                       class="btn-primary">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Nova Venda
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 INDICADORES
+            =================================================== -->
+
+            <div class="dashboard-stats">
+
+
+                <!-- FATURAMENTO -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-header">
+
+                        <div class="stat-icon blue">
+
+                            <i class="fa-solid fa-dollar-sign"></i>
+
+                        </div>
+
+                    </div>
+
+                    <span class="stat-card-label">
+                        Faturamento
+                    </span>
+
+                    <strong class="stat-card-value">
+                        R$ 18.420,00
+                    </strong>
+
+                    <span class="stat-card-change positive">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        12,5%
+
+                        <small>
+                            comparado ao mês anterior
+                        </small>
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- VENDAS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-header">
+
+                        <div class="stat-icon green">
+
+                            <i class="fa-solid fa-cart-shopping"></i>
+
+                        </div>
+
+                    </div>
+
+                    <span class="stat-card-label">
+                        Vendas hoje
+                    </span>
+
+                    <strong class="stat-card-value">
+                        34
+                    </strong>
+
+                    <span class="stat-card-change positive">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        8,2%
+
+                        <small>
+                            vendas realizadas hoje
+                        </small>
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- PRODUTOS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-header">
+
+                        <div class="stat-icon orange">
+
+                            <i class="fa-solid fa-shirt"></i>
+
+                        </div>
+
+                    </div>
+
+                    <span class="stat-card-label">
+                        Produtos
+                    </span>
+
+                    <strong class="stat-card-value">
+                        248
+                    </strong>
+
+                    <span class="stat-card-change">
+
+                        <small>
+                            produtos cadastrados
+                        </small>
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- CLIENTES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-card-header">
+
+                        <div class="stat-icon red">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+                    </div>
+
+                    <span class="stat-card-label">
+                        Clientes
+                    </span>
+
+                    <strong class="stat-card-value">
+                        812
+                    </strong>
+
+                    <span class="stat-card-change positive">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        5,4%
+
+                        <small>
+                            clientes cadastrados
+                        </small>
+
+                    </span>
+
+                </div>
+
             </div>
 
 
-            <div class="quick-grid">
+
+            <!-- ==================================================
+                 ÁREA PRINCIPAL
+            =================================================== -->
+
+            <div class="dashboard-grid">
 
 
-                <a href="produtos.html" class="quick-card">
+                <!-- ==================================================
+                     RESUMO DE VENDAS
+                =================================================== -->
 
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-shirt"></i>
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-header">
+
+                        <div>
+
+                            <h3>
+                                Resumo de vendas
+                            </h3>
+
+                            <p>
+                                Desempenho das vendas recentes
+                            </p>
+
+                        </div>
+
+
+                        <select class="dashboard-filter">
+
+                            <option>
+                                Últimos 7 dias
+                            </option>
+
+                            <option>
+                                Últimos 30 dias
+                            </option>
+
+                            <option>
+                                Este ano
+                            </option>
+
+                        </select>
+
                     </div>
 
-                    <div>
-                        <strong>Produtos</strong>
-                        <span>Gerenciar produtos</span>
+
+                    <div class="dashboard-card-body">
+
+                        <div class="sales-summary">
+
+                            <div class="sales-total">
+
+                                <span>
+                                    Faturamento no período
+                                </span>
+
+                                <strong>
+                                    R$ 18.420,00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="sales-chart">
+
+                                <div class="chart-line">
+
+                                    <span style="height:35%"></span>
+                                    <span style="height:48%"></span>
+                                    <span style="height:42%"></span>
+                                    <span style="height:65%"></span>
+                                    <span style="height:54%"></span>
+                                    <span style="height:78%"></span>
+                                    <span style="height:92%"></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="chart-days">
+
+                                <span>Seg</span>
+                                <span>Ter</span>
+                                <span>Qua</span>
+                                <span>Qui</span>
+                                <span>Sex</span>
+                                <span>Sáb</span>
+                                <span>Dom</span>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <i class="fa-solid fa-chevron-right"></i>
-
-                </a>
+                </div>
 
 
-                <a href="clientes.html" class="quick-card">
 
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-users"></i>
+                <!-- ==================================================
+                     ATIVIDADES
+                =================================================== -->
+
+                <div class="dashboard-card">
+
+                    <div class="dashboard-card-header">
+
+                        <div>
+
+                            <h3>
+                                Atividades recentes
+                            </h3>
+
+                            <p>
+                                Últimas movimentações
+                            </p>
+
+                        </div>
+
+
+                        <a href="relatorios.html"
+                           class="view-all">
+
+                            Ver tudo
+
+                        </a>
+
                     </div>
 
-                    <div>
-                        <strong>Clientes</strong>
-                        <span>Gerenciar clientes</span>
+
+                    <div class="dashboard-card-body">
+
+
+                        <!-- ATIVIDADE 1 -->
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon yellow">
+
+                                <i class="fa-solid fa-cart-shopping"></i>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Nova venda realizada
+                                </strong>
+
+                                <span>
+                                    Venda #1024 · R$ 349,90
+                                </span>
+
+                            </div>
+
+                            <small>
+                                Agora
+                            </small>
+
+                        </div>
+
+
+                        <!-- ATIVIDADE 2 -->
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon blue">
+
+                                <i class="fa-solid fa-shirt"></i>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Produto cadastrado
+                                </strong>
+
+                                <span>
+                                    Vestido Midi Elegance
+                                </span>
+
+                            </div>
+
+                            <small>
+                                15 min
+                            </small>
+
+                        </div>
+
+
+                        <!-- ATIVIDADE 3 -->
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon green">
+
+                                <i class="fa-solid fa-user-plus"></i>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Novo cliente
+                                </strong>
+
+                                <span>
+                                    Cliente cadastrado no sistema
+                                </span>
+
+                            </div>
+
+                            <small>
+                                32 min
+                            </small>
+
+                        </div>
+
+
+                        <!-- ATIVIDADE 4 -->
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon purple">
+
+                                <i class="fa-solid fa-box"></i>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Estoque atualizado
+                                </strong>
+
+                                <span>
+                                    12 produtos atualizados
+                                </span>
+
+                            </div>
+
+                            <small>
+                                1h
+                            </small>
+
+                        </div>
+
+
                     </div>
 
-                    <i class="fa-solid fa-chevron-right"></i>
-
-                </a>
-
-
-                <a href="estoque.html" class="quick-card">
-
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-boxes-stacked"></i>
-                    </div>
-
-                    <div>
-                        <strong>Estoque</strong>
-                        <span>Controlar estoque</span>
-                    </div>
-
-                    <i class="fa-solid fa-chevron-right"></i>
-
-                </a>
-
-
-                <a href="financeiro.html" class="quick-card">
-
-                    <div class="quick-icon">
-                        <i class="fa-solid fa-wallet"></i>
-                    </div>
-
-                    <div>
-                        <strong>Financeiro</strong>
-                        <span>Ver movimentações</span>
-                    </div>
-
-                    <i class="fa-solid fa-chevron-right"></i>
-
-                </a>
+                </div>
 
             </div>
+
+
+
+            <!-- ==================================================
+                 AÇÕES RÁPIDAS
+            =================================================== -->
+
+            <div class="dashboard-card quick-card">
+
+                <div class="dashboard-card-header">
+
+                    <div>
+
+                        <h3>
+                            Acesso rápido
+                        </h3>
+
+                        <p>
+                            Atalhos para as principais funções
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-card-body">
+
+                    <div class="quick-actions">
+
+
+                        <a href="produtos.html"
+                           class="quick-action">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            <span>
+                                Novo produto
+                            </span>
+
+                        </a>
+
+
+                        <a href="clientes.html"
+                           class="quick-action">
+
+                            <i class="fa-solid fa-user-plus"></i>
+
+                            <span>
+                                Novo cliente
+                            </span>
+
+                        </a>
+
+
+                        <a href="estoque.html"
+                           class="quick-action">
+
+                            <i class="fa-solid fa-boxes-stacked"></i>
+
+                            <span>
+                                Ver estoque
+                            </span>
+
+                        </a>
+
+
+                        <a href="relatorios.html"
+                           class="quick-action">
+
+                            <i class="fa-solid fa-file-lines"></i>
+
+                            <span>
+                                Relatórios
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
 
         </section>
 
 
-        <!-- FOOTER -->
+
+        <!-- ==================================================
+             RODAPÉ
+        =================================================== -->
 
         <footer class="dashboard-footer">
 
@@ -642,62 +872,67 @@
             </span>
 
             <span>
-                Sistema de gerenciamento para lojas de roupas
+                Sistema profissional de gerenciamento para lojas de roupas
             </span>
 
         </footer>
 
+
     </main>
 
-
-    <!-- JavaScript -->
-
-    <script src="../js/dashboard.js"></script>
-
-    <script>
-
-        // =====================================
-        // SAIR DO SISTEMA
-        // =====================================
-
-        const logoutButton =
-            document.getElementById("logoutButton");
-
-        if (logoutButton) {
-
-            logoutButton.addEventListener("click", () => {
-
-                localStorage.removeItem("usuarioLogado");
-                localStorage.removeItem("emailUsuario");
-
-                window.location.href = "../index.html";
-
-            });
-
-        }
+</div>
 
 
-        // =====================================
-        // MENU MOBILE
-        // =====================================
+<!-- ==================================================
+     JAVASCRIPT
+=================================================== -->
 
-        const mobileMenu =
-            document.getElementById("mobileMenu");
+<script src="../js/dashboard.js"></script>
 
-        const sidebar =
-            document.querySelector(".sidebar");
 
-        if (mobileMenu && sidebar) {
+<script>
 
-            mobileMenu.addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-                sidebar.classList.toggle("open");
+    const mobileMenu =
+        document.getElementById("mobileMenu");
 
-            });
+    const sidebar =
+        document.getElementById("sidebar");
 
-        }
+    if (mobileMenu && sidebar) {
 
-    </script>
+        mobileMenu.addEventListener("click", function () {
+
+            sidebar.classList.toggle("open");
+
+        });
+
+    }
+
+
+    const logoutButton =
+        document.getElementById("logoutButton");
+
+    if (logoutButton) {
+
+        logoutButton.addEventListener("click", function () {
+
+            if (confirm("Deseja realmente sair?")) {
+
+                window.location.href =
+                    "../index.html";
+
+            }
+
+        });
+
+    }
+
+});
+
+</script>
+
 
 </body>
 
