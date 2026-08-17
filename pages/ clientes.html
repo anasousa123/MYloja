@@ -10,7 +10,6 @@
     <meta name="description"
         content="Gerenciamento de clientes do Fashion ERP">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -18,12 +17,10 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
@@ -52,12 +49,9 @@
 
         </div>
 
-
         <nav class="sidebar-menu">
 
-            <p class="menu-title">
-                MENU PRINCIPAL
-            </p>
+            <p class="menu-title">MENU PRINCIPAL</p>
 
             <a href="dashboard.html" class="menu-item">
                 <i class="fa-solid fa-chart-pie"></i>
@@ -84,10 +78,7 @@
                 <span>Vendas</span>
             </a>
 
-
-            <p class="menu-title">
-                GESTÃO
-            </p>
+            <p class="menu-title">GESTÃO</p>
 
             <a href="financeiro.html" class="menu-item">
                 <i class="fa-solid fa-wallet"></i>
@@ -109,10 +100,7 @@
                 <span>Metas</span>
             </a>
 
-
-            <p class="menu-title">
-                CONTA
-            </p>
+            <p class="menu-title">CONTA</p>
 
             <a href="perfil.html" class="menu-item">
                 <i class="fa-solid fa-user"></i>
@@ -126,9 +114,6 @@
 
         </nav>
 
-
-        <!-- USUÁRIO -->
-
         <div class="sidebar-user">
 
             <div class="user-avatar">
@@ -136,15 +121,8 @@
             </div>
 
             <div class="user-info">
-
-                <strong>
-                    Administrador
-                </strong>
-
-                <span>
-                    Administrador
-                </span>
-
+                <strong>Administrador</strong>
+                <span>Administrador</span>
             </div>
 
             <button
@@ -167,7 +145,6 @@
 
     <main class="main-content">
 
-
         <!-- TOPBAR -->
 
         <header class="topbar">
@@ -185,9 +162,7 @@
 
                 <div>
 
-                    <h1>
-                        Clientes
-                    </h1>
+                    <h1>Clientes</h1>
 
                     <p>
                         Gerencie os clientes da sua loja
@@ -202,8 +177,7 @@
 
                 <button
                     class="notification-button"
-                    type="button"
-                    title="Notificações">
+                    type="button">
 
                     <i class="fa-regular fa-bell"></i>
 
@@ -220,13 +194,9 @@
 
                     <div>
 
-                        <strong>
-                            Administrador
-                        </strong>
+                        <strong>Administrador</strong>
 
-                        <span>
-                            Online
-                        </span>
+                        <span>Online</span>
 
                     </div>
 
@@ -245,23 +215,20 @@
 
             <div>
 
-                <h2>
-                    Gestão de Clientes
-                </h2>
+                <h2>Gestão de Clientes</h2>
 
                 <p>
-                    Cadastre, consulte e acompanhe seus clientes.
+                    Cadastre, edite e acompanhe seus clientes.
                 </p>
 
             </div>
-
 
             <button
                 class="btn-primary"
                 id="btnNovoCliente"
                 type="button">
 
-                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-user-plus"></i>
 
                 Novo Cliente
 
@@ -271,27 +238,20 @@
 
 
         <!-- =================================================
-             CARDS DE RESUMO
+             ESTATÍSTICAS
         ================================================== -->
 
         <section class="client-stats">
 
-
-            <!-- TOTAL -->
-
             <div class="client-stat-card">
 
                 <div class="client-stat-icon blue">
-
                     <i class="fa-solid fa-users"></i>
-
                 </div>
 
                 <div>
 
-                    <span>
-                        Total de Clientes
-                    </span>
+                    <span>Total de Clientes</span>
 
                     <strong id="totalClientes">
                         0
@@ -302,21 +262,15 @@
             </div>
 
 
-            <!-- ATIVOS -->
-
             <div class="client-stat-card">
 
                 <div class="client-stat-icon green">
-
                     <i class="fa-solid fa-user-check"></i>
-
                 </div>
 
                 <div>
 
-                    <span>
-                        Clientes Ativos
-                    </span>
+                    <span>Clientes Ativos</span>
 
                     <strong id="clientesAtivos">
                         0
@@ -327,21 +281,15 @@
             </div>
 
 
-            <!-- NOVOS -->
-
             <div class="client-stat-card">
 
-                <div class="client-stat-icon gold">
-
-                    <i class="fa-solid fa-user-plus"></i>
-
+                <div class="client-stat-icon orange">
+                    <i class="fa-solid fa-user-clock"></i>
                 </div>
 
                 <div>
 
-                    <span>
-                        Novos Clientes
-                    </span>
+                    <span>Novos Clientes</span>
 
                     <strong id="novosClientes">
                         0
@@ -352,23 +300,17 @@
             </div>
 
 
-            <!-- INATIVOS -->
-
             <div class="client-stat-card">
 
-                <div class="client-stat-icon red">
-
-                    <i class="fa-solid fa-user-xmark"></i>
-
+                <div class="client-stat-icon purple">
+                    <i class="fa-solid fa-crown"></i>
                 </div>
 
                 <div>
 
-                    <span>
-                        Inativos
-                    </span>
+                    <span>Clientes VIP</span>
 
-                    <strong id="clientesInativos">
+                    <strong id="clientesVip">
                         0
                     </strong>
 
@@ -385,27 +327,22 @@
 
         <section class="clients-toolbar">
 
-
-            <!-- PESQUISA -->
-
             <div class="client-search">
 
                 <i class="fa-solid fa-magnifying-glass"></i>
 
                 <input
-                    type="text"
-                    id="pesquisaCliente"
-                    placeholder="Buscar por nome, telefone ou e-mail..."
+                    type="search"
+                    id="buscarCliente"
+                    placeholder="Buscar por nome, e-mail ou telefone..."
                     autocomplete="off">
 
             </div>
 
 
-            <!-- STATUS -->
+            <select id="filtroStatus">
 
-            <select id="filtroStatusCliente">
-
-                <option value="todos">
+                <option value="">
                     Todos os status
                 </option>
 
@@ -420,20 +357,18 @@
             </select>
 
 
-            <!-- ORDENAÇÃO -->
+            <select id="filtroTipo">
 
-            <select id="ordenarClientes">
-
-                <option value="recentes">
-                    Mais recentes
+                <option value="">
+                    Todos os clientes
                 </option>
 
-                <option value="nome">
-                    Nome A-Z
+                <option value="comum">
+                    Clientes comuns
                 </option>
 
-                <option value="nomeDesc">
-                    Nome Z-A
+                <option value="vip">
+                    Clientes VIP
                 </option>
 
             </select>
@@ -442,22 +377,19 @@
 
 
         <!-- =================================================
-             TABELA DE CLIENTES
+             TABELA
         ================================================== -->
 
         <section class="clients-table-card">
 
-
-            <div class="table-header">
+            <div class="clients-table-header">
 
                 <div>
 
-                    <h2>
-                        Clientes cadastrados
-                    </h2>
+                    <h2>Clientes cadastrados</h2>
 
                     <p>
-                        Lista completa dos clientes
+                        Lista completa dos clientes da loja
                     </p>
 
                 </div>
@@ -469,37 +401,25 @@
             </div>
 
 
-            <div class="table-wrapper">
+            <div class="clients-table-wrapper">
 
-                <table>
+                <table class="clients-table">
 
                     <thead>
 
                         <tr>
 
-                            <th>
-                                Cliente
-                            </th>
+                            <th>Cliente</th>
 
-                            <th>
-                                Telefone
-                            </th>
+                            <th>Telefone</th>
 
-                            <th>
-                                E-mail
-                            </th>
+                            <th>E-mail</th>
 
-                            <th>
-                                Cadastro
-                            </th>
+                            <th>Última compra</th>
 
-                            <th>
-                                Status
-                            </th>
+                            <th>Status</th>
 
-                            <th>
-                                Ações
-                            </th>
+                            <th>Ações</th>
 
                         </tr>
 
@@ -509,84 +429,71 @@
                     <tbody id="listaClientes">
 
                         <!--
-                            Os clientes serão
-                            inseridos pelo clientes.js
+                            Os clientes serão inseridos
+                            automaticamente pelo clientes.js.
                         -->
 
                     </tbody>
 
                 </table>
 
+            </div>
 
-                <!-- ESTADO VAZIO -->
 
-                <div
-                    class="clientes-vazios"
-                    id="clientesVazios">
+            <!-- ESTADO VAZIO -->
 
-                    <div class="empty-icon">
+            <div
+                class="clients-empty"
+                id="clientesVazios">
 
-                        <i class="fa-solid fa-users"></i>
+                <div class="clients-empty-icon">
 
-                    </div>
-
-                    <h3>
-                        Nenhum cliente encontrado
-                    </h3>
-
-                    <p>
-                        Cadastre seu primeiro cliente
-                        para começar.
-                    </p>
-
-                    <button
-                        class="btn-primary"
-                        id="btnNovoClienteVazio"
-                        type="button">
-
-                        <i class="fa-solid fa-plus"></i>
-
-                        Cadastrar Cliente
-
-                    </button>
+                    <i class="fa-solid fa-users"></i>
 
                 </div>
+
+                <h3>Nenhum cliente encontrado</h3>
+
+                <p>
+                    Cadastre seu primeiro cliente
+                    para começar.
+                </p>
 
             </div>
 
 
             <!-- PAGINAÇÃO -->
 
-            <div class="table-pagination">
+            <div class="clients-pagination">
 
-                <span id="paginacaoInfo">
-                    Nenhum cliente
+                <span id="textoPaginacao">
+                    Mostrando 0 clientes
                 </span>
 
-                <div>
+                <div class="clients-pagination-controls">
 
                     <button
-                        id="paginaAnterior"
                         type="button"
-                        title="Página anterior">
+                        id="paginaAnterior"
+                        disabled>
 
                         <i class="fa-solid fa-chevron-left"></i>
 
                     </button>
 
                     <button
+                        type="button"
                         class="active"
-                        id="paginaAtual"
-                        type="button">
+                        id="paginaAtual">
 
                         1
 
                     </button>
 
                     <button
-                        id="paginaProxima"
                         type="button"
-                        title="Próxima página">
+                        id="paginaProxima"
+                        disabled>
 
                         <i class="fa-solid fa-chevron-right"></i>
 
@@ -619,24 +526,20 @@
 
 
     <!-- =====================================================
-         MODAL NOVO CLIENTE
+         MODAL CLIENTE
     ====================================================== -->
 
     <div
         class="modal-overlay"
         id="modalCliente">
 
-
         <div class="client-modal">
-
-
-            <!-- CABEÇALHO -->
 
             <div class="modal-header">
 
                 <div>
 
-                    <h2 id="tituloModalCliente">
+                    <h2 id="tituloModal">
                         Novo Cliente
                     </h2>
 
@@ -646,12 +549,10 @@
 
                 </div>
 
-
                 <button
                     class="modal-close"
-                    id="fecharModalCliente"
-                    type="button"
-                    title="Fechar">
+                    id="fecharModal"
+                    type="button">
 
                     <i class="fa-solid fa-xmark"></i>
 
@@ -660,22 +561,21 @@
             </div>
 
 
-            <!-- FORMULÁRIO -->
-
-            <form id="formCliente">
-
+            <form
+                class="client-form"
+                id="formCliente">
 
                 <input
                     type="hidden"
                     id="clienteId">
 
 
-                <div class="form-grid">
+                <div class="client-form-grid">
 
 
                     <!-- NOME -->
 
-                    <div class="form-group">
+                    <div class="client-form-group full">
 
                         <label for="nomeCliente">
                             Nome completo
@@ -684,8 +584,7 @@
                         <input
                             type="text"
                             id="nomeCliente"
-                            placeholder="Ex.: Maria Silva"
-                            autocomplete="name"
+                            placeholder="Digite o nome completo"
                             required>
 
                     </div>
@@ -693,7 +592,7 @@
 
                     <!-- CPF -->
 
-                    <div class="form-group">
+                    <div class="client-form-group">
 
                         <label for="cpfCliente">
                             CPF
@@ -702,15 +601,14 @@
                         <input
                             type="text"
                             id="cpfCliente"
-                            placeholder="000.000.000-00"
-                            maxlength="14">
+                            placeholder="000.000.000-00">
 
                     </div>
 
 
                     <!-- TELEFONE -->
 
-                    <div class="form-group">
+                    <div class="client-form-group">
 
                         <label for="telefoneCliente">
                             Telefone
@@ -719,8 +617,7 @@
                         <input
                             type="tel"
                             id="telefoneCliente"
-                            placeholder="(34) 99999-9999"
-                            autocomplete="tel"
+                            placeholder="(00) 00000-0000"
                             required>
 
                     </div>
@@ -728,7 +625,7 @@
 
                     <!-- EMAIL -->
 
-                    <div class="form-group">
+                    <div class="client-form-group full">
 
                         <label for="emailCliente">
                             E-mail
@@ -737,15 +634,14 @@
                         <input
                             type="email"
                             id="emailCliente"
-                            placeholder="cliente@email.com"
-                            autocomplete="email">
+                            placeholder="cliente@email.com">
 
                     </div>
 
 
                     <!-- DATA NASCIMENTO -->
 
-                    <div class="form-group">
+                    <div class="client-form-group">
 
                         <label for="nascimentoCliente">
                             Data de nascimento
@@ -758,9 +654,32 @@
                     </div>
 
 
+                    <!-- TIPO -->
+
+                    <div class="client-form-group">
+
+                        <label for="tipoCliente">
+                            Tipo de cliente
+                        </label>
+
+                        <select id="tipoCliente">
+
+                            <option value="comum">
+                                Cliente comum
+                            </option>
+
+                            <option value="vip">
+                                Cliente VIP
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
                     <!-- STATUS -->
 
-                    <div class="form-group">
+                    <div class="client-form-group">
 
                         <label for="statusCliente">
                             Status
@@ -781,60 +700,24 @@
                     </div>
 
 
-                    <!-- ENDEREÇO -->
-
-                    <div class="form-group full">
-
-                        <label for="enderecoCliente">
-                            Endereço
-                        </label>
-
-                        <input
-                            type="text"
-                            id="enderecoCliente"
-                            placeholder="Rua, número, bairro...">
-
-                    </div>
-
-
-                    <!-- CIDADE -->
-
-                    <div class="form-group">
-
-                        <label for="cidadeCliente">
-                            Cidade
-                        </label>
-
-                        <input
-                            type="text"
-                            id="cidadeCliente"
-                            placeholder="Ex.: Patos de Minas">
-
-                    </div>
-
-
                     <!-- OBSERVAÇÕES -->
 
-                    <div class="form-group">
+                    <div class="client-form-group full">
 
                         <label for="observacoesCliente">
                             Observações
                         </label>
 
-                        <input
-                            type="text"
+                        <textarea
                             id="observacoesCliente"
-                            placeholder="Observações sobre o cliente">
+                            placeholder="Observações sobre o cliente..."></textarea>
 
                     </div>
-
 
                 </div>
 
 
-                <!-- RODAPÉ DO MODAL -->
-
-                <div class="modal-footer">
+                <div class="client-modal-footer">
 
                     <button
                         type="button"
@@ -844,7 +727,6 @@
                         Cancelar
 
                     </button>
-
 
                     <button
                         type="submit"
@@ -874,7 +756,7 @@
 
     <script>
 
-        /* =================================================
+        /* ================================================
            MENU MOBILE
         ================================================= */
 
@@ -884,48 +766,36 @@
         const sidebar =
             document.querySelector(".sidebar");
 
-
         if (mobileMenu && sidebar) {
 
-            mobileMenu.addEventListener(
-                "click",
-                () => {
+            mobileMenu.addEventListener("click", () => {
 
-                    sidebar.classList.toggle("open");
+                sidebar.classList.toggle("open");
 
-                }
-            );
+            });
 
         }
 
 
-        /* =================================================
+        /* ================================================
            LOGOUT
         ================================================= */
 
         const logoutButton =
             document.getElementById("logoutButton");
 
-
         if (logoutButton) {
 
-            logoutButton.addEventListener(
-                "click",
-                () => {
+            logoutButton.addEventListener("click", () => {
 
-                    localStorage.removeItem(
-                        "usuarioLogado"
-                    );
+                localStorage.removeItem("usuarioLogado");
 
-                    localStorage.removeItem(
-                        "emailUsuario"
-                    );
+                localStorage.removeItem("emailUsuario");
 
-                    window.location.href =
-                        "../index.html";
+                window.location.href =
+                    "../index.html";
 
-                }
-            );
+            });
 
         }
 
