@@ -2,20 +2,16 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Estoque</title>
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <meta name="description"
+        content="Gerenciamento de estoque do Fashion ERP">
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -25,527 +21,783 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
-    <link rel="stylesheet" href="../css/base.cssls css">
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/estoque.css">
-
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
-
 
 <body>
 
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
 
-<!-- =====================================
-     SIDEBAR
-====================================== -->
+    <aside class="sidebar">
 
-<aside class="sidebar">
+        <div class="sidebar-logo">
 
+            <div class="logo-icon">
+                <i class="fa-solid fa-shirt"></i>
+            </div>
 
-    <div class="logo">
-
-        <i class="fa-solid fa-shirt"></i>
-
-        <h2>
-            Fashion ERP
-        </h2>
-
-    </div>
-
-
-    <nav>
-
-
-        <a href="dashboard.html">
-
-            <i class="fa-solid fa-house"></i>
-
-            <span>Dashboard</span>
-
-        </a>
-
-
-        <a href="produtos.html">
-
-            <i class="fa-solid fa-shirt"></i>
-
-            <span>Produtos</span>
-
-        </a>
-
-
-        <a href="clientes.html">
-
-            <i class="fa-solid fa-users"></i>
-
-            <span>Clientes</span>
-
-        </a>
-
-
-        <a
-            href="estoque.html"
-            class="active"
-        >
-
-            <i class="fa-solid fa-box"></i>
-
-            <span>Estoque</span>
-
-        </a>
-
-
-        <a href="vendas.html">
-
-            <i class="fa-solid fa-cart-shopping"></i>
-
-            <span>Vendas</span>
-
-        </a>
-
-
-        <a href="financeiro.html">
-
-            <i class="fa-solid fa-wallet"></i>
-
-            <span>Financeiro</span>
-
-        </a>
-
-
-        <a href="fornecedores.html">
-
-            <i class="fa-solid fa-truck"></i>
-
-            <span>Fornecedores</span>
-
-        </a>
-
-
-        <a href="relatorios.html">
-
-            <i class="fa-solid fa-chart-line"></i>
-
-            <span>Relatórios</span>
-
-        </a>
-
-
-        <a href="metas.html">
-
-            <i class="fa-solid fa-bullseye"></i>
-
-            <span>Metas</span>
-
-        </a>
-
-
-        <a href="perfil.html">
-
-            <i class="fa-solid fa-user"></i>
-
-            <span>Perfil</span>
-
-        </a>
-
-
-    </nav>
-
-
-</aside>
-
-
-
-<!-- =====================================
-     CONTEÚDO
-====================================== -->
-
-<main class="content">
-
-
-    <header class="page-header">
-
-
-        <div>
-
-            <h1>
-                Controle de Estoque
-            </h1>
-
-            <p>
-                Acompanhe entradas, saídas e produtos disponíveis.
-            </p>
+            <div>
+                <h2>Fashion</h2>
+                <span>ERP</span>
+            </div>
 
         </div>
 
 
-        <a
-            href="produtos.html"
-            class="btn-primary"
-        >
+        <nav class="sidebar-menu">
 
-            <i class="fa-solid fa-plus"></i>
+            <p class="menu-title">
+                MENU PRINCIPAL
+            </p>
 
-            Cadastrar Produto
+            <a href="dashboard.html" class="menu-item">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
 
-        </a>
+            <a href="produtos.html" class="menu-item">
+                <i class="fa-solid fa-shirt"></i>
+                <span>Produtos</span>
+            </a>
 
+            <a href="clientes.html" class="menu-item">
+                <i class="fa-solid fa-users"></i>
+                <span>Clientes</span>
+            </a>
 
-    </header>
-
-
-
-    <!-- =====================================
-         RESUMO
-    ====================================== -->
-
-    <section class="product-stats">
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">
-
+            <a href="estoque.html" class="menu-item active">
                 <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Estoque</span>
+            </a>
 
-            </div>
+            <a href="vendas.html" class="menu-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Vendas</span>
+            </a>
 
-            <div>
 
-                <span>Total de Itens</span>
-
-                <strong id="totalItens">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">
-
-                <i class="fa-solid fa-circle-check"></i>
-
-            </div>
-
-            <div>
-
-                <span>Estoque Normal</span>
-
-                <strong id="estoqueNormal">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">
-
-                <i class="fa-solid fa-triangle-exclamation"></i>
-
-            </div>
-
-            <div>
-
-                <span>Estoque Baixo</span>
-
-                <strong id="estoqueBaixo">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =====================================
-         PESQUISA
-    ====================================== -->
-
-    <section class="toolbar">
-
-
-        <div class="search">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-                type="text"
-                id="pesquisaEstoque"
-                placeholder="Pesquisar produto..."
-            >
-
-        </div>
-
-
-        <select id="filtroEstoque">
-
-            <option value="todos">
-                Todos
-            </option>
-
-            <option value="normal">
-                Estoque normal
-            </option>
-
-            <option value="baixo">
-                Estoque baixo
-            </option>
-
-            <option value="zerado">
-                Sem estoque
-            </option>
-
-        </select>
-
-
-    </section>
-
-
-
-    <!-- =====================================
-         TABELA
-    ====================================== -->
-
-    <section class="table-card">
-
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Produto</th>
-
-                    <th>Categoria</th>
-
-                    <th>Quantidade</th>
-
-                    <th>Estoque mínimo</th>
-
-                    <th>Status</th>
-
-                    <th>Ações</th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody id="listaEstoque">
-
-            </tbody>
-
-
-        </table>
-
-
-        <div
-            class="empty-state"
-            id="estoqueVazio"
-        >
-
-            <i class="fa-solid fa-box-open"></i>
-
-            <h3>
-                Nenhum produto no estoque
-            </h3>
-
-            <p>
-                Cadastre produtos para acompanhar seu estoque.
+            <p class="menu-title">
+                GESTÃO
             </p>
 
+            <a href="financeiro.html" class="menu-item">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Financeiro</span>
+            </a>
+
+            <a href="fornecedores.html" class="menu-item">
+                <i class="fa-solid fa-truck"></i>
+                <span>Fornecedores</span>
+            </a>
+
+            <a href="relatorios.html" class="menu-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Relatórios</span>
+            </a>
+
+            <a href="metas.html" class="menu-item">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Metas</span>
+            </a>
+
+
+            <p class="menu-title">
+                CONTA
+            </p>
+
+            <a href="perfil.html" class="menu-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Meu Perfil</span>
+            </a>
+
+            <a href="configuracoes.html" class="menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Configurações</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    Administrador
+                </strong>
+
+                <span>
+                    Administrador
+                </span>
+
+            </div>
+
+            <button
+                class="logout-button"
+                id="logoutButton">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+            </button>
+
         </div>
 
-
-    </section>
-
-
-</main>
+    </aside>
 
 
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
 
-<!-- =====================================
-     MODAL MOVIMENTAÇÃO
-====================================== -->
-
-<div
-    class="modal"
-    id="modalEstoque"
->
+    <main class="main-content">
 
 
-    <div class="modal-content">
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div>
+
+                    <h1>
+                        Estoque
+                    </h1>
+
+                    <p>
+                        Controle e acompanhe o estoque da sua loja
+                    </p>
+
+                </div>
+
+            </div>
 
 
-        <div class="modal-header">
+            <div class="topbar-right">
 
+                <button
+                    class="notification-button"
+                    title="Notificações">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="topbar-user">
+
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Administrador
+                        </strong>
+
+                        <span>
+                            Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
+        <section class="stock-page-header">
 
             <div>
 
                 <h2>
-                    Movimentar Estoque
+                    Controle de Estoque
                 </h2>
 
                 <p>
-                    Registre uma entrada ou saída.
+                    Acompanhe entradas, saídas e níveis de estoque.
                 </p>
 
             </div>
 
 
             <button
-                type="button"
-                id="fecharModalEstoque"
-            >
+                class="btn-primary"
+                id="btnMovimentarEstoque">
 
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-arrows-rotate"></i>
+
+                Movimentar Estoque
 
             </button>
 
+        </section>
+
+
+        <!-- =================================================
+             CARDS DE RESUMO
+        ================================================== -->
+
+        <section class="stock-stats">
+
+
+            <div class="stock-stat-card">
+
+                <div class="stock-stat-icon blue">
+
+                    <i class="fa-solid fa-boxes-stacked"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Total de Produtos
+                    </span>
+
+                    <strong id="totalProdutos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stock-stat-card">
+
+                <div class="stock-stat-icon green">
+
+                    <i class="fa-solid fa-box"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Itens em Estoque
+                    </span>
+
+                    <strong id="totalItens">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stock-stat-card">
+
+                <div class="stock-stat-icon orange">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Estoque Baixo
+                    </span>
+
+                    <strong id="estoqueBaixo">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="stock-stat-card">
+
+                <div class="stock-stat-icon red">
+
+                    <i class="fa-solid fa-box-open"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Sem Estoque
+                    </span>
+
+                    <strong id="semEstoque">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTROS
+        ================================================== -->
+
+        <section class="stock-toolbar">
+
+
+            <div class="stock-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="pesquisaEstoque"
+                    placeholder="Buscar produto, SKU ou marca...">
+
+            </div>
+
+
+            <select id="filtroCategoria">
+
+                <option value="todos">
+                    Todas as categorias
+                </option>
+
+                <option value="Vestidos">
+                    Vestidos
+                </option>
+
+                <option value="Blusas">
+                    Blusas
+                </option>
+
+                <option value="Calças">
+                    Calças
+                </option>
+
+                <option value="Saias">
+                    Saias
+                </option>
+
+                <option value="Conjuntos">
+                    Conjuntos
+                </option>
+
+                <option value="Acessórios">
+                    Acessórios
+                </option>
+
+            </select>
+
+
+            <select id="filtroEstoque">
+
+                <option value="todos">
+                    Todos os estoques
+                </option>
+
+                <option value="normal">
+                    Estoque normal
+                </option>
+
+                <option value="baixo">
+                    Estoque baixo
+                </option>
+
+                <option value="zerado">
+                    Sem estoque
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- =================================================
+             TABELA
+        ================================================== -->
+
+        <section class="stock-table-card">
+
+
+            <div class="stock-table-header">
+
+                <div>
+
+                    <h2>
+                        Controle de produtos
+                    </h2>
+
+                    <p>
+                        Visualize a quantidade disponível de cada produto.
+                    </p>
+
+                </div>
+
+
+                <span id="contadorEstoque">
+                    0 produtos
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Produto
+                            </th>
+
+                            <th>
+                                Categoria
+                            </th>
+
+                            <th>
+                                SKU
+                            </th>
+
+                            <th>
+                                Estoque
+                            </th>
+
+                            <th>
+                                Mínimo
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Ações
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaEstoque">
+
+                        <!-- Produtos inseridos pelo JavaScript -->
+
+                    </tbody>
+
+                </table>
+
+
+                <div
+                    class="stock-empty"
+                    id="estoqueVazio">
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                    </div>
+
+                    <h3>
+                        Nenhum produto encontrado
+                    </h3>
+
+                    <p>
+                        Cadastre produtos para começar a controlar o estoque.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAGINAÇÃO -->
+
+            <div class="stock-pagination">
+
+                <span id="textoPaginacao">
+                    Nenhum produto
+                </span>
+
+                <div>
+
+                    <button
+                        id="paginaAnterior"
+                        disabled>
+
+                        <i class="fa-solid fa-chevron-left"></i>
+
+                    </button>
+
+                    <button
+                        class="active"
+                        id="paginaAtual">
+
+                        1
+
+                    </button>
+
+                    <button
+                        id="paginaProxima"
+                        disabled>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RODAPÉ
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <span>
+                © 2026 Fashion ERP
+            </span>
+
+            <span>
+                Sistema de gerenciamento para lojas de roupas
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL DE MOVIMENTAÇÃO
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modalMovimentacao">
+
+
+        <div class="stock-modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Movimentar Estoque
+                    </h2>
+
+                    <p>
+                        Registre uma entrada ou saída.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="modal-close"
+                    id="fecharMovimentacao">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <form id="formMovimentacao">
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group full">
+
+                        <label for="produtoMovimentacao">
+                            Produto
+                        </label>
+
+                        <select
+                            id="produtoMovimentacao"
+                            required>
+
+                            <option value="">
+                                Selecione um produto
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tipoMovimentacao">
+                            Tipo de movimentação
+                        </label>
+
+                        <select
+                            id="tipoMovimentacao"
+                            required>
+
+                            <option value="entrada">
+                                Entrada
+                            </option>
+
+                            <option value="saida">
+                                Saída
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="quantidadeMovimentacao">
+                            Quantidade
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeMovimentacao"
+                            min="1"
+                            placeholder="Ex.: 10"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="observacaoMovimentacao">
+                            Observação
+                        </label>
+
+                        <textarea
+                            id="observacaoMovimentacao"
+                            rows="3"
+                            placeholder="Ex.: Reposição de mercadoria..."></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="cancelarMovimentacao">
+
+                        Cancelar
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Salvar Movimentação
+
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
-
-
-        <form id="formEstoque">
-
-
-            <input
-                type="hidden"
-                id="estoqueProdutoId"
-            >
-
-
-            <div class="form-grid">
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Produto
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nomeEstoqueProduto"
-                        readonly
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="tipoMovimentacao">
-                        Tipo
-                    </label>
-
-                    <select id="tipoMovimentacao">
-
-                        <option value="entrada">
-                            Entrada
-                        </option>
-
-                        <option value="saida">
-                            Saída
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="quantidadeMovimentacao">
-                        Quantidade
-                    </label>
-
-                    <input
-                        type="number"
-                        id="quantidadeMovimentacao"
-                        min="1"
-                        value="1"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label for="observacaoEstoque">
-                        Observação
-                    </label>
-
-                    <textarea
-                        id="observacaoEstoque"
-                        rows="3"
-                        placeholder="Ex.: Reposição de mercadoria"
-                    ></textarea>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="modal-footer">
-
-
-                <button
-                    type="button"
-                    class="btn-secondary"
-                    id="cancelarEstoque"
-                >
-
-                    Cancelar
-
-                </button>
-
-
-                <button
-                    type="submit"
-                    class="btn-primary"
-                >
-
-                    <i class="fa-solid fa-check"></i>
-
-                    Confirmar
-
-                </button>
-
-
-            </div>
-
-
-        </form>
-
-
     </div>
 
-</div>
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/estoque.js"></script>
 
 
+    <script>
 
-<script src="../js/estoque.js"></script>
+        /* MENU MOBILE */
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const sidebar =
+            document.querySelector(".sidebar");
+
+        if (mobileMenu && sidebar) {
+
+            mobileMenu.addEventListener("click", () => {
+
+                sidebar.classList.toggle("open");
+
+            });
+
+        }
+
+
+        /* LOGOUT */
+
+        const logoutButton =
+            document.getElementById("logoutButton");
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener("click", () => {
+
+                localStorage.removeItem("usuarioLogado");
+                localStorage.removeItem("emailUsuario");
+
+                window.location.href =
+                    "../index.html";
+
+            });
+
+        }
+
+    </script>
 
 </body>
 
