@@ -710,3 +710,81 @@
     color:var(--text-muted);
 
 }
+/* ==========================================================
+   CORREÇÃO - CONTEÚDO DAS PÁGINAS
+========================================================== */
+
+/* O HTML das páginas usa .main-content */
+.main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background: var(--background);
+}
+
+/* Sidebar fixa */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* Conteúdo não fica escondido atrás da sidebar */
+.main-content > * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Topbar */
+.main-content .topbar {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================================
+   PRODUTOS
+========================================================== */
+
+.products-header,
+.product-stats,
+.products-toolbar,
+.products-table-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tabela não estoura a tela */
+.table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+/* ==========================================================
+   RESPONSIVO
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform .3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
