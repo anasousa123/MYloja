@@ -1,187 +1,609 @@
-// ==========================================
+// ==========================================================
 // FASHION ERP
 // MÓDULO DE CLIENTES
-// ==========================================
+// ==========================================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ==========================================
+    "use strict";
+
+    // ======================================================
     // ELEMENTOS
-    // ==========================================
+    // ======================================================
 
-    const modal = document.getElementById("modalCliente");
-    const form = document.getElementById("formCliente");
+    const btnNovoCliente =
+        document.getElementById("btnNovoCliente");
 
-    const btnNovo = document.getElementById("novoCliente");
-    const btnFechar = document.getElementById("fecharModal");
-    const btnCancelar = document.getElementById("cancelarCliente");
+    const btnNovoClienteVazio =
+        document.getElementById("btnNovoClienteVazio");
 
-    const lista = document.getElementById("listaClientes");
-    const semClientes = document.getElementById("semClientes");
+    const modal =
+        document.getElementById("modalCliente");
 
-    const pesquisa = document.getElementById("pesquisaCliente");
-    const limparPesquisa = document.getElementById("limparPesquisa");
+    const form =
+        document.getElementById("formCliente");
 
-    const totalClientes = document.getElementById("totalClientes");
-    const novosClientes = document.getElementById("novosClientes");
-    const clientesAtivos = document.getElementById("clientesAtivos");
+    const btnFecharModal =
+        document.getElementById("fecharModalCliente");
 
-    const tituloModal = document.getElementById("tituloModal");
+    const btnCancelar =
+        document.getElementById("cancelarCliente");
 
-    // ==========================================
+    const tituloModal =
+        document.getElementById("tituloModalCliente");
+
+    const listaClientes =
+        document.getElementById("listaClientes");
+
+    const clientesVazios =
+        document.getElementById("clientesVazios");
+
+    const pesquisa =
+        document.getElementById("pesquisaCliente");
+
+    const filtroStatus =
+        document.getElementById("filtroStatusCliente");
+
+    const ordenar =
+        document.getElementById("ordenarClientes");
+
+
+    // ======================================================
+    // CONTADORES
+    // ======================================================
+
+    const totalClientes =
+        document.getElementById("totalClientes");
+
+    const clientesAtivos =
+        document.getElementById("clientesAtivos");
+
+    const novosClientes =
+        document.getElementById("novosClientes");
+
+    const clientesInativos =
+        document.getElementById("clientesInativos");
+
+    const contadorClientes =
+        document.getElementById("contadorClientes");
+
+    const paginacaoInfo =
+        document.getElementById("paginacaoInfo");
+
+
+    // ======================================================
     // CAMPOS
-    // ==========================================
+    // ======================================================
 
-    const clienteId = document.getElementById("clienteId");
-    const nome = document.getElementById("nomeCliente");
-    const telefone = document.getElementById("telefoneCliente");
-    const email = document.getElementById("emailCliente");
-    const cidade = document.getElementById("cidadeCliente");
-    const status = document.getElementById("statusCliente");
-    const observacoes = document.getElementById("observacoesCliente");
+    const clienteId =
+        document.getElementById("clienteId");
 
-    // ==========================================
-    // CLIENTES
-    // ==========================================
+    const nomeCliente =
+        document.getElementById("nomeCliente");
 
-    let clientes = JSON.parse(
-        localStorage.getItem("fashionERP_clientes")
-    ) || [];
+    const cpfCliente =
+        document.getElementById("cpfCliente");
 
-    // ==========================================
-    // ABRIR MODAL
-    // ==========================================
+    const telefoneCliente =
+        document.getElementById("telefoneCliente");
 
-    btnNovo.addEventListener("click", () => {
+    const emailCliente =
+        document.getElementById("emailCliente");
 
-        abrirModal();
+    const nascimentoCliente =
+        document.getElementById("nascimentoCliente");
 
-    });
+    const statusCliente =
+        document.getElementById("statusCliente");
 
-    // ==========================================
-    // FECHAR MODAL
-    // ==========================================
+    const enderecoCliente =
+        document.getElementById("enderecoCliente");
 
-    btnFechar.addEventListener("click", () => {
+    const cidadeCliente =
+        document.getElementById("cidadeCliente");
 
-        fecharModal();
+    const observacoesCliente =
+        document.getElementById("observacoesCliente");
 
-    });
 
-    btnCancelar.addEventListener("click", () => {
+    // ======================================================
+    // CONFIGURAÇÕES
+    // ======================================================
 
-        fecharModal();
+    const STORAGE_KEY =
+        "fashionERP_clientes";
 
-    });
+    const ITENS_POR_PAGINA = 10;
 
-    // Fechar clicando fora
-    modal.addEventListener("click", (event) => {
+    let paginaAtual = 1;
 
-        if(event.target === modal){
 
-            fecharModal();
+    // ======================================================
+    // CARREGAR CLIENTES
+    // ======================================================
 
-        }
+    let clientes = carregarClientes();
 
-    });
 
-    // ==========================================
-    // ABRIR MODAL
-    // ==========================================
+    function carregarClientes() {
 
-    function abrirModal(cliente = null){
+        try {
 
-        modal.classList.add("show");
+            const dados =
+                localStorage.getItem(STORAGE_KEY);
 
-        if(cliente){
+            if (!dados) {
+                return [];
+            }
 
-            tituloModal.textContent = "Editar Cliente";
+            const clientesSalvos =
+                JSON.parse(dados);
 
-            clienteId.value = cliente.id;
-            nome.value = cliente.nome;
-            telefone.value = cliente.telefone;
-            email.value = cliente.email;
-            cidade.value = cliente.cidade;
-            status.value = cliente.status;
-            observacoes.value = cliente.observacoes || "";
+            return Array.isArray(clientesSalvos)
+                ? clientesSalvos
+                : [];
 
-        }else{
+        } catch (erro) {
 
-            tituloModal.textContent = "Novo Cliente";
+            console.error(
+                "Erro ao carregar clientes:",
+                erro
+            );
 
-            form.reset();
-
-            clienteId.value = "";
-
-            status.value = "Ativo";
+            return [];
 
         }
-
-        setTimeout(() => {
-
-            nome.focus();
-
-        }, 100);
 
     }
 
-    // ==========================================
-    // FECHAR MODAL
-    // ==========================================
 
-    function fecharModal(){
+    // ======================================================
+    // SALVAR CLIENTES
+    // ======================================================
+
+    function salvarClientes() {
+
+        try {
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(clientes)
+            );
+
+            return true;
+
+        } catch (erro) {
+
+            console.error(
+                "Erro ao salvar clientes:",
+                erro
+            );
+
+            alert(
+                "Não foi possível salvar os clientes."
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+    // ======================================================
+    // ABRIR MODAL
+    // ======================================================
+
+    function abrirModal(cliente = null) {
+
+        if (!modal || !form) {
+            return;
+        }
+
+
+        form.reset();
+
+
+        if (cliente) {
+
+            tituloModal.textContent =
+                "Editar Cliente";
+
+            clienteId.value =
+                cliente.id || "";
+
+            nomeCliente.value =
+                cliente.nome || "";
+
+            cpfCliente.value =
+                cliente.cpf || "";
+
+            telefoneCliente.value =
+                cliente.telefone || "";
+
+            emailCliente.value =
+                cliente.email || "";
+
+            nascimentoCliente.value =
+                cliente.nascimento || "";
+
+            statusCliente.value =
+                cliente.status || "ativo";
+
+            enderecoCliente.value =
+                cliente.endereco || "";
+
+            cidadeCliente.value =
+                cliente.cidade || "";
+
+            observacoesCliente.value =
+                cliente.observacoes || "";
+
+        } else {
+
+            tituloModal.textContent =
+                "Novo Cliente";
+
+            clienteId.value =
+                "";
+
+            statusCliente.value =
+                "ativo";
+
+        }
+
+
+        modal.classList.add("show");
+
+        document.body.classList.add(
+            "modal-open"
+        );
+
+
+        setTimeout(() => {
+
+            nomeCliente.focus();
+
+        }, 150);
+
+    }
+
+
+    // ======================================================
+    // FECHAR MODAL
+    // ======================================================
+
+    function fecharModal() {
+
+        if (!modal) {
+            return;
+        }
 
         modal.classList.remove("show");
+
+        document.body.classList.remove(
+            "modal-open"
+        );
 
         form.reset();
 
         clienteId.value = "";
 
-        tituloModal.textContent = "Novo Cliente";
+        tituloModal.textContent =
+            "Novo Cliente";
+
+        statusCliente.value =
+            "ativo";
 
     }
 
-    // ==========================================
+
+    // ======================================================
+    // BOTÃO NOVO CLIENTE
+    // ======================================================
+
+    if (btnNovoCliente) {
+
+        btnNovoCliente.addEventListener(
+            "click",
+            () => {
+
+                abrirModal();
+
+            }
+        );
+
+    }
+
+
+    if (btnNovoClienteVazio) {
+
+        btnNovoClienteVazio.addEventListener(
+            "click",
+            () => {
+
+                abrirModal();
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
+    // FECHAR MODAL
+    // ======================================================
+
+    if (btnFecharModal) {
+
+        btnFecharModal.addEventListener(
+            "click",
+            fecharModal
+        );
+
+    }
+
+
+    if (btnCancelar) {
+
+        btnCancelar.addEventListener(
+            "click",
+            fecharModal
+        );
+
+    }
+
+
+    // ======================================================
+    // CLICAR FORA DO MODAL
+    // ======================================================
+
+    if (modal) {
+
+        modal.addEventListener(
+            "click",
+            (event) => {
+
+                if (
+                    event.target === modal
+                ) {
+
+                    fecharModal();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
+    // ESC PARA FECHAR
+    // ======================================================
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape" &&
+                modal &&
+                modal.classList.contains("show")
+            ) {
+
+                fecharModal();
+
+            }
+
+        }
+    );
+
+
+    // ======================================================
+    // FORMULÁRIO
+    // ======================================================
+
+    if (form) {
+
+        form.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+                salvarCliente();
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
     // SALVAR CLIENTE
-    // ==========================================
+    // ======================================================
 
-    form.addEventListener("submit", (event) => {
+    function salvarCliente() {
 
-        event.preventDefault();
+        const nome =
+            nomeCliente.value.trim();
 
-        const nomeValor = nome.value.trim();
-        const telefoneValor = telefone.value.trim();
+        const cpf =
+            cpfCliente.value.trim();
 
-        if(!nomeValor || !telefoneValor){
+        const telefone =
+            telefoneCliente.value.trim();
 
-            alert("Preencha o nome e o telefone do cliente.");
+        const email =
+            emailCliente.value.trim();
+
+        const nascimento =
+            nascimentoCliente.value;
+
+        const status =
+            statusCliente.value;
+
+        const endereco =
+            enderecoCliente.value.trim();
+
+        const cidade =
+            cidadeCliente.value.trim();
+
+        const observacoes =
+            observacoesCliente.value.trim();
+
+
+        // ==================================================
+        // VALIDAÇÃO
+        // ==================================================
+
+        if (!nome) {
+
+            alert(
+                "Digite o nome completo do cliente."
+            );
+
+            nomeCliente.focus();
 
             return;
 
         }
 
-        // ======================================
-        // EDITAR
-        // ======================================
 
-        if(clienteId.value){
+        if (!telefone) {
 
-            const indice = clientes.findIndex(
-                cliente => cliente.id === clienteId.value
+            alert(
+                "Digite o telefone do cliente."
             );
 
-            if(indice !== -1){
+            telefoneCliente.focus();
+
+            return;
+
+        }
+
+
+        if (
+            email &&
+            !validarEmail(email)
+        ) {
+
+            alert(
+                "Digite um e-mail válido."
+            );
+
+            emailCliente.focus();
+
+            return;
+
+        }
+
+
+        // ==================================================
+        // VERIFICAR CPF DUPLICADO
+        // ==================================================
+
+        if (cpf) {
+
+            const cpfLimpo =
+                somenteNumeros(cpf);
+
+            const cpfExistente =
+                clientes.find(cliente => {
+
+                    return (
+                        somenteNumeros(
+                            cliente.cpf || ""
+                        ) === cpfLimpo &&
+                        cliente.id !== clienteId.value
+                    );
+
+                });
+
+
+            if (cpfExistente) {
+
+                alert(
+                    "Já existe um cliente cadastrado com este CPF."
+                );
+
+                cpfCliente.focus();
+
+                return;
+
+            }
+
+        }
+
+
+        // ==================================================
+        // VERIFICAR E-MAIL DUPLICADO
+        // ==================================================
+
+        if (email) {
+
+            const emailExistente =
+                clientes.find(cliente => {
+
+                    return (
+                        String(
+                            cliente.email || ""
+                        ).toLowerCase() ===
+                        email.toLowerCase() &&
+                        cliente.id !== clienteId.value
+                    );
+
+                });
+
+
+            if (emailExistente) {
+
+                alert(
+                    "Já existe um cliente cadastrado com este e-mail."
+                );
+
+                emailCliente.focus();
+
+                return;
+
+            }
+
+        }
+
+
+        // ==================================================
+        // EDITAR
+        // ==================================================
+
+        if (clienteId.value) {
+
+            const indice =
+                clientes.findIndex(
+                    cliente =>
+                        cliente.id ===
+                        clienteId.value
+                );
+
+
+            if (indice !== -1) {
 
                 clientes[indice] = {
 
                     ...clientes[indice],
 
-                    nome: nomeValor,
-                    telefone: telefoneValor,
-                    email: email.value.trim(),
-                    cidade: cidade.value.trim(),
-                    status: status.value,
-                    observacoes: observacoes.value.trim()
+                    nome,
+                    cpf,
+                    telefone,
+                    email,
+                    nascimento,
+                    status,
+                    endereco,
+                    cidade,
+                    observacoes,
+
+                    atualizadoEm:
+                        new Date().toISOString()
 
                 };
 
@@ -189,39 +611,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        // ======================================
-        // NOVO CLIENTE
-        // ======================================
 
-        else{
+        // ==================================================
+        // NOVO CLIENTE
+        // ==================================================
+
+        else {
 
             const novoCliente = {
 
-                id: Date.now().toString(),
+                id:
+                    gerarId(),
 
-                nome: nomeValor,
+                nome,
+                cpf,
+                telefone,
+                email,
+                nascimento,
+                status,
+                endereco,
+                cidade,
+                observacoes,
 
-                telefone: telefoneValor,
+                criadoEm:
+                    new Date().toISOString(),
 
-                email: email.value.trim(),
-
-                cidade: cidade.value.trim(),
-
-                status: status.value,
-
-                observacoes: observacoes.value.trim(),
-
-                compras: 0,
-
-                dataCadastro: new Date().toISOString()
+                atualizadoEm:
+                    new Date().toISOString()
 
             };
 
-            clientes.push(novoCliente);
+
+            clientes.push(
+                novoCliente
+            );
 
         }
 
-        salvarClientes();
+
+        // ==================================================
+        // SALVAR
+        // ==================================================
+
+        if (!salvarClientes()) {
+            return;
+        }
+
+
+        // ==================================================
+        // ATUALIZAR
+        // ==================================================
+
+        paginaAtual = 1;
 
         renderizarClientes();
 
@@ -229,313 +670,841 @@ document.addEventListener("DOMContentLoaded", () => {
 
         fecharModal();
 
-    });
 
-    // ==========================================
-    // SALVAR
-    // ==========================================
+        // ==================================================
+        // MENSAGEM
+        // ==================================================
 
-    function salvarClientes(){
-
-        localStorage.setItem(
-            "fashionERP_clientes",
-            JSON.stringify(clientes)
+        mostrarMensagem(
+            "Cliente salvo com sucesso!",
+            "success"
         );
 
     }
 
-    // ==========================================
-    // RENDERIZAR
-    // ==========================================
 
-    function renderizarClientes(){
+    // ======================================================
+    // RENDERIZAR CLIENTES
+    // ======================================================
 
-        const termo = pesquisa.value
-            .toLowerCase()
-            .trim();
+    function renderizarClientes() {
 
-        const filtrados = clientes.filter(cliente => {
+        if (!listaClientes) {
+            return;
+        }
 
-            return (
 
-                cliente.nome.toLowerCase().includes(termo) ||
+        const filtrados =
+            obterClientesFiltrados();
 
-                cliente.telefone.toLowerCase().includes(termo) ||
 
-                cliente.email.toLowerCase().includes(termo) ||
-
-                cliente.cidade.toLowerCase().includes(termo)
-
+        const totalPaginas =
+            Math.max(
+                1,
+                Math.ceil(
+                    filtrados.length /
+                    ITENS_POR_PAGINA
+                )
             );
 
-        });
 
-        lista.innerHTML = "";
+        if (
+            paginaAtual >
+            totalPaginas
+        ) {
 
-        if(filtrados.length === 0){
+            paginaAtual =
+                totalPaginas;
 
-            semClientes.style.display = "block";
+        }
+
+
+        const inicio =
+            (paginaAtual - 1) *
+            ITENS_POR_PAGINA;
+
+
+        const fim =
+            inicio +
+            ITENS_POR_PAGINA;
+
+
+        const clientesPagina =
+            filtrados.slice(
+                inicio,
+                fim
+            );
+
+
+        listaClientes.innerHTML =
+            "";
+
+
+        if (
+            clientesPagina.length === 0
+        ) {
+
+            if (clientesVazios) {
+
+                clientesVazios.style.display =
+                    "flex";
+
+            }
+
+            atualizarPaginacao(
+                0,
+                0,
+                filtrados.length
+            );
 
             return;
 
         }
 
-        semClientes.style.display = "none";
 
-        filtrados.forEach(cliente => {
+        if (clientesVazios) {
 
-            const linha = document.createElement("tr");
+            clientesVazios.style.display =
+                "none";
 
-            const iniciais = gerarIniciais(cliente.nome);
+        }
 
-            const statusClasse =
-                cliente.status === "Ativo"
-                    ? "ativo"
-                    : "inativo";
 
-            linha.innerHTML = `
+        clientesPagina.forEach(
+            cliente => {
 
-                <td>
+                listaClientes.appendChild(
+                    criarLinhaCliente(
+                        cliente
+                    )
+                );
 
-                    <div class="client-name">
+            }
+        );
 
-                        <div class="client-avatar">
 
-                            ${iniciais}
-
-                        </div>
-
-                        <div class="client-info">
-
-                            <strong>
-
-                                ${escaparHTML(cliente.nome)}
-
-                            </strong>
-
-                            <span>
-
-                                Cliente desde ${formatarData(cliente.dataCadastro)}
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </td>
-
-                <td>
-
-                    ${escaparHTML(cliente.telefone)}
-
-                </td>
-
-                <td>
-
-                    ${cliente.email
-                        ? escaparHTML(cliente.email)
-                        : "—"}
-
-                </td>
-
-                <td>
-
-                    ${cliente.cidade
-                        ? escaparHTML(cliente.cidade)
-                        : "—"}
-
-                </td>
-
-                <td>
-
-                    ${cliente.compras || 0}
-
-                </td>
-
-                <td>
-
-                    <span class="status ${statusClasse}">
-
-                        ${cliente.status}
-
-                    </span>
-
-                </td>
-
-                <td>
-
-                    <div class="action-buttons">
-
-                        <button
-                            class="icon-btn"
-                            title="Editar"
-                            data-action="editar"
-                            data-id="${cliente.id}">
-
-                            <i class="fa-solid fa-pen"></i>
-
-                        </button>
-
-                        <button
-                            class="icon-btn delete"
-                            title="Excluir"
-                            data-action="excluir"
-                            data-id="${cliente.id}">
-
-                            <i class="fa-solid fa-trash"></i>
-
-                        </button>
-
-                    </div>
-
-                </td>
-
-            `;
-
-            lista.appendChild(linha);
-
-        });
+        atualizarPaginacao(
+            inicio + 1,
+            Math.min(
+                fim,
+                filtrados.length
+            ),
+            filtrados.length
+        );
 
     }
 
-    // ==========================================
+
+    // ======================================================
+    // CRIAR LINHA
+    // ======================================================
+
+    function criarLinhaCliente(cliente) {
+
+        const tr =
+            document.createElement("tr");
+
+
+        const nome =
+            escaparHTML(
+                cliente.nome || "Sem nome"
+            );
+
+        const telefone =
+            escaparHTML(
+                cliente.telefone || "—"
+            );
+
+        const email =
+            escaparHTML(
+                cliente.email || "—"
+            );
+
+        const status =
+            cliente.status === "inativo"
+                ? "inativo"
+                : "ativo";
+
+
+        const textoStatus =
+            status === "ativo"
+                ? "Ativo"
+                : "Inativo";
+
+
+        const dataCadastro =
+            formatarData(
+                cliente.criadoEm
+            );
+
+
+        tr.innerHTML = `
+
+            <td>
+
+                <div class="client-info">
+
+                    <div class="client-avatar">
+
+                        ${obterIniciais(
+                            cliente.nome
+                        )}
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            ${nome}
+                        </strong>
+
+                        <span>
+                            ${
+                                cliente.cpf
+                                    ? "CPF: " +
+                                      escaparHTML(
+                                          cliente.cpf
+                                      )
+                                    : "Cliente"
+                            }
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+
+            <td>
+                ${telefone}
+            </td>
+
+
+            <td>
+                ${email}
+            </td>
+
+
+            <td>
+                ${dataCadastro}
+            </td>
+
+
+            <td>
+
+                <span
+                    class="status ${status}">
+
+                    ${textoStatus}
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="table-actions">
+
+                    <button
+                        type="button"
+                        class="action-btn edit"
+                        data-action="editar"
+                        data-id="${cliente.id}"
+                        title="Editar cliente">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="action-btn delete"
+                        data-action="excluir"
+                        data-id="${cliente.id}"
+                        title="Excluir cliente">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+                </div>
+
+            </td>
+
+        `;
+
+
+        return tr;
+
+    }
+
+
+    // ======================================================
     // AÇÕES DA TABELA
-    // ==========================================
+    // ======================================================
 
-    lista.addEventListener("click", (event) => {
+    if (listaClientes) {
 
-        const botao = event.target.closest("button");
+        listaClientes.addEventListener(
+            "click",
+            (event) => {
 
-        if(!botao) return;
+                const botao =
+                    event.target.closest(
+                        "button[data-action]"
+                    );
 
-        const id = botao.dataset.id;
 
-        const acao = botao.dataset.action;
+                if (!botao) {
+                    return;
+                }
 
-        const cliente = clientes.find(
-            item => item.id === id
+
+                const id =
+                    botao.dataset.id;
+
+                const acao =
+                    botao.dataset.action;
+
+
+                const cliente =
+                    clientes.find(
+                        item =>
+                            item.id === id
+                    );
+
+
+                if (!cliente) {
+                    return;
+                }
+
+
+                if (
+                    acao === "editar"
+                ) {
+
+                    abrirModal(
+                        cliente
+                    );
+
+                }
+
+
+                if (
+                    acao === "excluir"
+                ) {
+
+                    excluirCliente(
+                        cliente
+                    );
+
+                }
+
+            }
         );
 
-        if(!cliente) return;
+    }
 
-        if(acao === "editar"){
 
-            abrirModal(cliente);
+    // ======================================================
+    // EXCLUIR CLIENTE
+    // ======================================================
 
+    function excluirCliente(cliente) {
+
+        const confirmar =
+            confirm(
+                `Deseja excluir o cliente "${cliente.nome}"?`
+            );
+
+
+        if (!confirmar) {
+            return;
         }
 
-        if(acao === "excluir"){
 
-            excluirCliente(cliente);
+        clientes =
+            clientes.filter(
+                item =>
+                    item.id !== cliente.id
+            );
 
+
+        if (!salvarClientes()) {
+            return;
         }
 
-    });
-
-    // ==========================================
-    // EXCLUIR
-    // ==========================================
-
-    function excluirCliente(cliente){
-
-        const confirmar = confirm(
-            `Deseja excluir o cliente "${cliente.nome}"?`
-        );
-
-        if(!confirmar) return;
-
-        clientes = clientes.filter(
-            item => item.id !== cliente.id
-        );
-
-        salvarClientes();
 
         renderizarClientes();
 
         atualizarResumo();
 
+
+        mostrarMensagem(
+            "Cliente excluído com sucesso!",
+            "success"
+        );
+
     }
 
-    // ==========================================
-    // PESQUISA
-    // ==========================================
 
-    pesquisa.addEventListener("input", () => {
+    // ======================================================
+    // FILTRAR CLIENTES
+    // ======================================================
 
-        renderizarClientes();
+    function obterClientesFiltrados() {
 
-    });
+        const termo =
+            pesquisa
+                ? pesquisa.value
+                    .trim()
+                    .toLowerCase()
+                : "";
 
-    // ==========================================
-    // LIMPAR PESQUISA
-    // ==========================================
 
-    limparPesquisa.addEventListener("click", () => {
+        const statusSelecionado =
+            filtroStatus
+                ? filtroStatus.value
+                : "todos";
 
-        pesquisa.value = "";
 
-        renderizarClientes();
+        const ordem =
+            ordenar
+                ? ordenar.value
+                : "recentes";
 
-        pesquisa.focus();
 
-    });
+        let resultado =
+            clientes.filter(
+                cliente => {
 
-    // ==========================================
-    // RESUMO
-    // ==========================================
+                    const nome =
+                        String(
+                            cliente.nome || ""
+                        ).toLowerCase();
 
-    function atualizarResumo(){
+                    const telefone =
+                        String(
+                            cliente.telefone || ""
+                        ).toLowerCase();
 
-        const total = clientes.length;
+                    const email =
+                        String(
+                            cliente.email || ""
+                        ).toLowerCase();
 
-        const ativos = clientes.filter(
-            cliente => cliente.status === "Ativo"
-        ).length;
+                    const cpf =
+                        String(
+                            cliente.cpf || ""
+                        ).toLowerCase();
 
-        const agora = new Date();
 
-        const mesAtual = agora.getMonth();
+                    const correspondeBusca =
+                        !termo ||
+                        nome.includes(termo) ||
+                        telefone.includes(termo) ||
+                        email.includes(termo) ||
+                        cpf.includes(termo);
 
-        const anoAtual = agora.getFullYear();
 
-        const novos = clientes.filter(cliente => {
+                    const correspondeStatus =
+                        statusSelecionado ===
+                        "todos" ||
+                        cliente.status ===
+                        statusSelecionado;
 
-            const data = new Date(cliente.dataCadastro);
 
-            return (
-                data.getMonth() === mesAtual &&
-                data.getFullYear() === anoAtual
+                    return (
+                        correspondeBusca &&
+                        correspondeStatus
+                    );
+
+                }
             );
 
-        }).length;
 
-        totalClientes.textContent = total;
+        // ==================================================
+        // ORDENAÇÃO
+        // ==================================================
 
-        clientesAtivos.textContent = ativos;
+        if (ordem === "nome") {
 
-        novosClientes.textContent = novos;
+            resultado.sort(
+                (a, b) =>
+                    String(a.nome || "")
+                        .localeCompare(
+                            String(b.nome || ""),
+                            "pt-BR"
+                        )
+            );
+
+        }
+
+
+        else if (ordem === "nomeDesc") {
+
+            resultado.sort(
+                (a, b) =>
+                    String(b.nome || "")
+                        .localeCompare(
+                            String(a.nome || ""),
+                            "pt-BR"
+                        )
+            );
+
+        }
+
+
+        else {
+
+            resultado.sort(
+                (a, b) =>
+                    new Date(
+                        b.criadoEm || 0
+                    ) -
+                    new Date(
+                        a.criadoEm || 0
+                    )
+            );
+
+        }
+
+
+        return resultado;
 
     }
 
-    // ==========================================
+
+    // ======================================================
+    // PESQUISA
+    // ======================================================
+
+    if (pesquisa) {
+
+        pesquisa.addEventListener(
+            "input",
+            () => {
+
+                paginaAtual = 1;
+
+                renderizarClientes();
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
+    // FILTRO STATUS
+    // ======================================================
+
+    if (filtroStatus) {
+
+        filtroStatus.addEventListener(
+            "change",
+            () => {
+
+                paginaAtual = 1;
+
+                renderizarClientes();
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
+    // ORDENAÇÃO
+    // ======================================================
+
+    if (ordenar) {
+
+        ordenar.addEventListener(
+            "change",
+            () => {
+
+                paginaAtual = 1;
+
+                renderizarClientes();
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
+    // PAGINAÇÃO
+    // ======================================================
+
+    const paginaAnterior =
+        document.getElementById(
+            "paginaAnterior"
+        );
+
+    const paginaProxima =
+        document.getElementById(
+            "paginaProxima"
+        );
+
+    const paginaAtualElemento =
+        document.getElementById(
+            "paginaAtual"
+        );
+
+
+    if (paginaAnterior) {
+
+        paginaAnterior.addEventListener(
+            "click",
+            () => {
+
+                if (paginaAtual > 1) {
+
+                    paginaAtual--;
+
+                    renderizarClientes();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (paginaProxima) {
+
+        paginaProxima.addEventListener(
+            "click",
+            () => {
+
+                const total =
+                    obterClientesFiltrados()
+                        .length;
+
+                const totalPaginas =
+                    Math.ceil(
+                        total /
+                        ITENS_POR_PAGINA
+                    );
+
+
+                if (
+                    paginaAtual <
+                    totalPaginas
+                ) {
+
+                    paginaAtual++;
+
+                    renderizarClientes();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
+    // ATUALIZAR PAGINAÇÃO
+    // ======================================================
+
+    function atualizarPaginacao(
+        inicio,
+        fim,
+        total
+    ) {
+
+        if (paginacaoInfo) {
+
+            if (total === 0) {
+
+                paginacaoInfo.textContent =
+                    "Nenhum cliente";
+
+            } else {
+
+                paginacaoInfo.textContent =
+                    `Mostrando ${inicio}–${fim} de ${total} clientes`;
+
+            }
+
+        }
+
+
+        if (contadorClientes) {
+
+            contadorClientes.textContent =
+                `${total} ${
+                    total === 1
+                        ? "cliente"
+                        : "clientes"
+                }`;
+
+        }
+
+
+        const totalPaginas =
+            Math.max(
+                1,
+                Math.ceil(
+                    total /
+                    ITENS_POR_PAGINA
+                )
+            );
+
+
+        if (paginaAtualElemento) {
+
+            paginaAtualElemento.textContent =
+                paginaAtual;
+
+        }
+
+
+        if (paginaAnterior) {
+
+            paginaAnterior.disabled =
+                paginaAtual <= 1;
+
+        }
+
+
+        if (paginaProxima) {
+
+            paginaProxima.disabled =
+                paginaAtual >= totalPaginas;
+
+        }
+
+    }
+
+
+    // ======================================================
+    // RESUMO
+    // ======================================================
+
+    function atualizarResumo() {
+
+        const total =
+            clientes.length;
+
+
+        const ativos =
+            clientes.filter(
+                cliente =>
+                    cliente.status !==
+                    "inativo"
+            ).length;
+
+
+        const inativos =
+            clientes.filter(
+                cliente =>
+                    cliente.status ===
+                    "inativo"
+            ).length;
+
+
+        // Novos clientes:
+        // cadastrados nos últimos 30 dias.
+
+        const agora =
+            new Date();
+
+        const limite =
+            new Date();
+
+        limite.setDate(
+            agora.getDate() - 30
+        );
+
+
+        const novos =
+            clientes.filter(
+                cliente => {
+
+                    if (!cliente.criadoEm) {
+                        return false;
+                    }
+
+                    return (
+                        new Date(
+                            cliente.criadoEm
+                        ) >= limite
+                    );
+
+                }
+            ).length;
+
+
+        if (totalClientes) {
+
+            totalClientes.textContent =
+                total;
+
+        }
+
+
+        if (clientesAtivos) {
+
+            clientesAtivos.textContent =
+                ativos;
+
+        }
+
+
+        if (clientesInativos) {
+
+            clientesInativos.textContent =
+                inativos;
+
+        }
+
+
+        if (novosClientes) {
+
+            novosClientes.textContent =
+                novos;
+
+        }
+
+    }
+
+
+    // ======================================================
     // INICIAIS
-    // ==========================================
+    // ======================================================
 
-    function gerarIniciais(nome){
+    function obterIniciais(nome) {
 
-        const palavras = nome
-            .trim()
-            .split(" ")
-            .filter(Boolean);
+        const palavras =
+            String(nome || "")
+                .trim()
+                .split(/\s+/)
+                .filter(Boolean);
 
-        if(palavras.length === 1){
+
+        if (palavras.length === 0) {
+            return "C";
+        }
+
+
+        if (palavras.length === 1) {
 
             return palavras[0]
-                .substring(0,2)
+                .substring(0, 2)
                 .toUpperCase();
 
         }
+
 
         return (
             palavras[0][0] +
@@ -544,41 +1513,302 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // ==========================================
+
+    // ======================================================
     // FORMATAR DATA
-    // ==========================================
+    // ======================================================
 
-    function formatarData(data){
+    function formatarData(data) {
 
-        if(!data) return "--/--/----";
+        if (!data) {
+            return "—";
+        }
 
-        const dataFormatada = new Date(data);
 
-        return dataFormatada.toLocaleDateString(
+        const dataObj =
+            new Date(data);
+
+
+        if (
+            Number.isNaN(
+                dataObj.getTime()
+            )
+        ) {
+
+            return "—";
+
+        }
+
+
+        return dataObj.toLocaleDateString(
             "pt-BR"
         );
 
     }
 
-    // ==========================================
-    // SEGURANÇA
-    // Evita inserir HTML digitado pelo usuário
-    // ==========================================
 
-    function escaparHTML(texto){
+    // ======================================================
+    // VALIDAR E-MAIL
+    // ======================================================
 
-        return String(texto)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+    function validarEmail(email) {
+
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            .test(email);
 
     }
 
-    // ==========================================
+
+    // ======================================================
+    // SOMENTE NÚMEROS
+    // ======================================================
+
+    function somenteNumeros(valor) {
+
+        return String(valor || "")
+            .replace(/\D/g, "");
+
+    }
+
+
+    // ======================================================
+    // GERAR ID
+    // ======================================================
+
+    function gerarId() {
+
+        return (
+            Date.now().toString() +
+            Math.random()
+                .toString(36)
+                .substring(2, 9)
+        );
+
+    }
+
+
+    // ======================================================
+    // PROTEÇÃO CONTRA HTML
+    // ======================================================
+
+    function escaparHTML(texto) {
+
+        return String(texto ?? "")
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    // ======================================================
+    // MENSAGEM
+    // ======================================================
+
+    function mostrarMensagem(
+        mensagem,
+        tipo = "success"
+    ) {
+
+        const antiga =
+            document.querySelector(
+                ".erp-toast"
+            );
+
+
+        if (antiga) {
+            antiga.remove();
+        }
+
+
+        const toast =
+            document.createElement("div");
+
+
+        toast.className =
+            `erp-toast ${tipo}`;
+
+
+        toast.innerHTML = `
+
+            <i class="fa-solid ${
+                tipo === "success"
+                    ? "fa-circle-check"
+                    : "fa-circle-exclamation"
+            }"></i>
+
+            <span>
+                ${escaparHTML(mensagem)}
+            </span>
+
+        `;
+
+
+        document.body.appendChild(
+            toast
+        );
+
+
+        requestAnimationFrame(() => {
+
+            toast.classList.add(
+                "show"
+            );
+
+        });
+
+
+        setTimeout(() => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+            setTimeout(() => {
+
+                toast.remove();
+
+            }, 300);
+
+        }, 3000);
+
+    }
+
+
+    // ======================================================
+    // MÁSCARA CPF
+    // ======================================================
+
+    if (cpfCliente) {
+
+        cpfCliente.addEventListener(
+            "input",
+            () => {
+
+                let valor =
+                    somenteNumeros(
+                        cpfCliente.value
+                    );
+
+
+                valor =
+                    valor.substring(
+                        0,
+                        11
+                    );
+
+
+                valor =
+                    valor.replace(
+                        /(\d{3})(\d)/,
+                        "$1.$2"
+                    );
+
+                valor =
+                    valor.replace(
+                        /(\d{3})(\d)/,
+                        "$1.$2"
+                    );
+
+                valor =
+                    valor.replace(
+                        /(\d{3})(\d{1,2})$/,
+                        "$1-$2"
+                    );
+
+
+                cpfCliente.value =
+                    valor;
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
+    // MÁSCARA TELEFONE
+    // ======================================================
+
+    if (telefoneCliente) {
+
+        telefoneCliente.addEventListener(
+            "input",
+            () => {
+
+                let valor =
+                    somenteNumeros(
+                        telefoneCliente.value
+                    );
+
+
+                valor =
+                    valor.substring(
+                        0,
+                        11
+                    );
+
+
+                if (valor.length <= 10) {
+
+                    valor =
+                        valor.replace(
+                            /(\d{2})(\d)/,
+                            "($1) $2"
+                        );
+
+                    valor =
+                        valor.replace(
+                            /(\d{4})(\d)/,
+                            "$1-$2"
+                        );
+
+                } else {
+
+                    valor =
+                        valor.replace(
+                            /(\d{2})(\d)/,
+                            "($1) $2"
+                        );
+
+                    valor =
+                        valor.replace(
+                            /(\d{5})(\d)/,
+                            "$1-$2"
+                        );
+
+                }
+
+
+                telefoneCliente.value =
+                    valor;
+
+            }
+        );
+
+    }
+
+
+    // ======================================================
     // INICIALIZAÇÃO
-    // ==========================================
+    // ======================================================
 
     renderizarClientes();
 

@@ -2,558 +2,934 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Fashion ERP | Clientes</title>
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <meta name="description"
+        content="Gerenciamento de clientes do Fashion ERP">
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/clientes.css">
-
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
-
 
 <body>
 
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
 
-<!-- =====================================
-     SIDEBAR
-====================================== -->
+    <aside class="sidebar">
 
-<aside class="sidebar">
+        <div class="sidebar-logo">
 
+            <div class="logo-icon">
+                <i class="fa-solid fa-shirt"></i>
+            </div>
 
-    <div class="logo">
-
-        <i class="fa-solid fa-shirt"></i>
-
-        <h2>
-            Fashion ERP
-        </h2>
-
-    </div>
-
-
-    <nav>
-
-
-        <a href="dashboard.html">
-
-            <i class="fa-solid fa-house"></i>
-
-            <span>Dashboard</span>
-
-        </a>
-
-
-        <a href="produtos.html">
-
-            <i class="fa-solid fa-shirt"></i>
-
-            <span>Produtos</span>
-
-        </a>
-
-
-        <a
-            href="clientes.html"
-            class="active"
-        >
-
-            <i class="fa-solid fa-users"></i>
-
-            <span>Clientes</span>
-
-        </a>
-
-
-        <a href="estoque.html">
-
-            <i class="fa-solid fa-box"></i>
-
-            <span>Estoque</span>
-
-        </a>
-
-
-        <a href="vendas.html">
-
-            <i class="fa-solid fa-cart-shopping"></i>
-
-            <span>Vendas</span>
-
-        </a>
-
-
-        <a href="financeiro.html">
-
-            <i class="fa-solid fa-wallet"></i>
-
-            <span>Financeiro</span>
-
-        </a>
-
-
-        <a href="fornecedores.html">
-
-            <i class="fa-solid fa-truck"></i>
-
-            <span>Fornecedores</span>
-
-        </a>
-
-
-        <a href="relatorios.html">
-
-            <i class="fa-solid fa-chart-line"></i>
-
-            <span>Relatórios</span>
-
-        </a>
-
-
-        <a href="metas.html">
-
-            <i class="fa-solid fa-bullseye"></i>
-
-            <span>Metas</span>
-
-        </a>
-
-
-        <a href="perfil.html">
-
-            <i class="fa-solid fa-user"></i>
-
-            <span>Perfil</span>
-
-        </a>
-
-
-    </nav>
-
-
-</aside>
-
-
-
-<!-- =====================================
-     CONTEÚDO
-====================================== -->
-
-<main class="content">
-
-
-    <header class="page-header">
-
-        <div>
-
-            <h1>
-                Clientes
-            </h1>
-
-            <p>
-                Gerencie os clientes da sua loja.
-            </p>
+            <div>
+                <h2>Fashion</h2>
+                <span>ERP</span>
+            </div>
 
         </div>
 
 
-        <button
-            class="btn-primary"
-            id="novoCliente"
-        >
+        <nav class="sidebar-menu">
 
-            <i class="fa-solid fa-user-plus"></i>
+            <p class="menu-title">
+                MENU PRINCIPAL
+            </p>
 
-            Novo Cliente
+            <a href="dashboard.html" class="menu-item">
+                <i class="fa-solid fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </a>
 
-        </button>
+            <a href="produtos.html" class="menu-item">
+                <i class="fa-solid fa-shirt"></i>
+                <span>Produtos</span>
+            </a>
 
-    </header>
-
-
-
-    <!-- RESUMO -->
-
-    <section class="product-stats">
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">
-
+            <a href="clientes.html" class="menu-item active">
                 <i class="fa-solid fa-users"></i>
+                <span>Clientes</span>
+            </a>
 
-            </div>
+            <a href="estoque.html" class="menu-item">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Estoque</span>
+            </a>
 
-            <div>
+            <a href="vendas.html" class="menu-item">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Vendas</span>
+            </a>
 
-                <span>Total de Clientes</span>
 
-                <strong id="totalClientes">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">
-
-                <i class="fa-solid fa-user-check"></i>
-
-            </div>
-
-            <div>
-
-                <span>Clientes Ativos</span>
-
-                <strong id="clientesAtivos">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon">
-
-                <i class="fa-solid fa-calendar"></i>
-
-            </div>
-
-            <div>
-
-                <span>Novos Clientes</span>
-
-                <strong id="novosClientes">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- PESQUISA -->
-
-    <section class="toolbar">
-
-
-        <div class="search">
-
-            <i class="fa-solid fa-magnifying-glass"></i>
-
-            <input
-                type="text"
-                id="pesquisaCliente"
-                placeholder="Pesquisar cliente..."
-            >
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- TABELA -->
-
-    <section class="table-card">
-
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Cliente</th>
-
-                    <th>Telefone</th>
-
-                    <th>E-mail</th>
-
-                    <th>Cidade</th>
-
-                    <th>Status</th>
-
-                    <th>Ações</th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody id="listaClientes">
-
-            </tbody>
-
-
-        </table>
-
-
-        <div
-            class="empty-state"
-            id="clientesVazios"
-        >
-
-            <i class="fa-solid fa-users"></i>
-
-            <h3>
-                Nenhum cliente cadastrado
-            </h3>
-
-            <p>
-                Cadastre seu primeiro cliente.
+            <p class="menu-title">
+                GESTÃO
             </p>
 
+            <a href="financeiro.html" class="menu-item">
+                <i class="fa-solid fa-wallet"></i>
+                <span>Financeiro</span>
+            </a>
+
+            <a href="fornecedores.html" class="menu-item">
+                <i class="fa-solid fa-truck"></i>
+                <span>Fornecedores</span>
+            </a>
+
+            <a href="relatorios.html" class="menu-item">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Relatórios</span>
+            </a>
+
+            <a href="metas.html" class="menu-item">
+                <i class="fa-solid fa-bullseye"></i>
+                <span>Metas</span>
+            </a>
+
+
+            <p class="menu-title">
+                CONTA
+            </p>
+
+            <a href="perfil.html" class="menu-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Meu Perfil</span>
+            </a>
+
+            <a href="configuracoes.html" class="menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Configurações</span>
+            </a>
+
+        </nav>
+
+
+        <!-- USUÁRIO -->
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    Administrador
+                </strong>
+
+                <span>
+                    Administrador
+                </span>
+
+            </div>
+
+            <button
+                class="logout-button"
+                id="logoutButton"
+                title="Sair">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+            </button>
+
         </div>
 
-
-    </section>
-
-
-</main>
+    </aside>
 
 
+    <!-- =====================================================
+         CONTEÚDO PRINCIPAL
+    ====================================================== -->
 
-<!-- =====================================
-     MODAL CLIENTE
-====================================== -->
-
-<div
-    class="modal"
-    id="modalCliente"
->
+    <main class="main-content">
 
 
-    <div class="modal-content">
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    class="mobile-menu"
+                    id="mobileMenu"
+                    type="button">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div>
+
+                    <h1>
+                        Clientes
+                    </h1>
+
+                    <p>
+                        Gerencie os clientes da sua loja
+                    </p>
+
+                </div>
+
+            </div>
 
 
-        <div class="modal-header">
+            <div class="topbar-right">
 
+                <button
+                    class="notification-button"
+                    type="button"
+                    title="Notificações">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="topbar-user">
+
+                    <div class="topbar-avatar">
+                        A
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Administrador
+                        </strong>
+
+                        <span>
+                            Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CABEÇALHO
+        ================================================== -->
+
+        <section class="clients-header">
 
             <div>
 
-                <h2 id="tituloModalCliente">
-                    Novo Cliente
+                <h2>
+                    Gestão de Clientes
                 </h2>
 
                 <p>
-                    Preencha os dados do cliente.
+                    Cadastre, consulte e acompanhe seus clientes.
                 </p>
 
             </div>
 
 
             <button
-                type="button"
-                id="fecharModalCliente"
-            >
+                class="btn-primary"
+                id="btnNovoCliente"
+                type="button">
 
-                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-plus"></i>
+
+                Novo Cliente
 
             </button>
 
+        </section>
+
+
+        <!-- =================================================
+             CARDS DE RESUMO
+        ================================================== -->
+
+        <section class="client-stats">
+
+
+            <!-- TOTAL -->
+
+            <div class="client-stat-card">
+
+                <div class="client-stat-icon blue">
+
+                    <i class="fa-solid fa-users"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Total de Clientes
+                    </span>
+
+                    <strong id="totalClientes">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ATIVOS -->
+
+            <div class="client-stat-card">
+
+                <div class="client-stat-icon green">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Clientes Ativos
+                    </span>
+
+                    <strong id="clientesAtivos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOVOS -->
+
+            <div class="client-stat-card">
+
+                <div class="client-stat-icon gold">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Novos Clientes
+                    </span>
+
+                    <strong id="novosClientes">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- INATIVOS -->
+
+            <div class="client-stat-card">
+
+                <div class="client-stat-icon red">
+
+                    <i class="fa-solid fa-user-xmark"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Inativos
+                    </span>
+
+                    <strong id="clientesInativos">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FILTROS
+        ================================================== -->
+
+        <section class="clients-toolbar">
+
+
+            <!-- PESQUISA -->
+
+            <div class="client-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="pesquisaCliente"
+                    placeholder="Buscar por nome, telefone ou e-mail..."
+                    autocomplete="off">
+
+            </div>
+
+
+            <!-- STATUS -->
+
+            <select id="filtroStatusCliente">
+
+                <option value="todos">
+                    Todos os status
+                </option>
+
+                <option value="ativo">
+                    Ativos
+                </option>
+
+                <option value="inativo">
+                    Inativos
+                </option>
+
+            </select>
+
+
+            <!-- ORDENAÇÃO -->
+
+            <select id="ordenarClientes">
+
+                <option value="recentes">
+                    Mais recentes
+                </option>
+
+                <option value="nome">
+                    Nome A-Z
+                </option>
+
+                <option value="nomeDesc">
+                    Nome Z-A
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- =================================================
+             TABELA DE CLIENTES
+        ================================================== -->
+
+        <section class="clients-table-card">
+
+
+            <div class="table-header">
+
+                <div>
+
+                    <h2>
+                        Clientes cadastrados
+                    </h2>
+
+                    <p>
+                        Lista completa dos clientes
+                    </p>
+
+                </div>
+
+                <span id="contadorClientes">
+                    0 clientes
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Cliente
+                            </th>
+
+                            <th>
+                                Telefone
+                            </th>
+
+                            <th>
+                                E-mail
+                            </th>
+
+                            <th>
+                                Cadastro
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Ações
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="listaClientes">
+
+                        <!--
+                            Os clientes serão
+                            inseridos pelo clientes.js
+                        -->
+
+                    </tbody>
+
+                </table>
+
+
+                <!-- ESTADO VAZIO -->
+
+                <div
+                    class="clientes-vazios"
+                    id="clientesVazios">
+
+                    <div class="empty-icon">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+                    <h3>
+                        Nenhum cliente encontrado
+                    </h3>
+
+                    <p>
+                        Cadastre seu primeiro cliente
+                        para começar.
+                    </p>
+
+                    <button
+                        class="btn-primary"
+                        id="btnNovoClienteVazio"
+                        type="button">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Cadastrar Cliente
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAGINAÇÃO -->
+
+            <div class="table-pagination">
+
+                <span id="paginacaoInfo">
+                    Nenhum cliente
+                </span>
+
+                <div>
+
+                    <button
+                        id="paginaAnterior"
+                        type="button"
+                        title="Página anterior">
+
+                        <i class="fa-solid fa-chevron-left"></i>
+
+                    </button>
+
+                    <button
+                        class="active"
+                        id="paginaAtual"
+                        type="button">
+
+                        1
+
+                    </button>
+
+                    <button
+                        id="paginaProxima"
+                        type="button"
+                        title="Próxima página">
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RODAPÉ
+        ================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <span>
+                © 2026 Fashion ERP
+            </span>
+
+            <span>
+                Sistema de gerenciamento para lojas de roupas
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         MODAL NOVO CLIENTE
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="modalCliente">
+
+
+        <div class="client-modal">
+
+
+            <!-- CABEÇALHO -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2 id="tituloModalCliente">
+                        Novo Cliente
+                    </h2>
+
+                    <p>
+                        Cadastre as informações do cliente
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="modal-close"
+                    id="fecharModalCliente"
+                    type="button"
+                    title="Fechar">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+
+            <form id="formCliente">
+
+
+                <input
+                    type="hidden"
+                    id="clienteId">
+
+
+                <div class="form-grid">
+
+
+                    <!-- NOME -->
+
+                    <div class="form-group">
+
+                        <label for="nomeCliente">
+                            Nome completo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeCliente"
+                            placeholder="Ex.: Maria Silva"
+                            autocomplete="name"
+                            required>
+
+                    </div>
+
+
+                    <!-- CPF -->
+
+                    <div class="form-group">
+
+                        <label for="cpfCliente">
+                            CPF
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cpfCliente"
+                            placeholder="000.000.000-00"
+                            maxlength="14">
+
+                    </div>
+
+
+                    <!-- TELEFONE -->
+
+                    <div class="form-group">
+
+                        <label for="telefoneCliente">
+                            Telefone
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefoneCliente"
+                            placeholder="(34) 99999-9999"
+                            autocomplete="tel"
+                            required>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="emailCliente">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailCliente"
+                            placeholder="cliente@email.com"
+                            autocomplete="email">
+
+                    </div>
+
+
+                    <!-- DATA NASCIMENTO -->
+
+                    <div class="form-group">
+
+                        <label for="nascimentoCliente">
+                            Data de nascimento
+                        </label>
+
+                        <input
+                            type="date"
+                            id="nascimentoCliente">
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label for="statusCliente">
+                            Status
+                        </label>
+
+                        <select id="statusCliente">
+
+                            <option value="ativo">
+                                Ativo
+                            </option>
+
+                            <option value="inativo">
+                                Inativo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ENDEREÇO -->
+
+                    <div class="form-group full">
+
+                        <label for="enderecoCliente">
+                            Endereço
+                        </label>
+
+                        <input
+                            type="text"
+                            id="enderecoCliente"
+                            placeholder="Rua, número, bairro...">
+
+                    </div>
+
+
+                    <!-- CIDADE -->
+
+                    <div class="form-group">
+
+                        <label for="cidadeCliente">
+                            Cidade
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cidadeCliente"
+                            placeholder="Ex.: Patos de Minas">
+
+                    </div>
+
+
+                    <!-- OBSERVAÇÕES -->
+
+                    <div class="form-group">
+
+                        <label for="observacoesCliente">
+                            Observações
+                        </label>
+
+                        <input
+                            type="text"
+                            id="observacoesCliente"
+                            placeholder="Observações sobre o cliente">
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- RODAPÉ DO MODAL -->
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        id="cancelarCliente">
+
+                        Cancelar
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn-primary">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Salvar Cliente
+
+                    </button>
+
+                </div>
+
+            </form>
 
         </div>
 
-
-
-        <form id="formCliente">
-
-
-            <input
-                type="hidden"
-                id="clienteId"
-            >
-
-
-            <div class="form-grid">
-
-
-                <div class="form-group full">
-
-                    <label for="nomeCliente">
-                        Nome completo
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nomeCliente"
-                        placeholder="Nome do cliente"
-                        required
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="telefoneCliente">
-                        Telefone
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="telefoneCliente"
-                        placeholder="(00) 00000-0000"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="emailCliente">
-                        E-mail
-                    </label>
-
-                    <input
-                        type="email"
-                        id="emailCliente"
-                        placeholder="cliente@email.com"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="cidadeCliente">
-                        Cidade
-                    </label>
-
-                    <input
-                        type="text"
-                        id="cidadeCliente"
-                        placeholder="Cidade"
-                    >
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="estadoCliente">
-                        Estado
-                    </label>
-
-                    <input
-                        type="text"
-                        id="estadoCliente"
-                        placeholder="MG"
-                        maxlength="2"
-                    >
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label for="enderecoCliente">
-                        Endereço
-                    </label>
-
-                    <input
-                        type="text"
-                        id="enderecoCliente"
-                        placeholder="Rua, número, bairro"
-                    >
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label for="observacoesCliente">
-                        Observações
-                    </label>
-
-                    <textarea
-                        id="observacoesCliente"
-                        rows="4"
-                        placeholder="Observações sobre o cliente..."
-                    ></textarea>
-
-                </div>
-
-
-            </div>
-
-
-
-            <div class="modal-footer">
-
-
-                <button
-                    type="button"
-                    class="btn-secondary"
-                    id="cancelarCliente"
-                >
-
-                    Cancelar
-
-                </button>
-
-
-                <button
-                    type="submit"
-                    class="btn-primary"
-                >
-
-                    <i class="fa-solid fa-check"></i>
-
-                    Salvar Cliente
-
-                </button>
-
-
-            </div>
-
-
-        </form>
-
-
     </div>
 
-</div>
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="../js/clientes.js"></script>
 
 
+    <script>
 
-<script src="../js/clientes.js"></script>
+        /* =================================================
+           MENU MOBILE
+        ================================================= */
+
+        const mobileMenu =
+            document.getElementById("mobileMenu");
+
+        const sidebar =
+            document.querySelector(".sidebar");
+
+
+        if (mobileMenu && sidebar) {
+
+            mobileMenu.addEventListener(
+                "click",
+                () => {
+
+                    sidebar.classList.toggle("open");
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           LOGOUT
+        ================================================= */
+
+        const logoutButton =
+            document.getElementById("logoutButton");
+
+
+        if (logoutButton) {
+
+            logoutButton.addEventListener(
+                "click",
+                () => {
+
+                    localStorage.removeItem(
+                        "usuarioLogado"
+                    );
+
+                    localStorage.removeItem(
+                        "emailUsuario"
+                    );
+
+                    window.location.href =
+                        "../index.html";
+
+                }
+            );
+
+        }
+
+    </script>
 
 </body>
 
